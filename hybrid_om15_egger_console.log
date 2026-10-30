@@ -1,0 +1,1906 @@
+完整日志 → /Users/zhoushenheng/Downloads/julia/hybrid_om15_egger.log
+控制台只显示 summary 级别及以上 (BO每步细节全在文件里)
+想更安静: JULIA_CONSOLE_LEVEL=always;  想全打(会超Jupyter上限): =detail
+======================================================================
+核数检测: MANUAL
+  依据: JULIA_NWORKERS 手动指定
+  调度器/系统给的核数: 13 (主进程占 1, 最多可开 12 个 worker)
+  最终 worker 数: 12
+  (想改: 设环境变量 JULIA_NWORKERS=N 可强制指定 worker 数)
+======================================================================
+主进程环境: /Users/zhoushenheng/Downloads/julia/ChenQAOA/Project.toml
+Workers ready: 12  IDs: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+======================================================================
+All workers loaded packages into Main ✓
+内存实测: 每 worker 1.43 GB (最大 1.43), 主进程 1.48 GB, 合计 18.61 GB / 本机 48.0 GB
+  (注意: 这是包加载完的基线; 跑起来后每个 worker 还会因 BO 的 GP 矩阵再涨一些)
+输出目录: /Users/zhoushenheng/Downloads/julia/Local-Q3_QAOA_GSM_CSM  (可写 ✓)
+逐步进度: /Users/zhoushenheng/Downloads/julia/Local-Q3_QAOA_GSM_CSM/ProgressSteps  (每完成一步落一个文件, ls | wc -l 即可看进度)
+混合层幅度 Ωt = 15.7 (默认 2): β 盒子 → [0,0.4] (转角上限仍为 2π·1.0)
+
+======================================================================
+批量多实例 QAOA warmstart 对比 (target3d)
+n_atoms=12  p_max=5  实例数=20  优化器=zygote
+搜索策略=hybrid  (束+轮扫叠加: 5 条前缀, 头部2条做轮扫后再排序)
+每个实例内部重启种子数=1
+GP 版本=1  (原版, 与已有基准逐比特一致)
+局部精修器=nm  (NelderMead, 原方案)
+  束宽=5  (第13个参数显式指定, 与任务重复数 1 解耦)
+并行任务数 = 实例数 × BO种子数 = 20, 可用 worker = 12
+======================================================================
+复用已缓存的先验 → gnn_prior_target3d_n12_full_clean20_zygote.jls
+
+从实例集文件读取 20 个测试实例(不重新生成): /Users/zhoushenheng/Downloads/julia/Local-Q3_QAOA_GSM_CSM/instances_n12_inst20_16efd892.txt
+  ✓ 完整性校验通过(权重↔原子位置一致, C_max 暴力复核一致)
+  本机先验 vs 文件里冻结的 GNN 输出: max|Δp|=0.00e+00, 硬判决(p>0.5)不同的原子共 0 个
+  实例 1: seed=  7  |E|=18  C_max=10.0938  C_max/Σw=0.8685  unwanted=0.2291  GNN/C_max=1.0000
+  实例 2: seed= 11  |E|=18  C_max=11.1735  C_max/Σw=0.8597  unwanted=0.0718  GNN/C_max=1.0000
+  实例 3: seed= 13  |E|=18  C_max=10.4185  C_max/Σw=0.8522  unwanted=0.0872  GNN/C_max=0.8133
+  实例 4: seed= 15  |E|=18  C_max=11.0181  C_max/Σw=0.8668  unwanted=0.0837  GNN/C_max=1.0000
+  实例 5: seed= 16  |E|=18  C_max=9.7603  C_max/Σw=0.8495  unwanted=0.0870  GNN/C_max=0.9205
+  实例 6: seed= 17  |E|=18  C_max=9.8564  C_max/Σw=0.9166  unwanted=0.2758  GNN/C_max=0.9626
+  实例 7: seed= 18  |E|=18  C_max=10.3721  C_max/Σw=0.8325  unwanted=0.0853  GNN/C_max=0.9401
+  实例 8: seed= 19  |E|=18  C_max=10.6054  C_max/Σw=0.8247  unwanted=0.0564  GNN/C_max=1.0000
+  实例 9: seed= 20  |E|=18  C_max=9.9656  C_max/Σw=0.8806  unwanted=0.2237  GNN/C_max=1.0000
+  实例10: seed= 22  |E|=18  C_max=10.2810  C_max/Σw=0.8031  unwanted=0.1120  GNN/C_max=0.8768
+  实例11: seed= 26  |E|=18  C_max=11.2503  C_max/Σw=0.9181  unwanted=0.1939  GNN/C_max=1.0000
+  实例12: seed= 31  |E|=18  C_max=10.3946  C_max/Σw=0.8478  unwanted=0.2225  GNN/C_max=0.9039
+  实例13: seed= 32  |E|=18  C_max=10.6544  C_max/Σw=0.8435  unwanted=0.0925  GNN/C_max=1.0000
+  实例14: seed= 34  |E|=18  C_max=11.1145  C_max/Σw=0.8007  unwanted=0.0712  GNN/C_max=0.9197
+  实例15: seed= 36  |E|=18  C_max=10.6287  C_max/Σw=0.8764  unwanted=0.1805  GNN/C_max=1.0000
+  实例16: seed= 41  |E|=18  C_max=10.1624  C_max/Σw=0.8247  unwanted=0.0844  GNN/C_max=0.9420
+  实例17: seed= 43  |E|=18  C_max=10.6643  C_max/Σw=0.8543  unwanted=0.1069  GNN/C_max=0.8926
+  实例18: seed= 47  |E|=18  C_max=11.7194  C_max/Σw=0.8733  unwanted=0.1108  GNN/C_max=1.0000
+  实例19: seed= 48  |E|=18  C_max=9.4477  C_max/Σw=0.8309  unwanted=0.1405  GNN/C_max=0.9366
+  实例20: seed= 51  |E|=18  C_max=10.2842  C_max/Σw=0.8621  unwanted=0.1767  GNN/C_max=1.0000
+测试实例集指纹: 16efd892   (两台机器指纹相同 ⇔ 图与 GNN 输入逐比特一致)
+
+开始并行计算: 20 个任务分发到 12 个 worker...
+      From worker 13:	    [任务 12/20 开始] 实例12(图seed=31) BO种子1 精修器=nm  [host zhoushenhengdeMacBook-Pro.local | worker 13 | mem 1.73 GB]
+      From worker 10:	    [任务 9/20 开始] 实例9(图seed=20) BO种子1 精修器=nm  [host zhoushenhengdeMacBook-Pro.local | worker 10 | mem 1.70 GB]
+      From worker 3:	    [任务 2/20 开始] 实例2(图seed=11) BO种子1 精修器=nm  [host zhoushenhengdeMacBook-Pro.local | worker 3 | mem 1.66 GB]
+      From worker 11:	    [任务 10/20 开始] 实例10(图seed=22) BO种子1 精修器=nm  [host zhoushenhengdeMacBook-Pro.local | worker 11 | mem 1.72 GB]
+      From worker 12:	    [任务 11/20 开始] 实例11(图seed=26) BO种子1 精修器=nm  [host zhoushenhengdeMacBook-Pro.local | worker 12 | mem 1.73 GB]
+      From worker 5:	    [任务 4/20 开始] 实例4(图seed=15) BO种子1 精修器=nm  [host zhoushenhengdeMacBook-Pro.local | worker 5 | mem 1.71 GB]
+      From worker 4:	    [任务 3/20 开始] 实例3(图seed=13) BO种子1 精修器=nm  [host zhoushenhengdeMacBook-Pro.local | worker 4 | mem 1.70 GB]
+      From worker 7:	    [任务 6/20 开始] 实例6(图seed=17) BO种子1 精修器=nm  [host zhoushenhengdeMacBook-Pro.local | worker 7 | mem 1.66 GB]
+      From worker 2:	    [任务 1/20 开始] 实例1(图seed=7) BO种子1 精修器=nm  [host zhoushenhengdeMacBook-Pro.local | worker 2 | mem 1.66 GB]
+      From worker 9:	    [任务 8/20 开始] 实例8(图seed=19) BO种子1 精修器=nm  [host zhoushenhengdeMacBook-Pro.local | worker 9 | mem 1.66 GB]
+      From worker 8:	    [任务 7/20 开始] 实例7(图seed=18) BO种子1 精修器=nm  [host zhoushenhengdeMacBook-Pro.local | worker 8 | mem 1.69 GB]
+      From worker 6:	    [任务 5/20 开始] 实例5(图seed=16) BO种子1 精修器=nm  [host zhoushenhengdeMacBook-Pro.local | worker 6 | mem 1.69 GB]
+      From worker 13:	      · inst12/p=1 cold_start     ar=0.6979 (/Σw=0.5916)  [hybrid+nm, 1条前缀]  [3302次演化]  [3.2分钟]
+      From worker 12:	      · inst11/p=1 cold_start     ar=0.6341 (/Σw=0.5822)  [hybrid+nm, 1条前缀]  [3295次演化]  [3.2分钟]
+      From worker 3:	      · inst2/p=1 cold_start     ar=0.7090 (/Σw=0.6095)  [hybrid+nm, 1条前缀]  [3060次演化]  [3.3分钟]
+      From worker 6:	      · inst5/p=1 cold_start     ar=0.7616 (/Σw=0.6470)  [hybrid+nm, 1条前缀]  [3165次演化]  [3.3分钟]
+      From worker 7:	      · inst6/p=1 cold_start     ar=0.6443 (/Σw=0.5906)  [hybrid+nm, 1条前缀]  [3262次演化]  [3.4分钟]
+      From worker 11:	      · inst10/p=1 cold_start     ar=0.7660 (/Σw=0.6151)  [hybrid+nm, 1条前缀]  [2994次演化]  [3.4分钟]
+      From worker 5:	      · inst4/p=1 cold_start     ar=0.7384 (/Σw=0.6400)  [hybrid+nm, 1条前缀]  [3072次演化]  [3.4分钟]
+      From worker 8:	      · inst7/p=1 cold_start     ar=0.7384 (/Σw=0.6147)  [hybrid+nm, 1条前缀]  [3089次演化]  [3.4分钟]
+      From worker 9:	      · inst8/p=1 cold_start     ar=0.7684 (/Σw=0.6337)  [hybrid+nm, 1条前缀]  [3260次演化]  [3.5分钟]
+      From worker 2:	      · inst1/p=1 cold_start     ar=0.6852 (/Σw=0.5951)  [hybrid+nm, 1条前缀]  [3455次演化]  [3.5分钟]
+      From worker 4:	      · inst3/p=1 cold_start     ar=0.7242 (/Σw=0.6172)  [hybrid+nm, 1条前缀]  [3297次演化]  [3.5分钟]
+      From worker 10:	      · inst9/p=1 cold_start     ar=0.6865 (/Σw=0.6045)  [hybrid+nm, 1条前缀]  [3116次演化]  [3.6分钟]
+      From worker 12:	      · inst11/p=1 tqa_init       ar=0.6341 (/Σw=0.5822)  [hybrid+nm, 1条前缀]  [3009次演化]  [3.4分钟]
+      From worker 13:	      · inst12/p=1 tqa_init       ar=0.6979 (/Σw=0.5916)  [hybrid+nm, 1条前缀]  [3152次演化]  [3.4分钟]
+      From worker 10:	      · inst9/p=1 tqa_init       ar=0.6865 (/Σw=0.6045)  [hybrid+nm, 1条前缀]  [2646次演化]  [3.1分钟]
+      From worker 11:	      · inst10/p=1 tqa_init       ar=0.7660 (/Σw=0.6151)  [hybrid+nm, 1条前缀]  [3024次演化]  [3.3分钟]
+      From worker 6:	      · inst5/p=1 tqa_init       ar=0.7616 (/Σw=0.6470)  [hybrid+nm, 1条前缀]  [3051次演化]  [3.4分钟]
+      From worker 7:	      · inst6/p=1 tqa_init       ar=0.6443 (/Σw=0.5906)  [hybrid+nm, 1条前缀]  [3047次演化]  [3.4分钟]
+      From worker 5:	      · inst4/p=1 tqa_init       ar=0.7384 (/Σw=0.6400)  [hybrid+nm, 1条前缀]  [3108次演化]  [3.5分钟]
+      From worker 9:	      · inst8/p=1 tqa_init       ar=0.7684 (/Σw=0.6337)  [hybrid+nm, 1条前缀]  [3058次演化]  [3.4分钟]
+      From worker 4:	      · inst3/p=1 tqa_init       ar=0.7242 (/Σw=0.6172)  [hybrid+nm, 1条前缀]  [2961次演化]  [3.4分钟]
+      From worker 3:	      · inst2/p=1 tqa_init       ar=0.7090 (/Σw=0.6095)  [hybrid+nm, 1条前缀]  [3176次演化]  [3.6分钟]
+      From worker 2:	      · inst1/p=1 tqa_init       ar=0.6852 (/Σw=0.5951)  [hybrid+nm, 1条前缀]  [3186次演化]  [3.5分钟]
+      From worker 8:	      · inst7/p=1 tqa_init       ar=0.7384 (/Σw=0.6147)  [hybrid+nm, 1条前缀]  [3233次演化]  [3.6分钟]
+      From worker 13:	      · inst12/p=1 gnn_warmstart  ar=0.7970 (/Σw=0.6757)  [hybrid+nm, 1条前缀]  [2076次演化]  [3.1分钟]
+      From worker 5:	      · inst4/p=1 gnn_warmstart  ar=0.8439 (/Σw=0.7315)  [hybrid+nm, 1条前缀]  [2052次演化]  [3.1分钟]
+      From worker 3:	      · inst2/p=1 gnn_warmstart  ar=0.8372 (/Σw=0.7198)  [hybrid+nm, 1条前缀]  [2018次演化]  [3.1分钟]
+      From worker 6:	      · inst5/p=1 gnn_warmstart  ar=0.8111 (/Σw=0.6890)  [hybrid+nm, 1条前缀]  [2446次演化]  [3.6分钟]
+      From worker 9:	      · inst8/p=1 gnn_warmstart  ar=0.8604 (/Σw=0.7096)  [hybrid+nm, 1条前缀]  [2271次演化]  [3.4分钟]
+      From worker 12:	      · inst11/p=1 gnn_warmstart  ar=0.8426 (/Σw=0.7736)  [hybrid+nm, 1条前缀]  [2516次演化]  [3.9分钟]
+      From worker 7:	      · inst6/p=1 gnn_warmstart  ar=0.8296 (/Σw=0.7604)  [hybrid+nm, 1条前缀]  [2312次演化]  [3.7分钟]
+      From worker 4:	      · inst3/p=1 gnn_warmstart  ar=0.7886 (/Σw=0.6721)  [hybrid+nm, 1条前缀]  [2340次演化]  [3.7分钟]
+      From worker 11:	      · inst10/p=1 gnn_warmstart  ar=0.8192 (/Σw=0.6579)  [hybrid+nm, 1条前缀]  [2748次演化]  [3.9分钟]
+      From worker 10:	      · inst9/p=1 gnn_warmstart  ar=0.8581 (/Σw=0.7557)  [hybrid+nm, 1条前缀]  [2527次演化]  [4.0分钟]
+      From worker 8:	      · inst7/p=1 gnn_warmstart  ar=0.8180 (/Σw=0.6810)  [hybrid+nm, 1条前缀]  [2458次演化]  [3.9分钟]
+      From worker 2:	      · inst1/p=1 gnn_warmstart  ar=0.8568 (/Σw=0.7442)  [hybrid+nm, 1条前缀]  [2579次演化]  [4.0分钟]
+      From worker 5:	      · inst4/p=2 cold_start     ar=0.7861 (/Σw=0.6814)  [hybrid+nm, 1条前缀]  [4784次演化]  [7.3分钟]
+      From worker 13:	      · inst12/p=2 cold_start     ar=0.7703 (/Σw=0.6530)  [hybrid+nm, 1条前缀]  [5190次演化]  [7.6分钟]
+      From worker 3:	      · inst2/p=2 cold_start     ar=0.7305 (/Σw=0.6281)  [hybrid+nm, 1条前缀]  [4848次演化]  [7.4分钟]
+      From worker 7:	      · inst6/p=2 cold_start     ar=0.7189 (/Σw=0.6589)  [hybrid+nm, 1条前缀]  [4823次演化]  [7.5分钟]
+      From worker 9:	      · inst8/p=2 cold_start     ar=0.7949 (/Σw=0.6556)  [hybrid+nm, 1条前缀]  [5081次演化]  [7.6分钟]
+      From worker 12:	      · inst11/p=2 cold_start     ar=0.7119 (/Σw=0.6536)  [hybrid+nm, 1条前缀]  [5282次演化]  [8.0分钟]
+      From worker 2:	      · inst1/p=2 cold_start     ar=0.7600 (/Σw=0.6601)  [hybrid+nm, 1条前缀]  [5018次演化]  [7.7分钟]
+      From worker 11:	      · inst10/p=2 cold_start     ar=0.8244 (/Σw=0.6621)  [hybrid+nm, 1条前缀]  [4674次演化]  [8.4分钟]
+      From worker 6:	      · inst5/p=2 cold_start     ar=0.8128 (/Σw=0.6905)  [hybrid+nm, 1条前缀]  [5319次演化]  [9.2分钟]
+      From worker 4:	      · inst3/p=2 cold_start     ar=0.7917 (/Σw=0.6747)  [hybrid+nm, 1条前缀]  [5106次演化]  [8.9分钟]
+      From worker 10:	      · inst9/p=2 cold_start     ar=0.7074 (/Σw=0.6229)  [hybrid+nm, 1条前缀]  [4944次演化]  [9.2分钟]
+      From worker 8:	      · inst7/p=2 cold_start     ar=0.8136 (/Σw=0.6773)  [hybrid+nm, 1条前缀]  [5077次演化]  [9.4分钟]
+      From worker 13:	      · inst12/p=2 tqa_init       ar=0.7703 (/Σw=0.6530)  [hybrid+nm, 1条前缀]  [5135次演化]  [7.4分钟]
+      From worker 7:	      · inst6/p=2 tqa_init       ar=0.7189 (/Σw=0.6589)  [hybrid+nm, 1条前缀]  [5235次演化]  [7.9分钟]
+      From worker 9:	      · inst8/p=2 tqa_init       ar=0.7949 (/Σw=0.6556)  [hybrid+nm, 1条前缀]  [5453次演化]  [8.1分钟]
+      From worker 5:	      · inst4/p=2 tqa_init       ar=0.7904 (/Σw=0.6851)  [hybrid+nm, 1条前缀]  [5154次演化]  [8.9分钟]
+      From worker 2:	      · inst1/p=2 tqa_init       ar=0.7600 (/Σw=0.6601)  [hybrid+nm, 1条前缀]  [5317次演化]  [8.0分钟]
+      From worker 12:	      · inst11/p=2 tqa_init       ar=0.7119 (/Σw=0.6536)  [hybrid+nm, 1条前缀]  [5750次演化]  [8.4分钟]
+      From worker 3:	      · inst2/p=2 tqa_init       ar=0.7389 (/Σw=0.6352)  [hybrid+nm, 1条前缀]  [5172次演化]  [9.7分钟]
+      From worker 11:	      · inst10/p=2 tqa_init       ar=0.8244 (/Σw=0.6621)  [hybrid+nm, 1条前缀]  [4908次演化]  [8.7分钟]
+      From worker 6:	      · inst5/p=2 tqa_init       ar=0.8078 (/Σw=0.6863)  [hybrid+nm, 1条前缀]  [4767次演化]  [8.3分钟]
+      From worker 4:	      · inst3/p=2 tqa_init       ar=0.7917 (/Σw=0.6747)  [hybrid+nm, 1条前缀]  [5258次演化]  [9.1分钟]
+      From worker 10:	      · inst9/p=2 tqa_init       ar=0.7074 (/Σw=0.6229)  [hybrid+nm, 1条前缀]  [5344次演化]  [9.6分钟]
+      From worker 8:	      · inst7/p=2 tqa_init       ar=0.8136 (/Σw=0.6773)  [hybrid+nm, 1条前缀]  [5460次演化]  [9.8分钟]
+      From worker 13:	      · inst12/p=2 gnn_warmstart  ar=0.8349 (/Σw=0.7078)  [hybrid+nm, 1条前缀]  [3683次演化]  [8.9分钟]
+      From worker 5:	      · inst4/p=2 gnn_warmstart  ar=0.9398 (/Σw=0.8146)  [hybrid+nm, 1条前缀]  [4259次演化]  [10.0分钟]
+      From worker 7:	      · inst6/p=2 gnn_warmstart  ar=0.9112 (/Σw=0.8352)  [hybrid+nm, 1条前缀]  [4285次演化]  [10.4分钟]
+      From worker 9:	      · inst8/p=2 gnn_warmstart  ar=0.9334 (/Σw=0.7698)  [hybrid+nm, 1条前缀]  [4303次演化]  [10.5分钟]
+      From worker 2:	      · inst1/p=2 gnn_warmstart  ar=0.9211 (/Σw=0.8000)  [hybrid+nm, 1条前缀]  [4198次演化]  [10.1分钟]
+      From worker 3:	      · inst2/p=2 gnn_warmstart  ar=0.9317 (/Σw=0.8010)  [hybrid+nm, 1条前缀]  [4232次演化]  [10.4分钟]
+      From worker 11:	      · inst10/p=2 gnn_warmstart  ar=0.8673 (/Σw=0.6965)  [hybrid+nm, 1条前缀]  [4088次演化]  [10.1分钟]
+      From worker 12:	      · inst11/p=2 gnn_warmstart  ar=0.9303 (/Σw=0.8541)  [hybrid+nm, 1条前缀]  [4672次演化]  [11.3分钟]
+      From worker 6:	      · inst5/p=2 gnn_warmstart  ar=0.8801 (/Σw=0.7477)  [hybrid+nm, 1条前缀]  [4539次演化]  [10.7分钟]
+      From worker 4:	      · inst3/p=2 gnn_warmstart  ar=0.8569 (/Σw=0.7303)  [hybrid+nm, 1条前缀]  [4311次演化]  [10.6分钟]
+      From worker 10:	      · inst9/p=2 gnn_warmstart  ar=0.9305 (/Σw=0.8194)  [hybrid+nm, 1条前缀]  [4386次演化]  [10.8分钟]
+      From worker 8:	      · inst7/p=2 gnn_warmstart  ar=0.8802 (/Σw=0.7327)  [hybrid+nm, 1条前缀]  [4473次演化]  [11.0分钟]
+      From worker 13:	      · inst12/p=3 cold_start     ar=0.8080 (/Σw=0.6850)  [hybrid+nm, 1条前缀]  [7836次演化]  [16.0分钟]
+      From worker 2:	      · inst1/p=3 cold_start     ar=0.7995 (/Σw=0.6944)  [hybrid+nm, 1条前缀]  [7696次演化]  [15.4分钟]
+      From worker 5:	      · inst4/p=3 cold_start     ar=0.8117 (/Σw=0.7036)  [hybrid+nm, 1条前缀]  [7411次演化]  [16.3分钟]
+      From worker 7:	      · inst6/p=3 cold_start     ar=0.7572 (/Σw=0.6940)  [hybrid+nm, 1条前缀]  [8258次演化]  [16.6分钟]
+      From worker 9:	      · inst8/p=3 cold_start     ar=0.8115 (/Σw=0.6693)  [hybrid+nm, 1条前缀]  [7879次演化]  [16.5分钟]
+      From worker 12:	      · inst11/p=3 cold_start     ar=0.7749 (/Σw=0.7114)  [hybrid+nm, 1条前缀]  [7704次演化]  [15.6分钟]
+      From worker 3:	      · inst2/p=3 cold_start     ar=0.7500 (/Σw=0.6448)  [hybrid+nm, 1条前缀]  [7911次演化]  [16.2分钟]
+      From worker 11:	      · inst10/p=3 cold_start     ar=0.8445 (/Σw=0.6782)  [hybrid+nm, 1条前缀]  [7305次演化]  [17.8分钟]
+      From worker 6:	      · inst5/p=3 cold_start     ar=0.8398 (/Σw=0.7134)  [hybrid+nm, 1条前缀]  [7141次演化]  [17.1分钟]
+      From worker 4:	      · inst3/p=3 cold_start     ar=0.8147 (/Σw=0.6943)  [hybrid+nm, 1条前缀]  [7066次演化]  [16.7分钟]
+      From worker 8:	      · inst7/p=3 cold_start     ar=0.8341 (/Σw=0.6943)  [hybrid+nm, 1条前缀]  [7023次演化]  [17.1分钟]
+      From worker 10:	      · inst9/p=3 cold_start     ar=0.7110 (/Σw=0.6261)  [hybrid+nm, 1条前缀]  [7286次演化]  [19.1分钟]
+      From worker 13:	      · inst12/p=3 tqa_init       ar=0.8080 (/Σw=0.6850)  [hybrid+nm, 1条前缀]  [7586次演化]  [15.8分钟]
+      From worker 2:	      · inst1/p=3 tqa_init       ar=0.7995 (/Σw=0.6944)  [hybrid+nm, 1条前缀]  [7217次演化]  [14.6分钟]
+      From worker 7:	      · inst6/p=3 tqa_init       ar=0.7572 (/Σw=0.6940)  [hybrid+nm, 1条前缀]  [7902次演化]  [16.2分钟]
+      From worker 12:	      · inst11/p=3 tqa_init       ar=0.7749 (/Σw=0.7114)  [hybrid+nm, 1条前缀]  [7661次演化]  [15.6分钟]
+      From worker 9:	      · inst8/p=3 tqa_init       ar=0.8115 (/Σw=0.6693)  [hybrid+nm, 1条前缀]  [8021次演化]  [17.0分钟]
+      From worker 5:	      · inst4/p=3 tqa_init       ar=0.8117 (/Σw=0.7036)  [hybrid+nm, 1条前缀]  [7431次演化]  [17.7分钟]
+      From worker 3:	      · inst2/p=3 tqa_init       ar=0.7645 (/Σw=0.6573)  [hybrid+nm, 1条前缀]  [8333次演化]  [17.7分钟]
+      From worker 6:	      · inst5/p=3 tqa_init       ar=0.8398 (/Σw=0.7134)  [hybrid+nm, 1条前缀]  [7242次演化]  [17.3分钟]
+      From worker 4:	      · inst3/p=3 tqa_init       ar=0.8198 (/Σw=0.6986)  [hybrid+nm, 1条前缀]  [7149次演化]  [16.9分钟]
+      From worker 11:	      · inst10/p=3 tqa_init       ar=0.8445 (/Σw=0.6782)  [hybrid+nm, 1条前缀]  [7263次演化]  [17.7分钟]
+      From worker 8:	      · inst7/p=3 tqa_init       ar=0.8260 (/Σw=0.6876)  [hybrid+nm, 1条前缀]  [7420次演化]  [18.1分钟]
+      From worker 10:	      · inst9/p=3 tqa_init       ar=0.7110 (/Σw=0.6261)  [hybrid+nm, 1条前缀]  [7528次演化]  [19.4分钟]
+      From worker 12:	      · inst11/p=3 gnn_warmstart  ar=0.9530 (/Σw=0.8749)  [hybrid+nm, 1条前缀]  [5400次演化]  [18.4分钟]
+      From worker 13:	      · inst12/p=3 gnn_warmstart  ar=0.8723 (/Σw=0.7395)  [hybrid+nm, 1条前缀]  [6698次演化]  [22.7分钟]
+      From worker 2:	      · inst1/p=3 gnn_warmstart  ar=0.9514 (/Σw=0.8263)  [hybrid+nm, 1条前缀]  [6502次演化]  [21.9分钟]
+      From worker 7:	      · inst6/p=3 gnn_warmstart  ar=0.9431 (/Σw=0.8644)  [hybrid+nm, 1条前缀]  [6051次演化]  [20.3分钟]
+      From worker 5:	      · inst4/p=3 gnn_warmstart  ar=0.9723 (/Σw=0.8428)  [hybrid+nm, 1条前缀]  [6169次演化]  [21.2分钟]
+      From worker 3:	      · inst2/p=3 gnn_warmstart  ar=0.9661 (/Σw=0.8306)  [hybrid+nm, 1条前缀]  [5875次演化]  [20.1分钟]
+      From worker 9:	      · inst8/p=3 gnn_warmstart  ar=0.9737 (/Σw=0.8030)  [hybrid+nm, 1条前缀]  [6509次演化]  [21.9分钟]
+      From worker 6:	      · inst5/p=3 gnn_warmstart  ar=0.9168 (/Σw=0.7789)  [hybrid+nm, 1条前缀]  [6318次演化]  [21.6分钟]
+      From worker 4:	      · inst3/p=3 gnn_warmstart  ar=0.8852 (/Σw=0.7544)  [hybrid+nm, 1条前缀]  [6426次演化]  [22.1分钟]
+      From worker 11:	      · inst10/p=3 gnn_warmstart  ar=0.8896 (/Σw=0.7144)  [hybrid+nm, 1条前缀]  [6533次演化]  [22.4分钟]
+      From worker 8:	      · inst7/p=3 gnn_warmstart  ar=0.9192 (/Σw=0.7652)  [hybrid+nm, 1条前缀]  [5776次演化]  [19.5分钟]
+      From worker 10:	      · inst9/p=3 gnn_warmstart  ar=0.9657 (/Σw=0.8504)  [hybrid+nm, 1条前缀]  [5916次演化]  [20.0分钟]
+      From worker 7:	      · inst6/p=4 cold_start     ar=0.7842 (/Σw=0.7188)  [hybrid+nm, 1条前缀]  [8616次演化]  [22.3分钟]
+      From worker 13:	      · inst12/p=4 cold_start     ar=0.8336 (/Σw=0.7067)  [hybrid+nm, 1条前缀]  [9076次演化]  [23.6分钟]
+      From worker 12:	      · inst11/p=4 cold_start     ar=0.8196 (/Σw=0.7524)  [hybrid+nm, 1条前缀]  [9643次演化]  [25.0分钟]
+      From worker 2:	      · inst1/p=4 cold_start     ar=0.8227 (/Σw=0.7145)  [hybrid+nm, 1条前缀]  [9331次演化]  [24.1分钟]
+      From worker 9:	      · inst8/p=4 cold_start     ar=0.8252 (/Σw=0.6806)  [hybrid+nm, 1条前缀]  [8548次演化]  [21.2分钟]
+      From worker 3:	      · inst2/p=4 cold_start     ar=0.7552 (/Σw=0.6493)  [hybrid+nm, 1条前缀]  [9575次演化]  [27.9分钟]
+      From worker 6:	      · inst5/p=4 cold_start     ar=0.8607 (/Σw=0.7312)  [hybrid+nm, 1条前缀]  [9492次演化]  [26.9分钟]
+      From worker 4:	      · inst3/p=4 cold_start     ar=0.8293 (/Σw=0.7068)  [hybrid+nm, 1条前缀]  [9390次演化]  [26.5分钟]
+      From worker 11:	      · inst10/p=4 cold_start     ar=0.8566 (/Σw=0.6879)  [hybrid+nm, 1条前缀]  [9496次演化]  [27.0分钟]
+      From worker 8:	      · inst7/p=4 cold_start     ar=0.8495 (/Σw=0.7071)  [hybrid+nm, 1条前缀]  [9602次演化]  [28.1分钟]
+      From worker 10:	      · inst9/p=4 cold_start     ar=0.7163 (/Σw=0.6307)  [hybrid+nm, 1条前缀]  [9056次演化]  [27.4分钟]
+      From worker 5:	      · inst4/p=4 cold_start     ar=0.8117 (/Σw=0.7036)  [hybrid+nm, 1条前缀]  [11744次演化]  [43.1分钟]
+      From worker 7:	      · inst6/p=4 tqa_init       ar=0.7842 (/Σw=0.7188)  [hybrid+nm, 1条前缀]  [9425次演化]  [24.7分钟]
+      From worker 2:	      · inst1/p=4 tqa_init       ar=0.8227 (/Σw=0.7145)  [hybrid+nm, 1条前缀]  [9446次演化]  [24.7分钟]
+      From worker 9:	      · inst8/p=4 tqa_init       ar=0.8252 (/Σw=0.6806)  [hybrid+nm, 1条前缀]  [9653次演化]  [24.4分钟]
+      From worker 13:	      · inst12/p=4 tqa_init       ar=0.8336 (/Σw=0.7067)  [hybrid+nm, 1条前缀]  [9802次演化]  [26.0分钟]
+      From worker 12:	      · inst11/p=4 tqa_init       ar=0.8196 (/Σw=0.7524)  [hybrid+nm, 1条前缀]  [9844次演化]  [25.9分钟]
+      From worker 3:	      · inst2/p=4 tqa_init       ar=0.7705 (/Σw=0.6624)  [hybrid+nm, 1条前缀]  [9792次演化]  [28.2分钟]
+      From worker 4:	      · inst3/p=4 tqa_init       ar=0.8409 (/Σw=0.7166)  [hybrid+nm, 1条前缀]  [9766次演化]  [27.7分钟]
+      From worker 6:	      · inst5/p=4 tqa_init       ar=0.8607 (/Σw=0.7312)  [hybrid+nm, 1条前缀]  [9988次演化]  [28.2分钟]
+      From worker 11:	      · inst10/p=4 tqa_init       ar=0.8566 (/Σw=0.6879)  [hybrid+nm, 1条前缀]  [9945次演化]  [28.2分钟]
+      From worker 8:	      · inst7/p=4 tqa_init       ar=0.8335 (/Σw=0.6939)  [hybrid+nm, 1条前缀]  [9494次演化]  [28.0分钟]
+      From worker 10:	      · inst9/p=4 tqa_init       ar=0.7163 (/Σw=0.6307)  [hybrid+nm, 1条前缀]  [9243次演化]  [27.8分钟]
+      From worker 5:	      · inst4/p=4 tqa_init       ar=0.8250 (/Σw=0.7151)  [hybrid+nm, 1条前缀]  [9881次演化]  [28.2分钟]
+      From worker 12:	      · inst11/p=4 gnn_warmstart  ar=0.9547 (/Σw=0.8765)  [hybrid+nm, 1条前缀]  [6838次演化]  [35.0分钟]
+      From worker 9:	      · inst8/p=4 gnn_warmstart  ar=0.9763 (/Σw=0.8052)  [hybrid+nm, 1条前缀]  [7308次演化]  [36.8分钟]
+      From worker 7:	      · inst6/p=4 gnn_warmstart  ar=0.9483 (/Σw=0.8692)  [hybrid+nm, 1条前缀]  [7884次演化]  [40.3分钟]
+      From worker 2:	      · inst1/p=4 gnn_warmstart  ar=0.9669 (/Σw=0.8398)  [hybrid+nm, 1条前缀]  [8343次演化]  [39.9分钟]
+      From worker 13:	      · inst12/p=4 gnn_warmstart  ar=0.8738 (/Σw=0.7408)  [hybrid+nm, 1条前缀]  [8501次演化]  [40.6分钟]
+      From worker 3:	      · inst2/p=4 gnn_warmstart  ar=0.9724 (/Σw=0.8360)  [hybrid+nm, 1条前缀]  [7075次演化]  [31.8分钟]
+      From worker 6:	      · inst5/p=4 gnn_warmstart  ar=0.9332 (/Σw=0.7927)  [hybrid+nm, 1条前缀]  [7516次演化]  [36.8分钟]
+      From worker 8:	      · inst7/p=4 gnn_warmstart  ar=0.9255 (/Σw=0.7705)  [hybrid+nm, 1条前缀]  [7532次演化]  [35.6分钟]
+      From worker 4:	      · inst3/p=4 gnn_warmstart  ar=0.9022 (/Σw=0.7689)  [hybrid+nm, 1条前缀]  [7964次演化]  [39.8分钟]
+      From worker 11:	      · inst10/p=4 gnn_warmstart  ar=0.9133 (/Σw=0.7335)  [hybrid+nm, 1条前缀]  [8494次演化]  [41.7分钟]
+      From worker 10:	      · inst9/p=4 gnn_warmstart  ar=0.9693 (/Σw=0.8535)  [hybrid+nm, 1条前缀]  [8347次演化]  [39.4分钟]
+      From worker 5:	      · inst4/p=4 gnn_warmstart  ar=0.9791 (/Σw=0.8487)  [hybrid+nm, 1条前缀]  [8518次演化]  [38.8分钟]
+      From worker 12:	      · inst11/p=5 cold_start     ar=0.8514 (/Σw=0.7817)  [hybrid+nm, 1条前缀]  [10966次演化]  [37.4分钟]
+      From worker 7:	      · inst6/p=5 cold_start     ar=0.8118 (/Σw=0.7440)  [hybrid+nm, 1条前缀]  [10757次演化]  [36.5分钟]
+      From worker 9:	      · inst8/p=5 cold_start     ar=0.8265 (/Σw=0.6817)  [hybrid+nm, 1条前缀]  [10728次演化]  [39.8分钟]
+      From worker 13:	      · inst12/p=5 cold_start     ar=0.8507 (/Σw=0.7212)  [hybrid+nm, 1条前缀]  [11176次演化]  [38.1分钟]
+      From worker 2:	      · inst1/p=5 cold_start     ar=0.8409 (/Σw=0.7304)  [hybrid+nm, 1条前缀]  [11859次演化]  [40.2分钟]
+      From worker 6:	      · inst5/p=5 cold_start     ar=0.8626 (/Σw=0.7328)  [hybrid+nm, 1条前缀]  [9741次演化]  [36.9分钟]
+      From worker 3:	      · inst2/p=5 cold_start     ar=0.7570 (/Σw=0.6508)  [hybrid+nm, 1条前缀]  [11198次演化]  [46.1分钟]
+      From worker 4:	      · inst3/p=5 cold_start     ar=0.8372 (/Σw=0.7135)  [hybrid+nm, 1条前缀]  [11055次演化]  [38.8分钟]
+      From worker 8:	      · inst7/p=5 cold_start     ar=0.8514 (/Σw=0.7088)  [hybrid+nm, 1条前缀]  [10961次演化]  [43.1分钟]
+      From worker 11:	      · inst10/p=5 cold_start     ar=0.8591 (/Σw=0.6899)  [hybrid+nm, 1条前缀]  [10849次演化]  [39.7分钟]
+      From worker 10:	      · inst9/p=5 cold_start     ar=0.7405 (/Σw=0.6520)  [hybrid+nm, 1条前缀]  [10226次演化]  [41.1分钟]
+      From worker 9:	      · inst8/p=5 tqa_init       ar=0.8364 (/Σw=0.6898)  [hybrid+nm, 1条前缀]  [11294次演化]  [37.8分钟]
+      From worker 7:	      · inst6/p=5 tqa_init       ar=0.8118 (/Σw=0.7440)  [hybrid+nm, 1条前缀]  [11419次演化]  [39.1分钟]
+      From worker 12:	      · inst11/p=5 tqa_init       ar=0.8514 (/Σw=0.7817)  [hybrid+nm, 1条前缀]  [12362次演化]  [42.5分钟]
+      From worker 13:	      · inst12/p=5 tqa_init       ar=0.8507 (/Σw=0.7212)  [hybrid+nm, 1条前缀]  [11492次演化]  [39.6分钟]
+      From worker 2:	      · inst1/p=5 tqa_init       ar=0.8409 (/Σw=0.7304)  [hybrid+nm, 1条前缀]  [11577次演化]  [39.8分钟]
+      From worker 6:	      · inst5/p=5 tqa_init       ar=0.8626 (/Σw=0.7328)  [hybrid+nm, 1条前缀]  [10396次演化]  [39.4分钟]
+      From worker 5:	      · inst4/p=5 cold_start     ar=0.8117 (/Σw=0.7036)  [hybrid+nm, 1条前缀]  [14391次演化]  [61.3分钟]
+      From worker 11:	      · inst10/p=5 tqa_init       ar=0.8591 (/Σw=0.6899)  [hybrid+nm, 1条前缀]  [11044次演化]  [40.6分钟]
+      From worker 4:	      · inst3/p=5 tqa_init       ar=0.8464 (/Σw=0.7213)  [hybrid+nm, 1条前缀]  [11182次演化]  [46.1分钟]
+      From worker 8:	      · inst7/p=5 tqa_init       ar=0.8398 (/Σw=0.6991)  [hybrid+nm, 1条前缀]  [11384次演化]  [43.3分钟]
+      From worker 3:	      · inst2/p=5 tqa_init       ar=0.7752 (/Σw=0.6665)  [hybrid+nm, 1条前缀]  [12036次演化]  [49.4分钟]
+      From worker 10:	      · inst9/p=5 tqa_init       ar=0.7486 (/Σw=0.6592)  [hybrid+nm, 1条前缀]  [11098次演化]  [44.6分钟]
+      From worker 13:	      · inst12/p=5 gnn_warmstart  ar=0.8748 (/Σw=0.7416)  [hybrid+nm, 1条前缀]  [7858次演化]  [40.9分钟]
+      From worker 13:	    [任务 12/20 完成] 实例12 BO种子1 精修器=nm  [耗时 297.0 分钟 | 峰值内存 3.45 GB | host zhoushenhengdeMacBook-Pro.local]
+      From worker 13:	    [任务 13/20 开始] 实例13(图seed=32) BO种子1 精修器=nm  [host zhoushenhengdeMacBook-Pro.local | worker 13 | mem 3.45 GB]
+      From worker 13:	      · inst13/p=1 cold_start     ar=0.7539 (/Σw=0.6359)  [hybrid+nm, 1条前缀]  [3119次演化]  [4.4分钟]
+      From worker 12:	      · inst11/p=5 gnn_warmstart  ar=0.9583 (/Σw=0.8798)  [hybrid+nm, 1条前缀]  [7841次演化]  [48.4分钟]
+      From worker 12:	    [任务 11/20 完成] 实例11 BO种子1 精修器=nm  [耗时 301.8 分钟 | 峰值内存 3.51 GB | host zhoushenhengdeMacBook-Pro.local]
+      From worker 12:	    [任务 14/20 开始] 实例14(图seed=34) BO种子1 精修器=nm  [host zhoushenhengdeMacBook-Pro.local | worker 12 | mem 3.51 GB]
+      From worker 2:	      · inst1/p=5 gnn_warmstart  ar=0.9685 (/Σw=0.8412)  [hybrid+nm, 1条前缀]  [8625次演化]  [47.0分钟]
+      From worker 2:	    [任务 1/20 完成] 实例1 BO种子1 精修器=nm  [耗时 304.4 分钟 | 峰值内存 3.51 GB | host zhoushenhengdeMacBook-Pro.local]
+      From worker 2:	    [任务 15/20 开始] 实例15(图seed=36) BO种子1 精修器=nm  [host zhoushenhengdeMacBook-Pro.local | worker 2 | mem 3.51 GB]
+      From worker 5:	      · inst4/p=5 tqa_init       ar=0.8304 (/Σw=0.7198)  [hybrid+nm, 1条前缀]  [11167次演化]  [42.1分钟]
+      From worker 13:	      · inst13/p=1 tqa_init       ar=0.7539 (/Σw=0.6359)  [hybrid+nm, 1条前缀]  [3055次演化]  [4.4分钟]
+      From worker 12:	      · inst14/p=1 cold_start     ar=0.8156 (/Σw=0.6530)  [hybrid+nm, 1条前缀]  [3271次演化]  [4.6分钟]
+      From worker 9:	      · inst8/p=5 gnn_warmstart  ar=0.9777 (/Σw=0.8063)  [hybrid+nm, 1条前缀]  [8808次演化]  [54.5分钟]
+      From worker 9:	    [任务 8/20 完成] 实例8 BO种子1 精修器=nm  [耗时 306.5 分钟 | 峰值内存 3.50 GB | host zhoushenhengdeMacBook-Pro.local]
+      From worker 9:	    [任务 16/20 开始] 实例16(图seed=41) BO种子1 精修器=nm  [host zhoushenhengdeMacBook-Pro.local | worker 9 | mem 3.50 GB]
+      From worker 2:	      · inst15/p=1 cold_start     ar=0.6818 (/Σw=0.5975)  [hybrid+nm, 1条前缀]  [3376次演化]  [4.3分钟]
+      From worker 13:	      · inst13/p=1 gnn_warmstart  ar=0.8428 (/Σw=0.7109)  [hybrid+nm, 1条前缀]  [2298次演化]  [4.4分钟]
+      From worker 12:	      · inst14/p=1 tqa_init       ar=0.8156 (/Σw=0.6530)  [hybrid+nm, 1条前缀]  [3149次演化]  [4.4分钟]
+      From worker 9:	      · inst16/p=1 cold_start     ar=0.7612 (/Σw=0.6278)  [hybrid+nm, 1条前缀]  [3158次演化]  [4.3分钟]
+      From worker 2:	      · inst15/p=1 tqa_init       ar=0.6818 (/Σw=0.5975)  [hybrid+nm, 1条前缀]  [3102次演化]  [4.2分钟]
+      From worker 6:	      · inst5/p=5 gnn_warmstart  ar=0.9346 (/Σw=0.7940)  [hybrid+nm, 1条前缀]  [8167次演化]  [50.7分钟]
+      From worker 6:	    [任务 5/20 完成] 实例5 BO种子1 精修器=nm  [耗时 313.3 分钟 | 峰值内存 3.59 GB | host zhoushenhengdeMacBook-Pro.local]
+      From worker 6:	    [任务 17/20 开始] 实例17(图seed=43) BO种子1 精修器=nm  [host zhoushenhengdeMacBook-Pro.local | worker 6 | mem 3.59 GB]
+      From worker 7:	      · inst6/p=5 gnn_warmstart  ar=0.9502 (/Σw=0.8709)  [hybrid+nm, 1条前缀]  [9585次演化]  [61.7分钟]
+      From worker 7:	    [任务 6/20 完成] 实例6 BO种子1 精修器=nm  [耗时 314.1 分钟 | 峰值内存 3.34 GB | host zhoushenhengdeMacBook-Pro.local]
+      From worker 7:	    [任务 18/20 开始] 实例18(图seed=47) BO种子1 精修器=nm  [host zhoushenhengdeMacBook-Pro.local | worker 7 | mem 3.34 GB]
+      From worker 9:	      · inst16/p=1 tqa_init       ar=0.7612 (/Σw=0.6278)  [hybrid+nm, 1条前缀]  [3252次演化]  [4.5分钟]
+      From worker 12:	      · inst14/p=1 gnn_warmstart  ar=0.8258 (/Σw=0.6612)  [hybrid+nm, 1条前缀]  [2462次演化]  [5.3分钟]
+      From worker 2:	      · inst15/p=1 gnn_warmstart  ar=0.8602 (/Σw=0.7539)  [hybrid+nm, 1条前缀]  [2181次演化]  [4.4分钟]
+      From worker 6:	      · inst17/p=1 cold_start     ar=0.7417 (/Σw=0.6337)  [hybrid+nm, 1条前缀]  [3198次演化]  [4.4分钟]
+      From worker 7:	      · inst18/p=1 cold_start     ar=0.7044 (/Σw=0.6151)  [hybrid+nm, 1条前缀]  [3222次演化]  [4.4分钟]
+      From worker 3:	      · inst2/p=5 gnn_warmstart  ar=0.9742 (/Σw=0.8375)  [hybrid+nm, 1条前缀]  [8573次演化]  [44.8分钟]
+      From worker 3:	    [任务 2/20 完成] 实例2 BO种子1 精修器=nm  [耗时 319.8 分钟 | 峰值内存 3.44 GB | host zhoushenhengdeMacBook-Pro.local]
+      From worker 3:	    [任务 19/20 开始] 实例19(图seed=48) BO种子1 精修器=nm  [host zhoushenhengdeMacBook-Pro.local | worker 3 | mem 3.44 GB]
+      From worker 9:	      · inst16/p=1 gnn_warmstart  ar=0.8414 (/Σw=0.6939)  [hybrid+nm, 1条前缀]  [2375次演化]  [4.5分钟]
+      From worker 13:	      · inst13/p=2 cold_start     ar=0.8025 (/Σw=0.6769)  [hybrid+nm, 1条前缀]  [4878次演化]  [10.5分钟]
+      From worker 6:	      · inst17/p=1 tqa_init       ar=0.7417 (/Σw=0.6337)  [hybrid+nm, 1条前缀]  [3210次演化]  [4.5分钟]
+      From worker 8:	      · inst7/p=5 gnn_warmstart  ar=0.9387 (/Σw=0.7814)  [hybrid+nm, 1条前缀]  [8394次演化]  [48.8分钟]
+      From worker 8:	    [任务 7/20 完成] 实例7 BO种子1 精修器=nm  [耗时 322.6 分钟 | 峰值内存 3.65 GB | host zhoushenhengdeMacBook-Pro.local]
+      From worker 8:	    [任务 20/20 开始] 实例20(图seed=51) BO种子1 精修器=nm  [host zhoushenhengdeMacBook-Pro.local | worker 8 | mem 3.65 GB]
+      From worker 7:	      · inst18/p=1 tqa_init       ar=0.7044 (/Σw=0.6151)  [hybrid+nm, 1条前缀]  [3132次演化]  [4.5分钟]
+      From worker 3:	      · inst19/p=1 cold_start     ar=0.7210 (/Σw=0.5991)  [hybrid+nm, 1条前缀]  [3340次演化]  [4.1分钟]
+      From worker 12:	      · inst14/p=2 cold_start     ar=0.8497 (/Σw=0.6803)  [hybrid+nm, 1条前缀]  [5144次演化]  [9.4分钟]
+      From worker 4:	      · inst3/p=5 gnn_warmstart  ar=0.9196 (/Σw=0.7837)  [hybrid+nm, 1条前缀]  [8692次演化]  [52.4分钟]
+      From worker 4:	    [任务 3/20 完成] 实例3 BO种子1 精修器=nm  [耗时 326.2 分钟 | 峰值内存 3.46 GB | host zhoushenhengdeMacBook-Pro.local]
+      From worker 2:	      · inst15/p=2 cold_start     ar=0.7597 (/Σw=0.6658)  [hybrid+nm, 1条前缀]  [5009次演化]  [9.3分钟]
+      From worker 8:	      · inst20/p=1 cold_start     ar=0.6910 (/Σw=0.5957)  [hybrid+nm, 1条前缀]  [3261次演化]  [4.0分钟]
+      From worker 6:	      · inst17/p=1 gnn_warmstart  ar=0.8104 (/Σw=0.6923)  [hybrid+nm, 1条前缀]  [2439次演化]  [4.6分钟]
+      From worker 11:	      · inst10/p=5 gnn_warmstart  ar=0.9203 (/Σw=0.7390)  [hybrid+nm, 1条前缀]  [9719次演化]  [54.7分钟]
+      From worker 11:	    [任务 10/20 完成] 实例10 BO种子1 精修器=nm  [耗时 327.5 分钟 | 峰值内存 3.58 GB | host zhoushenhengdeMacBook-Pro.local]
+      From worker 7:	      · inst18/p=1 gnn_warmstart  ar=0.8582 (/Σw=0.7494)  [hybrid+nm, 1条前缀]  [2398次演化]  [4.6分钟]
+      From worker 3:	      · inst19/p=1 tqa_init       ar=0.7210 (/Σw=0.5991)  [hybrid+nm, 1条前缀]  [3161次演化]  [4.2分钟]
+      From worker 9:	      · inst16/p=2 cold_start     ar=0.7978 (/Σw=0.6579)  [hybrid+nm, 1条前缀]  [5234次演化]  [9.5分钟]
+      From worker 8:	      · inst20/p=1 tqa_init       ar=0.6910 (/Σw=0.5957)  [hybrid+nm, 1条前缀]  [3154次演化]  [3.7分钟]
+      From worker 3:	      · inst19/p=1 gnn_warmstart  ar=0.8221 (/Σw=0.6831)  [hybrid+nm, 1条前缀]  [2335次演化]  [4.0分钟]
+      From worker 13:	      · inst13/p=2 tqa_init       ar=0.7606 (/Σw=0.6416)  [hybrid+nm, 1条前缀]  [5569次演化]  [12.2分钟]
+      From worker 8:	      · inst20/p=1 gnn_warmstart  ar=0.8310 (/Σw=0.7164)  [hybrid+nm, 1条前缀]  [2096次演化]  [3.6分钟]
+      From worker 10:	      · inst9/p=5 gnn_warmstart  ar=0.9713 (/Σw=0.8553)  [hybrid+nm, 1条前缀]  [8789次演化]  [55.0分钟]
+      From worker 10:	    [任务 9/20 完成] 实例9 BO种子1 精修器=nm  [耗时 334.1 分钟 | 峰值内存 3.46 GB | host zhoushenhengdeMacBook-Pro.local]
+      From worker 12:	      · inst14/p=2 tqa_init       ar=0.8582 (/Σw=0.6871)  [hybrid+nm, 1条前缀]  [5013次演化]  [9.2分钟]
+      From worker 2:	      · inst15/p=2 tqa_init       ar=0.7597 (/Σw=0.6658)  [hybrid+nm, 1条前缀]  [5213次演化]  [8.5分钟]
+      From worker 6:	      · inst17/p=2 cold_start     ar=0.7881 (/Σw=0.6733)  [hybrid+nm, 1条前缀]  [4942次演化]  [8.3分钟]
+      From worker 7:	      · inst18/p=2 cold_start     ar=0.7935 (/Σw=0.6929)  [hybrid+nm, 1条前缀]  [4855次演化]  [8.7分钟]
+      From worker 9:	      · inst16/p=2 tqa_init       ar=0.8068 (/Σw=0.6654)  [hybrid+nm, 1条前缀]  [5011次演化]  [9.2分钟]
+      From worker 3:	      · inst19/p=2 cold_start     ar=0.7901 (/Σw=0.6565)  [hybrid+nm, 1条前缀]  [5302次演化]  [8.1分钟]
+      From worker 8:	      · inst20/p=2 cold_start     ar=0.7661 (/Σw=0.6605)  [hybrid+nm, 1条前缀]  [5069次演化]  [7.8分钟]
+      From worker 13:	      · inst13/p=2 gnn_warmstart  ar=0.9188 (/Σw=0.7750)  [hybrid+nm, 1条前缀]  [4402次演化]  [10.7分钟]
+      From worker 12:	      · inst14/p=2 gnn_warmstart  ar=0.8467 (/Σw=0.6779)  [hybrid+nm, 1条前缀]  [4039次演化]  [9.2分钟]
+      From worker 6:	      · inst17/p=2 tqa_init       ar=0.7844 (/Σw=0.6701)  [hybrid+nm, 1条前缀]  [5251次演化]  [9.1分钟]
+      From worker 7:	      · inst18/p=2 tqa_init       ar=0.7823 (/Σw=0.6832)  [hybrid+nm, 1条前缀]  [4963次演化]  [9.1分钟]
+      From worker 2:	      · inst15/p=2 gnn_warmstart  ar=0.9304 (/Σw=0.8154)  [hybrid+nm, 1条前缀]  [4531次演化]  [11.4分钟]
+      From worker 3:	      · inst19/p=2 tqa_init       ar=0.7901 (/Σw=0.6565)  [hybrid+nm, 1条前缀]  [4928次演化]  [7.5分钟]
+      From worker 9:	      · inst16/p=2 gnn_warmstart  ar=0.9084 (/Σw=0.7492)  [hybrid+nm, 1条前缀]  [4204次演化]  [10.3分钟]
+      From worker 8:	      · inst20/p=2 tqa_init       ar=0.7661 (/Σw=0.6605)  [hybrid+nm, 1条前缀]  [5277次演化]  [8.0分钟]
+      From worker 5:	      · inst4/p=5 gnn_warmstart  ar=0.9802 (/Σw=0.8497)  [hybrid+nm, 1条前缀]  [8517次演化]  [45.1分钟]
+      From worker 5:	    [任务 4/20 完成] 实例4 BO种子1 精修器=nm  [耗时 350.0 分钟 | 峰值内存 3.53 GB | host zhoushenhengdeMacBook-Pro.local]
+      From worker 6:	      · inst17/p=2 gnn_warmstart  ar=0.8285 (/Σw=0.7078)  [hybrid+nm, 1条前缀]  [4041次演化]  [9.0分钟]
+      From worker 7:	      · inst18/p=2 gnn_warmstart  ar=0.9001 (/Σw=0.7861)  [hybrid+nm, 1条前缀]  [4185次演化]  [10.5分钟]
+      From worker 3:	      · inst19/p=2 gnn_warmstart  ar=0.8737 (/Σw=0.7260)  [hybrid+nm, 1条前缀]  [4248次演化]  [9.8分钟]
+      From worker 12:	      · inst14/p=3 cold_start     ar=0.8643 (/Σw=0.6921)  [hybrid+nm, 1条前缀]  [6738次演化]  [15.5分钟]
+      From worker 8:	      · inst20/p=2 gnn_warmstart  ar=0.9123 (/Σw=0.7865)  [hybrid+nm, 1条前缀]  [4473次演化]  [9.9分钟]
+      From worker 13:	      · inst13/p=3 cold_start     ar=0.8260 (/Σw=0.6967)  [hybrid+nm, 1条前缀]  [7481次演化]  [16.6分钟]
+      From worker 2:	      · inst15/p=3 cold_start     ar=0.8005 (/Σw=0.7016)  [hybrid+nm, 1条前缀]  [7940次演化]  [15.1分钟]
+      From worker 9:	      · inst16/p=3 cold_start     ar=0.8291 (/Σw=0.6838)  [hybrid+nm, 1条前缀]  [7166次演化]  [14.7分钟]
+      From worker 6:	      · inst17/p=3 cold_start     ar=0.8027 (/Σw=0.6857)  [hybrid+nm, 1条前缀]  [6961次演化]  [12.7分钟]
+      From worker 3:	      · inst19/p=3 cold_start     ar=0.8279 (/Σw=0.6879)  [hybrid+nm, 1条前缀]  [8252次演化]  [15.0分钟]
+      From worker 7:	      · inst18/p=3 cold_start     ar=0.7996 (/Σw=0.6983)  [hybrid+nm, 1条前缀]  [7272次演化]  [17.1分钟]
+      From worker 8:	      · inst20/p=3 cold_start     ar=0.8161 (/Σw=0.7036)  [hybrid+nm, 1条前缀]  [7799次演化]  [14.3分钟]
+      From worker 2:	      · inst15/p=3 tqa_init       ar=0.8005 (/Σw=0.7016)  [hybrid+nm, 1条前缀]  [7805次演化]  [14.4分钟]
+      From worker 12:	      · inst14/p=3 tqa_init       ar=0.8699 (/Σw=0.6965)  [hybrid+nm, 1条前缀]  [7767次演化]  [16.9分钟]
+      From worker 13:	      · inst13/p=3 tqa_init       ar=0.8019 (/Σw=0.6764)  [hybrid+nm, 1条前缀]  [7901次演化]  [17.5分钟]
+      From worker 6:	      · inst17/p=3 tqa_init       ar=0.7922 (/Σw=0.6768)  [hybrid+nm, 1条前缀]  [7023次演化]  [13.3分钟]
+      From worker 9:	      · inst16/p=3 tqa_init       ar=0.8291 (/Σw=0.6838)  [hybrid+nm, 1条前缀]  [7331次演化]  [15.7分钟]
+      From worker 3:	      · inst19/p=3 tqa_init       ar=0.8279 (/Σw=0.6879)  [hybrid+nm, 1条前缀]  [8233次演化]  [15.2分钟]
+      From worker 8:	      · inst20/p=3 tqa_init       ar=0.8161 (/Σw=0.7036)  [hybrid+nm, 1条前缀]  [7580次演化]  [14.0分钟]
+      From worker 7:	      · inst18/p=3 tqa_init       ar=0.8157 (/Σw=0.7123)  [hybrid+nm, 1条前缀]  [7845次演化]  [17.7分钟]
+      From worker 12:	      · inst14/p=3 gnn_warmstart  ar=0.8567 (/Σw=0.6860)  [hybrid+nm, 1条前缀]  [6066次演化]  [17.3分钟]
+      From worker 2:	      · inst15/p=3 gnn_warmstart  ar=0.9657 (/Σw=0.8464)  [hybrid+nm, 1条前缀]  [6008次演化]  [17.9分钟]
+      From worker 13:	      · inst13/p=3 gnn_warmstart  ar=0.9573 (/Σw=0.8074)  [hybrid+nm, 1条前缀]  [5702次演化]  [17.1分钟]
+      From worker 9:	      · inst16/p=3 gnn_warmstart  ar=0.9363 (/Σw=0.7722)  [hybrid+nm, 1条前缀]  [5807次演化]  [17.4分钟]
+      From worker 6:	      · inst17/p=3 gnn_warmstart  ar=0.8312 (/Σw=0.7101)  [hybrid+nm, 1条前缀]  [6682次演化]  [19.2分钟]
+      From worker 3:	      · inst19/p=3 gnn_warmstart  ar=0.8785 (/Σw=0.7299)  [hybrid+nm, 1条前缀]  [6205次演化]  [17.8分钟]
+      From worker 8:	      · inst20/p=3 gnn_warmstart  ar=0.9526 (/Σw=0.8212)  [hybrid+nm, 1条前缀]  [6143次演化]  [18.3分钟]
+      From worker 7:	      · inst18/p=3 gnn_warmstart  ar=0.9434 (/Σw=0.8239)  [hybrid+nm, 1条前缀]  [6727次演化]  [20.4分钟]
+      From worker 2:	      · inst15/p=4 cold_start     ar=0.8289 (/Σw=0.7265)  [hybrid+nm, 1条前缀]  [9255次演化]  [21.1分钟]
+      From worker 13:	      · inst13/p=4 cold_start     ar=0.8372 (/Σw=0.7061)  [hybrid+nm, 1条前缀]  [9345次演化]  [23.2分钟]
+      From worker 12:	      · inst14/p=4 cold_start     ar=0.8892 (/Σw=0.7120)  [hybrid+nm, 1条前缀]  [9355次演化]  [25.1分钟]
+      From worker 9:	      · inst16/p=4 cold_start     ar=0.8385 (/Σw=0.6916)  [hybrid+nm, 1条前缀]  [9320次演化]  [22.9分钟]
+      From worker 6:	      · inst17/p=4 cold_start     ar=0.8421 (/Σw=0.7194)  [hybrid+nm, 1条前缀]  [9649次演化]  [23.5分钟]
+      From worker 3:	      · inst19/p=4 cold_start     ar=0.8532 (/Σw=0.7089)  [hybrid+nm, 1条前缀]  [9084次演化]  [20.6分钟]
+      From worker 8:	      · inst20/p=4 cold_start     ar=0.8515 (/Σw=0.7341)  [hybrid+nm, 1条前缀]  [9938次演化]  [22.6分钟]
+      From worker 7:	      · inst18/p=4 cold_start     ar=0.8006 (/Σw=0.6992)  [hybrid+nm, 1条前缀]  [8650次演化]  [26.1分钟]
+      From worker 2:	      · inst15/p=4 tqa_init       ar=0.8289 (/Σw=0.7265)  [hybrid+nm, 1条前缀]  [10115次演化]  [23.3分钟]
+      From worker 12:	      · inst14/p=4 tqa_init       ar=0.8971 (/Σw=0.7183)  [hybrid+nm, 1条前缀]  [9500次演化]  [24.1分钟]
+      From worker 13:	      · inst13/p=4 tqa_init       ar=0.8061 (/Σw=0.6799)  [hybrid+nm, 1条前缀]  [9744次演化]  [25.3分钟]
+      From worker 6:	      · inst17/p=4 tqa_init       ar=0.8167 (/Σw=0.6977)  [hybrid+nm, 1条前缀]  [8912次演化]  [21.7分钟]
+      From worker 9:	      · inst16/p=4 tqa_init       ar=0.8385 (/Σw=0.6916)  [hybrid+nm, 1条前缀]  [10238次演化]  [25.3分钟]
+      From worker 3:	      · inst19/p=4 tqa_init       ar=0.8532 (/Σw=0.7089)  [hybrid+nm, 1条前缀]  [9302次演化]  [21.1分钟]
+      From worker 8:	      · inst20/p=4 tqa_init       ar=0.8515 (/Σw=0.7341)  [hybrid+nm, 1条前缀]  [10372次演化]  [23.6分钟]
+      From worker 7:	      · inst18/p=4 tqa_init       ar=0.8428 (/Σw=0.7360)  [hybrid+nm, 1条前缀]  [10478次演化]  [28.1分钟]
+      From worker 2:	      · inst15/p=4 gnn_warmstart  ar=0.9684 (/Σw=0.8487)  [hybrid+nm, 1条前缀]  [8120次演化]  [30.4分钟]
+      From worker 13:	      · inst13/p=4 gnn_warmstart  ar=0.9632 (/Σw=0.8124)  [hybrid+nm, 1条前缀]  [7226次演化]  [26.0分钟]
+      From worker 12:	      · inst14/p=4 gnn_warmstart  ar=0.8608 (/Σw=0.6892)  [hybrid+nm, 1条前缀]  [7919次演化]  [27.7分钟]
+      From worker 9:	      · inst16/p=4 gnn_warmstart  ar=0.9561 (/Σw=0.7886)  [hybrid+nm, 1条前缀]  [7688次演化]  [29.6分钟]
+      From worker 6:	      · inst17/p=4 gnn_warmstart  ar=0.8334 (/Σw=0.7120)  [hybrid+nm, 1条前缀]  [8493次演化]  [31.0分钟]
+      From worker 3:	      · inst19/p=4 gnn_warmstart  ar=0.8980 (/Σw=0.7462)  [hybrid+nm, 1条前缀]  [8175次演化]  [30.5分钟]
+      From worker 8:	      · inst20/p=4 gnn_warmstart  ar=0.9654 (/Σw=0.8323)  [hybrid+nm, 1条前缀]  [7089次演化]  [26.5分钟]
+      From worker 13:	      · inst13/p=5 cold_start     ar=0.8437 (/Σw=0.7117)  [hybrid+nm, 1条前缀]  [10481次演化]  [30.5分钟]
+      From worker 2:	      · inst15/p=5 cold_start     ar=0.8483 (/Σw=0.7435)  [hybrid+nm, 1条前缀]  [12153次演化]  [32.3分钟]
+      From worker 7:	      · inst18/p=4 gnn_warmstart  ar=0.9498 (/Σw=0.8295)  [hybrid+nm, 1条前缀]  [8563次演化]  [36.7分钟]
+      From worker 6:	      · inst17/p=5 cold_start     ar=0.8520 (/Σw=0.7279)  [hybrid+nm, 1条前缀]  [9747次演化]  [29.0分钟]
+      From worker 12:	      · inst14/p=5 cold_start     ar=0.9025 (/Σw=0.7227)  [hybrid+nm, 1条前缀]  [11153次演化]  [33.4分钟]
+      From worker 9:	      · inst16/p=5 cold_start     ar=0.8488 (/Σw=0.7000)  [hybrid+nm, 1条前缀]  [10299次演化]  [29.5分钟]
+      From worker 3:	      · inst19/p=5 cold_start     ar=0.8703 (/Σw=0.7231)  [hybrid+nm, 1条前缀]  [11411次演化]  [30.5分钟]
+      From worker 8:	      · inst20/p=5 cold_start     ar=0.8751 (/Σw=0.7544)  [hybrid+nm, 1条前缀]  [10993次演化]  [29.2分钟]
+      From worker 2:	      · inst15/p=5 tqa_init       ar=0.8483 (/Σw=0.7435)  [hybrid+nm, 1条前缀]  [11551次演化]  [31.0分钟]
+      From worker 13:	      · inst13/p=5 tqa_init       ar=0.8085 (/Σw=0.6820)  [hybrid+nm, 1条前缀]  [11465次演化]  [35.2分钟]
+      From worker 6:	      · inst17/p=5 tqa_init       ar=0.8502 (/Σw=0.7263)  [hybrid+nm, 1条前缀]  [11610次演化]  [32.1分钟]
+      From worker 9:	      · inst16/p=5 tqa_init       ar=0.8488 (/Σw=0.7000)  [hybrid+nm, 1条前缀]  [11070次演化]  [32.2分钟]
+      From worker 8:	      · inst20/p=5 tqa_init       ar=0.8751 (/Σw=0.7544)  [hybrid+nm, 1条前缀]  [11489次演化]  [30.9分钟]
+      From worker 3:	      · inst19/p=5 tqa_init       ar=0.8703 (/Σw=0.7231)  [hybrid+nm, 1条前缀]  [11608次演化]  [31.2分钟]
+      From worker 12:	      · inst14/p=5 tqa_init       ar=0.9025 (/Σw=0.7227)  [hybrid+nm, 1条前缀]  [11992次演化]  [36.0分钟]
+      From worker 7:	      · inst18/p=5 cold_start     ar=0.8012 (/Σw=0.6996)  [hybrid+nm, 1条前缀]  [9930次演化]  [37.9分钟]
+      From worker 13:	      · inst13/p=5 gnn_warmstart  ar=0.9673 (/Σw=0.8159)  [hybrid+nm, 1条前缀]  [8839次演化]  [37.9分钟]
+      From worker 13:	    [任务 13/20 完成] 实例13 BO种子1 精修器=nm  [耗时 275.8 分钟 | 峰值内存 3.45 GB | host zhoushenhengdeMacBook-Pro.local]
+      From worker 7:	      · inst18/p=5 tqa_init       ar=0.8446 (/Σw=0.7375)  [hybrid+nm, 1条前缀]  [10695次演化]  [34.2分钟]
+      From worker 2:	      · inst15/p=5 gnn_warmstart  ar=0.9724 (/Σw=0.8523)  [hybrid+nm, 1条前缀]  [9378次演化]  [44.4分钟]
+      From worker 2:	    [任务 15/20 完成] 实例15 BO种子1 精修器=nm  [耗时 272.0 分钟 | 峰值内存 3.51 GB | host zhoushenhengdeMacBook-Pro.local]
+      From worker 9:	      · inst16/p=5 gnn_warmstart  ar=0.9585 (/Σw=0.7905)  [hybrid+nm, 1条前缀]  [9244次演化]  [41.0分钟]
+      From worker 9:	    [任务 16/20 完成] 实例16 BO种子1 精修器=nm  [耗时 270.7 分钟 | 峰值内存 3.50 GB | host zhoushenhengdeMacBook-Pro.local]
+      From worker 6:	      · inst17/p=5 gnn_warmstart  ar=0.8357 (/Σw=0.7139)  [hybrid+nm, 1条前缀]  [9751次演化]  [42.0分钟]
+      From worker 6:	    [任务 17/20 完成] 实例17 BO种子1 精修器=nm  [耗时 264.6 分钟 | 峰值内存 3.59 GB | host zhoushenhengdeMacBook-Pro.local]
+      From worker 8:	      · inst20/p=5 gnn_warmstart  ar=0.9664 (/Σw=0.8331)  [hybrid+nm, 1条前缀]  [9421次演化]  [38.8分钟]
+      From worker 8:	    [任务 20/20 完成] 实例20 BO种子1 精修器=nm  [耗时 255.5 分钟 | 峰值内存 3.65 GB | host zhoushenhengdeMacBook-Pro.local]
+      From worker 12:	      · inst14/p=5 gnn_warmstart  ar=0.8635 (/Σw=0.6914)  [hybrid+nm, 1条前缀]  [9485次演化]  [40.7分钟]
+      From worker 12:	    [任务 14/20 完成] 实例14 BO种子1 精修器=nm  [耗时 278.8 分钟 | 峰值内存 3.51 GB | host zhoushenhengdeMacBook-Pro.local]
+      From worker 3:	      · inst19/p=5 gnn_warmstart  ar=0.9112 (/Σw=0.7571)  [hybrid+nm, 1条前缀]  [9812次演化]  [44.8分钟]
+      From worker 3:	    [任务 19/20 完成] 实例19 BO种子1 精修器=nm  [耗时 264.4 分钟 | 峰值内存 3.44 GB | host zhoushenhengdeMacBook-Pro.local]
+      From worker 7:	      · inst18/p=5 gnn_warmstart  ar=0.9527 (/Σw=0.8320)  [hybrid+nm, 1条前缀]  [9299次演化]  [34.5分钟]
+      From worker 7:	    [任务 18/20 完成] 实例18 BO种子1 精修器=nm  [耗时 294.7 分钟 | 峰值内存 3.34 GB | host zhoushenhengdeMacBook-Pro.local]
+worker 日志已写入文件: 300 行
+✓ 详细追踪 → trace_n12_hybrid300_om15.7_wsE_ws0.2_p5_I16efd892.csv  (1800 条阶段记录)
+
+并行计算完成, 墙钟 608.9 分钟
+内存峰值实测: 每 worker 平均 3.50 GB, 最大 3.65 GB (主进程 1.72 GB)
+  → 集群上建议设 JULIA_WORKER_GB=4.2 (按最大值 3.65 上取整并留 15% 余量)
+
+
+==============================================================================
+【详细日志】逐实例 / 逐p / 逐condition / 逐BO种子
+==============================================================================
+
+[实例 1/20] seed=7  |E|=18  C_max=10.0938  C_max/Σw=0.8685  unwanted_ratio=0.2291  权重相关系数=0.8657  GNN(/Σw)=0.8685  GNN(/C_max)=1.0000
+
+  ── p=1 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=1 ar=0.6852  (/Σw=0.5951)  [3.5分钟]
+    [cold_start] p=1: best=0.6852  mean=0.6852±0.0000  (/Σw best=0.5951)  [CPU合计3.5分钟]
+
+  ── p=1 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=1 ar=0.6852  (/Σw=0.5951)  [3.5分钟]
+    [tqa_init] p=1: best=0.6852  mean=0.6852±0.0000  (/Σw best=0.5951)  [CPU合计3.5分钟]
+
+  ── p=1 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=1 ar=0.8568  (/Σw=0.7442)  [4.0分钟]
+    [gnn_warmstart] p=1: best=0.8568  mean=0.8568±0.0000  (/Σw best=0.7442)  [CPU合计4.0分钟]
+
+  ── p=2 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=2 ar=0.7600  (/Σw=0.6601)  [7.7分钟]
+    [cold_start] p=2: best=0.7600  mean=0.7600±0.0000  (/Σw best=0.6601)  [CPU合计7.7分钟]
+
+  ── p=2 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=2 ar=0.7600  (/Σw=0.6601)  [8.0分钟]
+    [tqa_init] p=2: best=0.7600  mean=0.7600±0.0000  (/Σw best=0.6601)  [CPU合计8.0分钟]
+
+  ── p=2 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=2 ar=0.9211  (/Σw=0.8000)  [10.1分钟]
+    [gnn_warmstart] p=2: best=0.9211  mean=0.9211±0.0000  (/Σw best=0.8000)  [CPU合计10.1分钟]
+
+  ── p=3 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=3 ar=0.7995  (/Σw=0.6944)  [15.4分钟]
+    [cold_start] p=3: best=0.7995  mean=0.7995±0.0000  (/Σw best=0.6944)  [CPU合计15.4分钟]
+
+  ── p=3 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=3 ar=0.7995  (/Σw=0.6944)  [14.6分钟]
+    [tqa_init] p=3: best=0.7995  mean=0.7995±0.0000  (/Σw best=0.6944)  [CPU合计14.6分钟]
+
+  ── p=3 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=3 ar=0.9514  (/Σw=0.8263)  [21.9分钟]
+    [gnn_warmstart] p=3: best=0.9514  mean=0.9514±0.0000  (/Σw best=0.8263)  [CPU合计21.9分钟]
+
+  ── p=4 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=4 ar=0.8227  (/Σw=0.7145)  [24.1分钟]
+    [cold_start] p=4: best=0.8227  mean=0.8227±0.0000  (/Σw best=0.7145)  [CPU合计24.1分钟]
+
+  ── p=4 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=4 ar=0.8227  (/Σw=0.7145)  [24.7分钟]
+    [tqa_init] p=4: best=0.8227  mean=0.8227±0.0000  (/Σw best=0.7145)  [CPU合计24.7分钟]
+
+  ── p=4 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=4 ar=0.9669  (/Σw=0.8398)  [39.9分钟]
+    [gnn_warmstart] p=4: best=0.9669  mean=0.9669±0.0000  (/Σw best=0.8398)  [CPU合计39.9分钟]
+
+  ── p=5 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=5 ar=0.8409  (/Σw=0.7304)  [40.2分钟]
+    [cold_start] p=5: best=0.8409  mean=0.8409±0.0000  (/Σw best=0.7304)  [CPU合计40.2分钟]
+
+  ── p=5 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=5 ar=0.8409  (/Σw=0.7304)  [39.8分钟]
+    [tqa_init] p=5: best=0.8409  mean=0.8409±0.0000  (/Σw best=0.7304)  [CPU合计39.8分钟]
+
+  ── p=5 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=5 ar=0.9685  (/Σw=0.8412)  [47.0分钟]
+    [gnn_warmstart] p=5: best=0.9685  mean=0.9685±0.0000  (/Σw best=0.8412)  [CPU合计47.0分钟]
+
+  [实例 1 小结] p1: cold=0.6852/tqa=0.6852/gnn=0.8568  p2: cold=0.7600/tqa=0.7600/gnn=0.9211  p3: cold=0.7995/tqa=0.7995/gnn=0.9514  p4: cold=0.8227/tqa=0.8227/gnn=0.9669  p5: cold=0.8409/tqa=0.8409/gnn=0.9685  
+
+[实例 2/20] seed=11  |E|=18  C_max=11.1735  C_max/Σw=0.8597  unwanted_ratio=0.0718  权重相关系数=0.9887  GNN(/Σw)=0.8597  GNN(/C_max)=1.0000
+
+  ── p=1 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=1 ar=0.7090  (/Σw=0.6095)  [3.3分钟]
+    [cold_start] p=1: best=0.7090  mean=0.7090±0.0000  (/Σw best=0.6095)  [CPU合计3.3分钟]
+
+  ── p=1 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=1 ar=0.7090  (/Σw=0.6095)  [3.6分钟]
+    [tqa_init] p=1: best=0.7090  mean=0.7090±0.0000  (/Σw best=0.6095)  [CPU合计3.6分钟]
+
+  ── p=1 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=1 ar=0.8372  (/Σw=0.7198)  [3.1分钟]
+    [gnn_warmstart] p=1: best=0.8372  mean=0.8372±0.0000  (/Σw best=0.7198)  [CPU合计3.1分钟]
+
+  ── p=2 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=2 ar=0.7305  (/Σw=0.6281)  [7.4分钟]
+    [cold_start] p=2: best=0.7305  mean=0.7305±0.0000  (/Σw best=0.6281)  [CPU合计7.4分钟]
+
+  ── p=2 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=2 ar=0.7389  (/Σw=0.6352)  [9.7分钟]
+    [tqa_init] p=2: best=0.7389  mean=0.7389±0.0000  (/Σw best=0.6352)  [CPU合计9.7分钟]
+
+  ── p=2 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=2 ar=0.9317  (/Σw=0.8010)  [10.4分钟]
+    [gnn_warmstart] p=2: best=0.9317  mean=0.9317±0.0000  (/Σw best=0.8010)  [CPU合计10.4分钟]
+
+  ── p=3 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=3 ar=0.7500  (/Σw=0.6448)  [16.2分钟]
+    [cold_start] p=3: best=0.7500  mean=0.7500±0.0000  (/Σw best=0.6448)  [CPU合计16.2分钟]
+
+  ── p=3 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=3 ar=0.7645  (/Σw=0.6573)  [17.7分钟]
+    [tqa_init] p=3: best=0.7645  mean=0.7645±0.0000  (/Σw best=0.6573)  [CPU合计17.7分钟]
+
+  ── p=3 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=3 ar=0.9661  (/Σw=0.8306)  [20.1分钟]
+    [gnn_warmstart] p=3: best=0.9661  mean=0.9661±0.0000  (/Σw best=0.8306)  [CPU合计20.1分钟]
+
+  ── p=4 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=4 ar=0.7552  (/Σw=0.6493)  [27.9分钟]
+    [cold_start] p=4: best=0.7552  mean=0.7552±0.0000  (/Σw best=0.6493)  [CPU合计27.9分钟]
+
+  ── p=4 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=4 ar=0.7705  (/Σw=0.6624)  [28.2分钟]
+    [tqa_init] p=4: best=0.7705  mean=0.7705±0.0000  (/Σw best=0.6624)  [CPU合计28.2分钟]
+
+  ── p=4 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=4 ar=0.9724  (/Σw=0.8360)  [31.8分钟]
+    [gnn_warmstart] p=4: best=0.9724  mean=0.9724±0.0000  (/Σw best=0.8360)  [CPU合计31.8分钟]
+
+  ── p=5 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=5 ar=0.7570  (/Σw=0.6508)  [46.1分钟]
+    [cold_start] p=5: best=0.7570  mean=0.7570±0.0000  (/Σw best=0.6508)  [CPU合计46.1分钟]
+
+  ── p=5 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=5 ar=0.7752  (/Σw=0.6665)  [49.4分钟]
+    [tqa_init] p=5: best=0.7752  mean=0.7752±0.0000  (/Σw best=0.6665)  [CPU合计49.4分钟]
+
+  ── p=5 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=5 ar=0.9742  (/Σw=0.8375)  [44.8分钟]
+    [gnn_warmstart] p=5: best=0.9742  mean=0.9742±0.0000  (/Σw best=0.8375)  [CPU合计44.8分钟]
+
+  [实例 2 小结] p1: cold=0.7090/tqa=0.7090/gnn=0.8372  p2: cold=0.7305/tqa=0.7389/gnn=0.9317  p3: cold=0.7500/tqa=0.7645/gnn=0.9661  p4: cold=0.7552/tqa=0.7705/gnn=0.9724  p5: cold=0.7570/tqa=0.7752/gnn=0.9742  
+
+[实例 3/20] seed=13  |E|=18  C_max=10.4185  C_max/Σw=0.8522  unwanted_ratio=0.0872  权重相关系数=0.9918  GNN(/Σw)=0.6932  GNN(/C_max)=0.8133
+
+  ── p=1 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=1 ar=0.7242  (/Σw=0.6172)  [3.5分钟]
+    [cold_start] p=1: best=0.7242  mean=0.7242±0.0000  (/Σw best=0.6172)  [CPU合计3.5分钟]
+
+  ── p=1 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=1 ar=0.7242  (/Σw=0.6172)  [3.4分钟]
+    [tqa_init] p=1: best=0.7242  mean=0.7242±0.0000  (/Σw best=0.6172)  [CPU合计3.4分钟]
+
+  ── p=1 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=1 ar=0.7886  (/Σw=0.6721)  [3.7分钟]
+    [gnn_warmstart] p=1: best=0.7886  mean=0.7886±0.0000  (/Σw best=0.6721)  [CPU合计3.7分钟]
+
+  ── p=2 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=2 ar=0.7917  (/Σw=0.6747)  [8.9分钟]
+    [cold_start] p=2: best=0.7917  mean=0.7917±0.0000  (/Σw best=0.6747)  [CPU合计8.9分钟]
+
+  ── p=2 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=2 ar=0.7917  (/Σw=0.6747)  [9.1分钟]
+    [tqa_init] p=2: best=0.7917  mean=0.7917±0.0000  (/Σw best=0.6747)  [CPU合计9.1分钟]
+
+  ── p=2 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=2 ar=0.8569  (/Σw=0.7303)  [10.6分钟]
+    [gnn_warmstart] p=2: best=0.8569  mean=0.8569±0.0000  (/Σw best=0.7303)  [CPU合计10.6分钟]
+
+  ── p=3 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=3 ar=0.8147  (/Σw=0.6943)  [16.7分钟]
+    [cold_start] p=3: best=0.8147  mean=0.8147±0.0000  (/Σw best=0.6943)  [CPU合计16.7分钟]
+
+  ── p=3 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=3 ar=0.8198  (/Σw=0.6986)  [16.9分钟]
+    [tqa_init] p=3: best=0.8198  mean=0.8198±0.0000  (/Σw best=0.6986)  [CPU合计16.9分钟]
+
+  ── p=3 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=3 ar=0.8852  (/Σw=0.7544)  [22.1分钟]
+    [gnn_warmstart] p=3: best=0.8852  mean=0.8852±0.0000  (/Σw best=0.7544)  [CPU合计22.1分钟]
+
+  ── p=4 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=4 ar=0.8293  (/Σw=0.7068)  [26.5分钟]
+    [cold_start] p=4: best=0.8293  mean=0.8293±0.0000  (/Σw best=0.7068)  [CPU合计26.5分钟]
+
+  ── p=4 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=4 ar=0.8409  (/Σw=0.7166)  [27.7分钟]
+    [tqa_init] p=4: best=0.8409  mean=0.8409±0.0000  (/Σw best=0.7166)  [CPU合计27.7分钟]
+
+  ── p=4 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=4 ar=0.9022  (/Σw=0.7689)  [39.8分钟]
+    [gnn_warmstart] p=4: best=0.9022  mean=0.9022±0.0000  (/Σw best=0.7689)  [CPU合计39.8分钟]
+
+  ── p=5 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=5 ar=0.8372  (/Σw=0.7135)  [38.8分钟]
+    [cold_start] p=5: best=0.8372  mean=0.8372±0.0000  (/Σw best=0.7135)  [CPU合计38.8分钟]
+
+  ── p=5 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=5 ar=0.8464  (/Σw=0.7213)  [46.1分钟]
+    [tqa_init] p=5: best=0.8464  mean=0.8464±0.0000  (/Σw best=0.7213)  [CPU合计46.1分钟]
+
+  ── p=5 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=5 ar=0.9196  (/Σw=0.7837)  [52.4分钟]
+    [gnn_warmstart] p=5: best=0.9196  mean=0.9196±0.0000  (/Σw best=0.7837)  [CPU合计52.4分钟]
+
+  [实例 3 小结] p1: cold=0.7242/tqa=0.7242/gnn=0.7886  p2: cold=0.7917/tqa=0.7917/gnn=0.8569  p3: cold=0.8147/tqa=0.8198/gnn=0.8852  p4: cold=0.8293/tqa=0.8409/gnn=0.9022  p5: cold=0.8372/tqa=0.8464/gnn=0.9196  
+
+[实例 4/20] seed=15  |E|=18  C_max=11.0181  C_max/Σw=0.8668  unwanted_ratio=0.0837  权重相关系数=0.9898  GNN(/Σw)=0.8668  GNN(/C_max)=1.0000
+
+  ── p=1 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=1 ar=0.7384  (/Σw=0.6400)  [3.4分钟]
+    [cold_start] p=1: best=0.7384  mean=0.7384±0.0000  (/Σw best=0.6400)  [CPU合计3.4分钟]
+
+  ── p=1 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=1 ar=0.7384  (/Σw=0.6400)  [3.5分钟]
+    [tqa_init] p=1: best=0.7384  mean=0.7384±0.0000  (/Σw best=0.6400)  [CPU合计3.5分钟]
+
+  ── p=1 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=1 ar=0.8439  (/Σw=0.7315)  [3.1分钟]
+    [gnn_warmstart] p=1: best=0.8439  mean=0.8439±0.0000  (/Σw best=0.7315)  [CPU合计3.1分钟]
+
+  ── p=2 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=2 ar=0.7861  (/Σw=0.6814)  [7.3分钟]
+    [cold_start] p=2: best=0.7861  mean=0.7861±0.0000  (/Σw best=0.6814)  [CPU合计7.3分钟]
+
+  ── p=2 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=2 ar=0.7904  (/Σw=0.6851)  [8.9分钟]
+    [tqa_init] p=2: best=0.7904  mean=0.7904±0.0000  (/Σw best=0.6851)  [CPU合计8.9分钟]
+
+  ── p=2 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=2 ar=0.9398  (/Σw=0.8146)  [10.0分钟]
+    [gnn_warmstart] p=2: best=0.9398  mean=0.9398±0.0000  (/Σw best=0.8146)  [CPU合计10.0分钟]
+
+  ── p=3 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=3 ar=0.8117  (/Σw=0.7036)  [16.3分钟]
+    [cold_start] p=3: best=0.8117  mean=0.8117±0.0000  (/Σw best=0.7036)  [CPU合计16.3分钟]
+
+  ── p=3 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=3 ar=0.8117  (/Σw=0.7036)  [17.7分钟]
+    [tqa_init] p=3: best=0.8117  mean=0.8117±0.0000  (/Σw best=0.7036)  [CPU合计17.7分钟]
+
+  ── p=3 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=3 ar=0.9723  (/Σw=0.8428)  [21.2分钟]
+    [gnn_warmstart] p=3: best=0.9723  mean=0.9723±0.0000  (/Σw best=0.8428)  [CPU合计21.2分钟]
+
+  ── p=4 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=4 ar=0.8117  (/Σw=0.7036)  [43.1分钟]
+    [cold_start] p=4: best=0.8117  mean=0.8117±0.0000  (/Σw best=0.7036)  [CPU合计43.1分钟]
+
+  ── p=4 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=4 ar=0.8250  (/Σw=0.7151)  [28.2分钟]
+    [tqa_init] p=4: best=0.8250  mean=0.8250±0.0000  (/Σw best=0.7151)  [CPU合计28.2分钟]
+
+  ── p=4 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=4 ar=0.9791  (/Σw=0.8487)  [38.8分钟]
+    [gnn_warmstart] p=4: best=0.9791  mean=0.9791±0.0000  (/Σw best=0.8487)  [CPU合计38.8分钟]
+
+  ── p=5 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=5 ar=0.8117  (/Σw=0.7036)  [61.3分钟]
+    [cold_start] p=5: best=0.8117  mean=0.8117±0.0000  (/Σw best=0.7036)  [CPU合计61.3分钟]
+
+  ── p=5 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=5 ar=0.8304  (/Σw=0.7198)  [42.1分钟]
+    [tqa_init] p=5: best=0.8304  mean=0.8304±0.0000  (/Σw best=0.7198)  [CPU合计42.1分钟]
+
+  ── p=5 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=5 ar=0.9802  (/Σw=0.8497)  [45.1分钟]
+    [gnn_warmstart] p=5: best=0.9802  mean=0.9802±0.0000  (/Σw best=0.8497)  [CPU合计45.1分钟]
+
+  [实例 4 小结] p1: cold=0.7384/tqa=0.7384/gnn=0.8439  p2: cold=0.7861/tqa=0.7904/gnn=0.9398  p3: cold=0.8117/tqa=0.8117/gnn=0.9723  p4: cold=0.8117/tqa=0.8250/gnn=0.9791  p5: cold=0.8117/tqa=0.8304/gnn=0.9802  
+
+[实例 5/20] seed=16  |E|=18  C_max=9.7603  C_max/Σw=0.8495  unwanted_ratio=0.0870  权重相关系数=0.9862  GNN(/Σw)=0.7820  GNN(/C_max)=0.9205
+
+  ── p=1 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=1 ar=0.7616  (/Σw=0.6470)  [3.3分钟]
+    [cold_start] p=1: best=0.7616  mean=0.7616±0.0000  (/Σw best=0.6470)  [CPU合计3.3分钟]
+
+  ── p=1 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=1 ar=0.7616  (/Σw=0.6470)  [3.4分钟]
+    [tqa_init] p=1: best=0.7616  mean=0.7616±0.0000  (/Σw best=0.6470)  [CPU合计3.4分钟]
+
+  ── p=1 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=1 ar=0.8111  (/Σw=0.6890)  [3.6分钟]
+    [gnn_warmstart] p=1: best=0.8111  mean=0.8111±0.0000  (/Σw best=0.6890)  [CPU合计3.6分钟]
+
+  ── p=2 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=2 ar=0.8128  (/Σw=0.6905)  [9.2分钟]
+    [cold_start] p=2: best=0.8128  mean=0.8128±0.0000  (/Σw best=0.6905)  [CPU合计9.2分钟]
+
+  ── p=2 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=2 ar=0.8078  (/Σw=0.6863)  [8.3分钟]
+    [tqa_init] p=2: best=0.8078  mean=0.8078±0.0000  (/Σw best=0.6863)  [CPU合计8.3分钟]
+
+  ── p=2 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=2 ar=0.8801  (/Σw=0.7477)  [10.7分钟]
+    [gnn_warmstart] p=2: best=0.8801  mean=0.8801±0.0000  (/Σw best=0.7477)  [CPU合计10.7分钟]
+
+  ── p=3 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=3 ar=0.8398  (/Σw=0.7134)  [17.1分钟]
+    [cold_start] p=3: best=0.8398  mean=0.8398±0.0000  (/Σw best=0.7134)  [CPU合计17.1分钟]
+
+  ── p=3 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=3 ar=0.8398  (/Σw=0.7134)  [17.3分钟]
+    [tqa_init] p=3: best=0.8398  mean=0.8398±0.0000  (/Σw best=0.7134)  [CPU合计17.3分钟]
+
+  ── p=3 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=3 ar=0.9168  (/Σw=0.7789)  [21.6分钟]
+    [gnn_warmstart] p=3: best=0.9168  mean=0.9168±0.0000  (/Σw best=0.7789)  [CPU合计21.6分钟]
+
+  ── p=4 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=4 ar=0.8607  (/Σw=0.7312)  [26.9分钟]
+    [cold_start] p=4: best=0.8607  mean=0.8607±0.0000  (/Σw best=0.7312)  [CPU合计26.9分钟]
+
+  ── p=4 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=4 ar=0.8607  (/Σw=0.7312)  [28.2分钟]
+    [tqa_init] p=4: best=0.8607  mean=0.8607±0.0000  (/Σw best=0.7312)  [CPU合计28.2分钟]
+
+  ── p=4 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=4 ar=0.9332  (/Σw=0.7927)  [36.8分钟]
+    [gnn_warmstart] p=4: best=0.9332  mean=0.9332±0.0000  (/Σw best=0.7927)  [CPU合计36.8分钟]
+
+  ── p=5 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=5 ar=0.8626  (/Σw=0.7328)  [36.9分钟]
+    [cold_start] p=5: best=0.8626  mean=0.8626±0.0000  (/Σw best=0.7328)  [CPU合计36.9分钟]
+
+  ── p=5 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=5 ar=0.8626  (/Σw=0.7328)  [39.4分钟]
+    [tqa_init] p=5: best=0.8626  mean=0.8626±0.0000  (/Σw best=0.7328)  [CPU合计39.4分钟]
+
+  ── p=5 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=5 ar=0.9346  (/Σw=0.7940)  [50.7分钟]
+    [gnn_warmstart] p=5: best=0.9346  mean=0.9346±0.0000  (/Σw best=0.7940)  [CPU合计50.7分钟]
+
+  [实例 5 小结] p1: cold=0.7616/tqa=0.7616/gnn=0.8111  p2: cold=0.8128/tqa=0.8078/gnn=0.8801  p3: cold=0.8398/tqa=0.8398/gnn=0.9168  p4: cold=0.8607/tqa=0.8607/gnn=0.9332  p5: cold=0.8626/tqa=0.8626/gnn=0.9346  
+
+[实例 6/20] seed=17  |E|=18  C_max=9.8564  C_max/Σw=0.9166  unwanted_ratio=0.2758  权重相关系数=0.7634  GNN(/Σw)=0.8823  GNN(/C_max)=0.9626
+
+  ── p=1 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=1 ar=0.6443  (/Σw=0.5906)  [3.4分钟]
+    [cold_start] p=1: best=0.6443  mean=0.6443±0.0000  (/Σw best=0.5906)  [CPU合计3.4分钟]
+
+  ── p=1 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=1 ar=0.6443  (/Σw=0.5906)  [3.4分钟]
+    [tqa_init] p=1: best=0.6443  mean=0.6443±0.0000  (/Σw best=0.5906)  [CPU合计3.4分钟]
+
+  ── p=1 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=1 ar=0.8296  (/Σw=0.7604)  [3.7分钟]
+    [gnn_warmstart] p=1: best=0.8296  mean=0.8296±0.0000  (/Σw best=0.7604)  [CPU合计3.7分钟]
+
+  ── p=2 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=2 ar=0.7189  (/Σw=0.6589)  [7.5分钟]
+    [cold_start] p=2: best=0.7189  mean=0.7189±0.0000  (/Σw best=0.6589)  [CPU合计7.5分钟]
+
+  ── p=2 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=2 ar=0.7189  (/Σw=0.6589)  [7.9分钟]
+    [tqa_init] p=2: best=0.7189  mean=0.7189±0.0000  (/Σw best=0.6589)  [CPU合计7.9分钟]
+
+  ── p=2 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=2 ar=0.9112  (/Σw=0.8352)  [10.4分钟]
+    [gnn_warmstart] p=2: best=0.9112  mean=0.9112±0.0000  (/Σw best=0.8352)  [CPU合计10.4分钟]
+
+  ── p=3 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=3 ar=0.7572  (/Σw=0.6940)  [16.6分钟]
+    [cold_start] p=3: best=0.7572  mean=0.7572±0.0000  (/Σw best=0.6940)  [CPU合计16.6分钟]
+
+  ── p=3 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=3 ar=0.7572  (/Σw=0.6940)  [16.2分钟]
+    [tqa_init] p=3: best=0.7572  mean=0.7572±0.0000  (/Σw best=0.6940)  [CPU合计16.2分钟]
+
+  ── p=3 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=3 ar=0.9431  (/Σw=0.8644)  [20.3分钟]
+    [gnn_warmstart] p=3: best=0.9431  mean=0.9431±0.0000  (/Σw best=0.8644)  [CPU合计20.3分钟]
+
+  ── p=4 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=4 ar=0.7842  (/Σw=0.7188)  [22.3分钟]
+    [cold_start] p=4: best=0.7842  mean=0.7842±0.0000  (/Σw best=0.7188)  [CPU合计22.3分钟]
+
+  ── p=4 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=4 ar=0.7842  (/Σw=0.7188)  [24.7分钟]
+    [tqa_init] p=4: best=0.7842  mean=0.7842±0.0000  (/Σw best=0.7188)  [CPU合计24.7分钟]
+
+  ── p=4 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=4 ar=0.9483  (/Σw=0.8692)  [40.3分钟]
+    [gnn_warmstart] p=4: best=0.9483  mean=0.9483±0.0000  (/Σw best=0.8692)  [CPU合计40.3分钟]
+
+  ── p=5 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=5 ar=0.8118  (/Σw=0.7440)  [36.5分钟]
+    [cold_start] p=5: best=0.8118  mean=0.8118±0.0000  (/Σw best=0.7440)  [CPU合计36.5分钟]
+
+  ── p=5 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=5 ar=0.8118  (/Σw=0.7440)  [39.1分钟]
+    [tqa_init] p=5: best=0.8118  mean=0.8118±0.0000  (/Σw best=0.7440)  [CPU合计39.1分钟]
+
+  ── p=5 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=5 ar=0.9502  (/Σw=0.8709)  [61.7分钟]
+    [gnn_warmstart] p=5: best=0.9502  mean=0.9502±0.0000  (/Σw best=0.8709)  [CPU合计61.7分钟]
+
+  [实例 6 小结] p1: cold=0.6443/tqa=0.6443/gnn=0.8296  p2: cold=0.7189/tqa=0.7189/gnn=0.9112  p3: cold=0.7572/tqa=0.7572/gnn=0.9431  p4: cold=0.7842/tqa=0.7842/gnn=0.9483  p5: cold=0.8118/tqa=0.8118/gnn=0.9502  
+
+[实例 7/20] seed=18  |E|=18  C_max=10.3721  C_max/Σw=0.8325  unwanted_ratio=0.0853  权重相关系数=0.9923  GNN(/Σw)=0.7826  GNN(/C_max)=0.9401
+
+  ── p=1 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=1 ar=0.7384  (/Σw=0.6147)  [3.4分钟]
+    [cold_start] p=1: best=0.7384  mean=0.7384±0.0000  (/Σw best=0.6147)  [CPU合计3.4分钟]
+
+  ── p=1 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=1 ar=0.7384  (/Σw=0.6147)  [3.6分钟]
+    [tqa_init] p=1: best=0.7384  mean=0.7384±0.0000  (/Σw best=0.6147)  [CPU合计3.6分钟]
+
+  ── p=1 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=1 ar=0.8180  (/Σw=0.6810)  [3.9分钟]
+    [gnn_warmstart] p=1: best=0.8180  mean=0.8180±0.0000  (/Σw best=0.6810)  [CPU合计3.9分钟]
+
+  ── p=2 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=2 ar=0.8136  (/Σw=0.6773)  [9.4分钟]
+    [cold_start] p=2: best=0.8136  mean=0.8136±0.0000  (/Σw best=0.6773)  [CPU合计9.4分钟]
+
+  ── p=2 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=2 ar=0.8136  (/Σw=0.6773)  [9.8分钟]
+    [tqa_init] p=2: best=0.8136  mean=0.8136±0.0000  (/Σw best=0.6773)  [CPU合计9.8分钟]
+
+  ── p=2 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=2 ar=0.8802  (/Σw=0.7327)  [11.0分钟]
+    [gnn_warmstart] p=2: best=0.8802  mean=0.8802±0.0000  (/Σw best=0.7327)  [CPU合计11.0分钟]
+
+  ── p=3 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=3 ar=0.8341  (/Σw=0.6943)  [17.1分钟]
+    [cold_start] p=3: best=0.8341  mean=0.8341±0.0000  (/Σw best=0.6943)  [CPU合计17.1分钟]
+
+  ── p=3 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=3 ar=0.8260  (/Σw=0.6876)  [18.1分钟]
+    [tqa_init] p=3: best=0.8260  mean=0.8260±0.0000  (/Σw best=0.6876)  [CPU合计18.1分钟]
+
+  ── p=3 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=3 ar=0.9192  (/Σw=0.7652)  [19.5分钟]
+    [gnn_warmstart] p=3: best=0.9192  mean=0.9192±0.0000  (/Σw best=0.7652)  [CPU合计19.5分钟]
+
+  ── p=4 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=4 ar=0.8495  (/Σw=0.7071)  [28.1分钟]
+    [cold_start] p=4: best=0.8495  mean=0.8495±0.0000  (/Σw best=0.7071)  [CPU合计28.1分钟]
+
+  ── p=4 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=4 ar=0.8335  (/Σw=0.6939)  [28.0分钟]
+    [tqa_init] p=4: best=0.8335  mean=0.8335±0.0000  (/Σw best=0.6939)  [CPU合计28.0分钟]
+
+  ── p=4 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=4 ar=0.9255  (/Σw=0.7705)  [35.6分钟]
+    [gnn_warmstart] p=4: best=0.9255  mean=0.9255±0.0000  (/Σw best=0.7705)  [CPU合计35.6分钟]
+
+  ── p=5 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=5 ar=0.8514  (/Σw=0.7088)  [43.1分钟]
+    [cold_start] p=5: best=0.8514  mean=0.8514±0.0000  (/Σw best=0.7088)  [CPU合计43.1分钟]
+
+  ── p=5 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=5 ar=0.8398  (/Σw=0.6991)  [43.3分钟]
+    [tqa_init] p=5: best=0.8398  mean=0.8398±0.0000  (/Σw best=0.6991)  [CPU合计43.3分钟]
+
+  ── p=5 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=5 ar=0.9387  (/Σw=0.7814)  [48.8分钟]
+    [gnn_warmstart] p=5: best=0.9387  mean=0.9387±0.0000  (/Σw best=0.7814)  [CPU合计48.8分钟]
+
+  [实例 7 小结] p1: cold=0.7384/tqa=0.7384/gnn=0.8180  p2: cold=0.8136/tqa=0.8136/gnn=0.8802  p3: cold=0.8341/tqa=0.8260/gnn=0.9192  p4: cold=0.8495/tqa=0.8335/gnn=0.9255  p5: cold=0.8514/tqa=0.8398/gnn=0.9387  
+
+[实例 8/20] seed=19  |E|=18  C_max=10.6054  C_max/Σw=0.8247  unwanted_ratio=0.0564  权重相关系数=0.9854  GNN(/Σw)=0.8247  GNN(/C_max)=1.0000
+
+  ── p=1 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=1 ar=0.7684  (/Σw=0.6337)  [3.5分钟]
+    [cold_start] p=1: best=0.7684  mean=0.7684±0.0000  (/Σw best=0.6337)  [CPU合计3.5分钟]
+
+  ── p=1 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=1 ar=0.7684  (/Σw=0.6337)  [3.4分钟]
+    [tqa_init] p=1: best=0.7684  mean=0.7684±0.0000  (/Σw best=0.6337)  [CPU合计3.4分钟]
+
+  ── p=1 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=1 ar=0.8604  (/Σw=0.7096)  [3.4分钟]
+    [gnn_warmstart] p=1: best=0.8604  mean=0.8604±0.0000  (/Σw best=0.7096)  [CPU合计3.4分钟]
+
+  ── p=2 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=2 ar=0.7949  (/Σw=0.6556)  [7.6分钟]
+    [cold_start] p=2: best=0.7949  mean=0.7949±0.0000  (/Σw best=0.6556)  [CPU合计7.6分钟]
+
+  ── p=2 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=2 ar=0.7949  (/Σw=0.6556)  [8.1分钟]
+    [tqa_init] p=2: best=0.7949  mean=0.7949±0.0000  (/Σw best=0.6556)  [CPU合计8.1分钟]
+
+  ── p=2 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=2 ar=0.9334  (/Σw=0.7698)  [10.5分钟]
+    [gnn_warmstart] p=2: best=0.9334  mean=0.9334±0.0000  (/Σw best=0.7698)  [CPU合计10.5分钟]
+
+  ── p=3 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=3 ar=0.8115  (/Σw=0.6693)  [16.5分钟]
+    [cold_start] p=3: best=0.8115  mean=0.8115±0.0000  (/Σw best=0.6693)  [CPU合计16.5分钟]
+
+  ── p=3 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=3 ar=0.8115  (/Σw=0.6693)  [17.0分钟]
+    [tqa_init] p=3: best=0.8115  mean=0.8115±0.0000  (/Σw best=0.6693)  [CPU合计17.0分钟]
+
+  ── p=3 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=3 ar=0.9737  (/Σw=0.8030)  [21.9分钟]
+    [gnn_warmstart] p=3: best=0.9737  mean=0.9737±0.0000  (/Σw best=0.8030)  [CPU合计21.9分钟]
+
+  ── p=4 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=4 ar=0.8252  (/Σw=0.6806)  [21.2分钟]
+    [cold_start] p=4: best=0.8252  mean=0.8252±0.0000  (/Σw best=0.6806)  [CPU合计21.2分钟]
+
+  ── p=4 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=4 ar=0.8252  (/Σw=0.6806)  [24.4分钟]
+    [tqa_init] p=4: best=0.8252  mean=0.8252±0.0000  (/Σw best=0.6806)  [CPU合计24.4分钟]
+
+  ── p=4 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=4 ar=0.9763  (/Σw=0.8052)  [36.8分钟]
+    [gnn_warmstart] p=4: best=0.9763  mean=0.9763±0.0000  (/Σw best=0.8052)  [CPU合计36.8分钟]
+
+  ── p=5 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=5 ar=0.8265  (/Σw=0.6817)  [39.8分钟]
+    [cold_start] p=5: best=0.8265  mean=0.8265±0.0000  (/Σw best=0.6817)  [CPU合计39.8分钟]
+
+  ── p=5 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=5 ar=0.8364  (/Σw=0.6898)  [37.8分钟]
+    [tqa_init] p=5: best=0.8364  mean=0.8364±0.0000  (/Σw best=0.6898)  [CPU合计37.8分钟]
+
+  ── p=5 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=5 ar=0.9777  (/Σw=0.8063)  [54.5分钟]
+    [gnn_warmstart] p=5: best=0.9777  mean=0.9777±0.0000  (/Σw best=0.8063)  [CPU合计54.5分钟]
+
+  [实例 8 小结] p1: cold=0.7684/tqa=0.7684/gnn=0.8604  p2: cold=0.7949/tqa=0.7949/gnn=0.9334  p3: cold=0.8115/tqa=0.8115/gnn=0.9737  p4: cold=0.8252/tqa=0.8252/gnn=0.9763  p5: cold=0.8265/tqa=0.8364/gnn=0.9777  
+
+[实例 9/20] seed=20  |E|=18  C_max=9.9656  C_max/Σw=0.8806  unwanted_ratio=0.2237  权重相关系数=0.7953  GNN(/Σw)=0.8806  GNN(/C_max)=1.0000
+
+  ── p=1 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=1 ar=0.6865  (/Σw=0.6045)  [3.6分钟]
+    [cold_start] p=1: best=0.6865  mean=0.6865±0.0000  (/Σw best=0.6045)  [CPU合计3.6分钟]
+
+  ── p=1 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=1 ar=0.6865  (/Σw=0.6045)  [3.1分钟]
+    [tqa_init] p=1: best=0.6865  mean=0.6865±0.0000  (/Σw best=0.6045)  [CPU合计3.1分钟]
+
+  ── p=1 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=1 ar=0.8581  (/Σw=0.7557)  [4.0分钟]
+    [gnn_warmstart] p=1: best=0.8581  mean=0.8581±0.0000  (/Σw best=0.7557)  [CPU合计4.0分钟]
+
+  ── p=2 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=2 ar=0.7074  (/Σw=0.6229)  [9.2分钟]
+    [cold_start] p=2: best=0.7074  mean=0.7074±0.0000  (/Σw best=0.6229)  [CPU合计9.2分钟]
+
+  ── p=2 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=2 ar=0.7074  (/Σw=0.6229)  [9.6分钟]
+    [tqa_init] p=2: best=0.7074  mean=0.7074±0.0000  (/Σw best=0.6229)  [CPU合计9.6分钟]
+
+  ── p=2 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=2 ar=0.9305  (/Σw=0.8194)  [10.8分钟]
+    [gnn_warmstart] p=2: best=0.9305  mean=0.9305±0.0000  (/Σw best=0.8194)  [CPU合计10.8分钟]
+
+  ── p=3 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=3 ar=0.7110  (/Σw=0.6261)  [19.1分钟]
+    [cold_start] p=3: best=0.7110  mean=0.7110±0.0000  (/Σw best=0.6261)  [CPU合计19.1分钟]
+
+  ── p=3 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=3 ar=0.7110  (/Σw=0.6261)  [19.4分钟]
+    [tqa_init] p=3: best=0.7110  mean=0.7110±0.0000  (/Σw best=0.6261)  [CPU合计19.4分钟]
+
+  ── p=3 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=3 ar=0.9657  (/Σw=0.8504)  [20.0分钟]
+    [gnn_warmstart] p=3: best=0.9657  mean=0.9657±0.0000  (/Σw best=0.8504)  [CPU合计20.0分钟]
+
+  ── p=4 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=4 ar=0.7163  (/Σw=0.6307)  [27.4分钟]
+    [cold_start] p=4: best=0.7163  mean=0.7163±0.0000  (/Σw best=0.6307)  [CPU合计27.4分钟]
+
+  ── p=4 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=4 ar=0.7163  (/Σw=0.6307)  [27.8分钟]
+    [tqa_init] p=4: best=0.7163  mean=0.7163±0.0000  (/Σw best=0.6307)  [CPU合计27.8分钟]
+
+  ── p=4 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=4 ar=0.9693  (/Σw=0.8535)  [39.4分钟]
+    [gnn_warmstart] p=4: best=0.9693  mean=0.9693±0.0000  (/Σw best=0.8535)  [CPU合计39.4分钟]
+
+  ── p=5 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=5 ar=0.7405  (/Σw=0.6520)  [41.1分钟]
+    [cold_start] p=5: best=0.7405  mean=0.7405±0.0000  (/Σw best=0.6520)  [CPU合计41.1分钟]
+
+  ── p=5 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=5 ar=0.7486  (/Σw=0.6592)  [44.6分钟]
+    [tqa_init] p=5: best=0.7486  mean=0.7486±0.0000  (/Σw best=0.6592)  [CPU合计44.6分钟]
+
+  ── p=5 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=5 ar=0.9713  (/Σw=0.8553)  [55.0分钟]
+    [gnn_warmstart] p=5: best=0.9713  mean=0.9713±0.0000  (/Σw best=0.8553)  [CPU合计55.0分钟]
+
+  [实例 9 小结] p1: cold=0.6865/tqa=0.6865/gnn=0.8581  p2: cold=0.7074/tqa=0.7074/gnn=0.9305  p3: cold=0.7110/tqa=0.7110/gnn=0.9657  p4: cold=0.7163/tqa=0.7163/gnn=0.9693  p5: cold=0.7405/tqa=0.7486/gnn=0.9713  
+
+[实例 10/20] seed=22  |E|=18  C_max=10.2810  C_max/Σw=0.8031  unwanted_ratio=0.1120  权重相关系数=0.9890  GNN(/Σw)=0.7042  GNN(/C_max)=0.8768
+
+  ── p=1 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=1 ar=0.7660  (/Σw=0.6151)  [3.4分钟]
+    [cold_start] p=1: best=0.7660  mean=0.7660±0.0000  (/Σw best=0.6151)  [CPU合计3.4分钟]
+
+  ── p=1 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=1 ar=0.7660  (/Σw=0.6151)  [3.3分钟]
+    [tqa_init] p=1: best=0.7660  mean=0.7660±0.0000  (/Σw best=0.6151)  [CPU合计3.3分钟]
+
+  ── p=1 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=1 ar=0.8192  (/Σw=0.6579)  [3.9分钟]
+    [gnn_warmstart] p=1: best=0.8192  mean=0.8192±0.0000  (/Σw best=0.6579)  [CPU合计3.9分钟]
+
+  ── p=2 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=2 ar=0.8244  (/Σw=0.6621)  [8.4分钟]
+    [cold_start] p=2: best=0.8244  mean=0.8244±0.0000  (/Σw best=0.6621)  [CPU合计8.4分钟]
+
+  ── p=2 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=2 ar=0.8244  (/Σw=0.6621)  [8.7分钟]
+    [tqa_init] p=2: best=0.8244  mean=0.8244±0.0000  (/Σw best=0.6621)  [CPU合计8.7分钟]
+
+  ── p=2 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=2 ar=0.8673  (/Σw=0.6965)  [10.1分钟]
+    [gnn_warmstart] p=2: best=0.8673  mean=0.8673±0.0000  (/Σw best=0.6965)  [CPU合计10.1分钟]
+
+  ── p=3 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=3 ar=0.8445  (/Σw=0.6782)  [17.8分钟]
+    [cold_start] p=3: best=0.8445  mean=0.8445±0.0000  (/Σw best=0.6782)  [CPU合计17.8分钟]
+
+  ── p=3 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=3 ar=0.8445  (/Σw=0.6782)  [17.7分钟]
+    [tqa_init] p=3: best=0.8445  mean=0.8445±0.0000  (/Σw best=0.6782)  [CPU合计17.7分钟]
+
+  ── p=3 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=3 ar=0.8896  (/Σw=0.7144)  [22.4分钟]
+    [gnn_warmstart] p=3: best=0.8896  mean=0.8896±0.0000  (/Σw best=0.7144)  [CPU合计22.4分钟]
+
+  ── p=4 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=4 ar=0.8566  (/Σw=0.6879)  [27.0分钟]
+    [cold_start] p=4: best=0.8566  mean=0.8566±0.0000  (/Σw best=0.6879)  [CPU合计27.0分钟]
+
+  ── p=4 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=4 ar=0.8566  (/Σw=0.6879)  [28.2分钟]
+    [tqa_init] p=4: best=0.8566  mean=0.8566±0.0000  (/Σw best=0.6879)  [CPU合计28.2分钟]
+
+  ── p=4 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=4 ar=0.9133  (/Σw=0.7335)  [41.7分钟]
+    [gnn_warmstart] p=4: best=0.9133  mean=0.9133±0.0000  (/Σw best=0.7335)  [CPU合计41.7分钟]
+
+  ── p=5 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=5 ar=0.8591  (/Σw=0.6899)  [39.7分钟]
+    [cold_start] p=5: best=0.8591  mean=0.8591±0.0000  (/Σw best=0.6899)  [CPU合计39.7分钟]
+
+  ── p=5 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=5 ar=0.8591  (/Σw=0.6899)  [40.6分钟]
+    [tqa_init] p=5: best=0.8591  mean=0.8591±0.0000  (/Σw best=0.6899)  [CPU合计40.6分钟]
+
+  ── p=5 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=5 ar=0.9203  (/Σw=0.7390)  [54.7分钟]
+    [gnn_warmstart] p=5: best=0.9203  mean=0.9203±0.0000  (/Σw best=0.7390)  [CPU合计54.7分钟]
+
+  [实例 10 小结] p1: cold=0.7660/tqa=0.7660/gnn=0.8192  p2: cold=0.8244/tqa=0.8244/gnn=0.8673  p3: cold=0.8445/tqa=0.8445/gnn=0.8896  p4: cold=0.8566/tqa=0.8566/gnn=0.9133  p5: cold=0.8591/tqa=0.8591/gnn=0.9203  
+
+[实例 11/20] seed=26  |E|=18  C_max=11.2503  C_max/Σw=0.9181  unwanted_ratio=0.1939  权重相关系数=0.9270  GNN(/Σw)=0.9181  GNN(/C_max)=1.0000
+
+  ── p=1 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=1 ar=0.6341  (/Σw=0.5822)  [3.2分钟]
+    [cold_start] p=1: best=0.6341  mean=0.6341±0.0000  (/Σw best=0.5822)  [CPU合计3.2分钟]
+
+  ── p=1 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=1 ar=0.6341  (/Σw=0.5822)  [3.4分钟]
+    [tqa_init] p=1: best=0.6341  mean=0.6341±0.0000  (/Σw best=0.5822)  [CPU合计3.4分钟]
+
+  ── p=1 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=1 ar=0.8426  (/Σw=0.7736)  [3.9分钟]
+    [gnn_warmstart] p=1: best=0.8426  mean=0.8426±0.0000  (/Σw best=0.7736)  [CPU合计3.9分钟]
+
+  ── p=2 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=2 ar=0.7119  (/Σw=0.6536)  [8.0分钟]
+    [cold_start] p=2: best=0.7119  mean=0.7119±0.0000  (/Σw best=0.6536)  [CPU合计8.0分钟]
+
+  ── p=2 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=2 ar=0.7119  (/Σw=0.6536)  [8.4分钟]
+    [tqa_init] p=2: best=0.7119  mean=0.7119±0.0000  (/Σw best=0.6536)  [CPU合计8.4分钟]
+
+  ── p=2 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=2 ar=0.9303  (/Σw=0.8541)  [11.3分钟]
+    [gnn_warmstart] p=2: best=0.9303  mean=0.9303±0.0000  (/Σw best=0.8541)  [CPU合计11.3分钟]
+
+  ── p=3 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=3 ar=0.7749  (/Σw=0.7114)  [15.6分钟]
+    [cold_start] p=3: best=0.7749  mean=0.7749±0.0000  (/Σw best=0.7114)  [CPU合计15.6分钟]
+
+  ── p=3 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=3 ar=0.7749  (/Σw=0.7114)  [15.6分钟]
+    [tqa_init] p=3: best=0.7749  mean=0.7749±0.0000  (/Σw best=0.7114)  [CPU合计15.6分钟]
+
+  ── p=3 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=3 ar=0.9530  (/Σw=0.8749)  [18.4分钟]
+    [gnn_warmstart] p=3: best=0.9530  mean=0.9530±0.0000  (/Σw best=0.8749)  [CPU合计18.4分钟]
+
+  ── p=4 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=4 ar=0.8196  (/Σw=0.7524)  [25.0分钟]
+    [cold_start] p=4: best=0.8196  mean=0.8196±0.0000  (/Σw best=0.7524)  [CPU合计25.0分钟]
+
+  ── p=4 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=4 ar=0.8196  (/Σw=0.7524)  [25.9分钟]
+    [tqa_init] p=4: best=0.8196  mean=0.8196±0.0000  (/Σw best=0.7524)  [CPU合计25.9分钟]
+
+  ── p=4 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=4 ar=0.9547  (/Σw=0.8765)  [35.0分钟]
+    [gnn_warmstart] p=4: best=0.9547  mean=0.9547±0.0000  (/Σw best=0.8765)  [CPU合计35.0分钟]
+
+  ── p=5 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=5 ar=0.8514  (/Σw=0.7817)  [37.4分钟]
+    [cold_start] p=5: best=0.8514  mean=0.8514±0.0000  (/Σw best=0.7817)  [CPU合计37.4分钟]
+
+  ── p=5 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=5 ar=0.8514  (/Σw=0.7817)  [42.5分钟]
+    [tqa_init] p=5: best=0.8514  mean=0.8514±0.0000  (/Σw best=0.7817)  [CPU合计42.5分钟]
+
+  ── p=5 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=5 ar=0.9583  (/Σw=0.8798)  [48.4分钟]
+    [gnn_warmstart] p=5: best=0.9583  mean=0.9583±0.0000  (/Σw best=0.8798)  [CPU合计48.4分钟]
+
+  [实例 11 小结] p1: cold=0.6341/tqa=0.6341/gnn=0.8426  p2: cold=0.7119/tqa=0.7119/gnn=0.9303  p3: cold=0.7749/tqa=0.7749/gnn=0.9530  p4: cold=0.8196/tqa=0.8196/gnn=0.9547  p5: cold=0.8514/tqa=0.8514/gnn=0.9583  
+
+[实例 12/20] seed=31  |E|=18  C_max=10.3946  C_max/Σw=0.8478  unwanted_ratio=0.2225  权重相关系数=0.8220  GNN(/Σw)=0.7663  GNN(/C_max)=0.9039
+
+  ── p=1 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=1 ar=0.6979  (/Σw=0.5916)  [3.2分钟]
+    [cold_start] p=1: best=0.6979  mean=0.6979±0.0000  (/Σw best=0.5916)  [CPU合计3.2分钟]
+
+  ── p=1 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=1 ar=0.6979  (/Σw=0.5916)  [3.4分钟]
+    [tqa_init] p=1: best=0.6979  mean=0.6979±0.0000  (/Σw best=0.5916)  [CPU合计3.4分钟]
+
+  ── p=1 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=1 ar=0.7970  (/Σw=0.6757)  [3.1分钟]
+    [gnn_warmstart] p=1: best=0.7970  mean=0.7970±0.0000  (/Σw best=0.6757)  [CPU合计3.1分钟]
+
+  ── p=2 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=2 ar=0.7703  (/Σw=0.6530)  [7.6分钟]
+    [cold_start] p=2: best=0.7703  mean=0.7703±0.0000  (/Σw best=0.6530)  [CPU合计7.6分钟]
+
+  ── p=2 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=2 ar=0.7703  (/Σw=0.6530)  [7.4分钟]
+    [tqa_init] p=2: best=0.7703  mean=0.7703±0.0000  (/Σw best=0.6530)  [CPU合计7.4分钟]
+
+  ── p=2 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=2 ar=0.8349  (/Σw=0.7078)  [8.9分钟]
+    [gnn_warmstart] p=2: best=0.8349  mean=0.8349±0.0000  (/Σw best=0.7078)  [CPU合计8.9分钟]
+
+  ── p=3 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=3 ar=0.8080  (/Σw=0.6850)  [16.0分钟]
+    [cold_start] p=3: best=0.8080  mean=0.8080±0.0000  (/Σw best=0.6850)  [CPU合计16.0分钟]
+
+  ── p=3 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=3 ar=0.8080  (/Σw=0.6850)  [15.8分钟]
+    [tqa_init] p=3: best=0.8080  mean=0.8080±0.0000  (/Σw best=0.6850)  [CPU合计15.8分钟]
+
+  ── p=3 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=3 ar=0.8723  (/Σw=0.7395)  [22.7分钟]
+    [gnn_warmstart] p=3: best=0.8723  mean=0.8723±0.0000  (/Σw best=0.7395)  [CPU合计22.7分钟]
+
+  ── p=4 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=4 ar=0.8336  (/Σw=0.7067)  [23.6分钟]
+    [cold_start] p=4: best=0.8336  mean=0.8336±0.0000  (/Σw best=0.7067)  [CPU合计23.6分钟]
+
+  ── p=4 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=4 ar=0.8336  (/Σw=0.7067)  [26.0分钟]
+    [tqa_init] p=4: best=0.8336  mean=0.8336±0.0000  (/Σw best=0.7067)  [CPU合计26.0分钟]
+
+  ── p=4 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=4 ar=0.8738  (/Σw=0.7408)  [40.6分钟]
+    [gnn_warmstart] p=4: best=0.8738  mean=0.8738±0.0000  (/Σw best=0.7408)  [CPU合计40.6分钟]
+
+  ── p=5 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=5 ar=0.8507  (/Σw=0.7212)  [38.1分钟]
+    [cold_start] p=5: best=0.8507  mean=0.8507±0.0000  (/Σw best=0.7212)  [CPU合计38.1分钟]
+
+  ── p=5 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=5 ar=0.8507  (/Σw=0.7212)  [39.6分钟]
+    [tqa_init] p=5: best=0.8507  mean=0.8507±0.0000  (/Σw best=0.7212)  [CPU合计39.6分钟]
+
+  ── p=5 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=5 ar=0.8748  (/Σw=0.7416)  [40.9分钟]
+    [gnn_warmstart] p=5: best=0.8748  mean=0.8748±0.0000  (/Σw best=0.7416)  [CPU合计40.9分钟]
+
+  [实例 12 小结] p1: cold=0.6979/tqa=0.6979/gnn=0.7970  p2: cold=0.7703/tqa=0.7703/gnn=0.8349  p3: cold=0.8080/tqa=0.8080/gnn=0.8723  p4: cold=0.8336/tqa=0.8336/gnn=0.8738  p5: cold=0.8507/tqa=0.8507/gnn=0.8748  
+
+[实例 13/20] seed=32  |E|=18  C_max=10.6544  C_max/Σw=0.8435  unwanted_ratio=0.0925  权重相关系数=0.9801  GNN(/Σw)=0.8435  GNN(/C_max)=1.0000
+
+  ── p=1 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=1 ar=0.7539  (/Σw=0.6359)  [4.4分钟]
+    [cold_start] p=1: best=0.7539  mean=0.7539±0.0000  (/Σw best=0.6359)  [CPU合计4.4分钟]
+
+  ── p=1 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=1 ar=0.7539  (/Σw=0.6359)  [4.4分钟]
+    [tqa_init] p=1: best=0.7539  mean=0.7539±0.0000  (/Σw best=0.6359)  [CPU合计4.4分钟]
+
+  ── p=1 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=1 ar=0.8428  (/Σw=0.7109)  [4.4分钟]
+    [gnn_warmstart] p=1: best=0.8428  mean=0.8428±0.0000  (/Σw best=0.7109)  [CPU合计4.4分钟]
+
+  ── p=2 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=2 ar=0.8025  (/Σw=0.6769)  [10.5分钟]
+    [cold_start] p=2: best=0.8025  mean=0.8025±0.0000  (/Σw best=0.6769)  [CPU合计10.5分钟]
+
+  ── p=2 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=2 ar=0.7606  (/Σw=0.6416)  [12.2分钟]
+    [tqa_init] p=2: best=0.7606  mean=0.7606±0.0000  (/Σw best=0.6416)  [CPU合计12.2分钟]
+
+  ── p=2 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=2 ar=0.9188  (/Σw=0.7750)  [10.7分钟]
+    [gnn_warmstart] p=2: best=0.9188  mean=0.9188±0.0000  (/Σw best=0.7750)  [CPU合计10.7分钟]
+
+  ── p=3 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=3 ar=0.8260  (/Σw=0.6967)  [16.6分钟]
+    [cold_start] p=3: best=0.8260  mean=0.8260±0.0000  (/Σw best=0.6967)  [CPU合计16.6分钟]
+
+  ── p=3 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=3 ar=0.8019  (/Σw=0.6764)  [17.5分钟]
+    [tqa_init] p=3: best=0.8019  mean=0.8019±0.0000  (/Σw best=0.6764)  [CPU合计17.5分钟]
+
+  ── p=3 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=3 ar=0.9573  (/Σw=0.8074)  [17.1分钟]
+    [gnn_warmstart] p=3: best=0.9573  mean=0.9573±0.0000  (/Σw best=0.8074)  [CPU合计17.1分钟]
+
+  ── p=4 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=4 ar=0.8372  (/Σw=0.7061)  [23.2分钟]
+    [cold_start] p=4: best=0.8372  mean=0.8372±0.0000  (/Σw best=0.7061)  [CPU合计23.2分钟]
+
+  ── p=4 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=4 ar=0.8061  (/Σw=0.6799)  [25.3分钟]
+    [tqa_init] p=4: best=0.8061  mean=0.8061±0.0000  (/Σw best=0.6799)  [CPU合计25.3分钟]
+
+  ── p=4 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=4 ar=0.9632  (/Σw=0.8124)  [26.0分钟]
+    [gnn_warmstart] p=4: best=0.9632  mean=0.9632±0.0000  (/Σw best=0.8124)  [CPU合计26.0分钟]
+
+  ── p=5 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=5 ar=0.8437  (/Σw=0.7117)  [30.5分钟]
+    [cold_start] p=5: best=0.8437  mean=0.8437±0.0000  (/Σw best=0.7117)  [CPU合计30.5分钟]
+
+  ── p=5 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=5 ar=0.8085  (/Σw=0.6820)  [35.2分钟]
+    [tqa_init] p=5: best=0.8085  mean=0.8085±0.0000  (/Σw best=0.6820)  [CPU合计35.2分钟]
+
+  ── p=5 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=5 ar=0.9673  (/Σw=0.8159)  [37.9分钟]
+    [gnn_warmstart] p=5: best=0.9673  mean=0.9673±0.0000  (/Σw best=0.8159)  [CPU合计37.9分钟]
+
+  [实例 13 小结] p1: cold=0.7539/tqa=0.7539/gnn=0.8428  p2: cold=0.8025/tqa=0.7606/gnn=0.9188  p3: cold=0.8260/tqa=0.8019/gnn=0.9573  p4: cold=0.8372/tqa=0.8061/gnn=0.9632  p5: cold=0.8437/tqa=0.8085/gnn=0.9673  
+
+[实例 14/20] seed=34  |E|=18  C_max=11.1145  C_max/Σw=0.8007  unwanted_ratio=0.0712  权重相关系数=0.9838  GNN(/Σw)=0.7364  GNN(/C_max)=0.9197
+
+  ── p=1 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=1 ar=0.8156  (/Σw=0.6530)  [4.6分钟]
+    [cold_start] p=1: best=0.8156  mean=0.8156±0.0000  (/Σw best=0.6530)  [CPU合计4.6分钟]
+
+  ── p=1 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=1 ar=0.8156  (/Σw=0.6530)  [4.4分钟]
+    [tqa_init] p=1: best=0.8156  mean=0.8156±0.0000  (/Σw best=0.6530)  [CPU合计4.4分钟]
+
+  ── p=1 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=1 ar=0.8258  (/Σw=0.6612)  [5.3分钟]
+    [gnn_warmstart] p=1: best=0.8258  mean=0.8258±0.0000  (/Σw best=0.6612)  [CPU合计5.3分钟]
+
+  ── p=2 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=2 ar=0.8497  (/Σw=0.6803)  [9.4分钟]
+    [cold_start] p=2: best=0.8497  mean=0.8497±0.0000  (/Σw best=0.6803)  [CPU合计9.4分钟]
+
+  ── p=2 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=2 ar=0.8582  (/Σw=0.6871)  [9.2分钟]
+    [tqa_init] p=2: best=0.8582  mean=0.8582±0.0000  (/Σw best=0.6871)  [CPU合计9.2分钟]
+
+  ── p=2 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=2 ar=0.8467  (/Σw=0.6779)  [9.2分钟]
+    [gnn_warmstart] p=2: best=0.8467  mean=0.8467±0.0000  (/Σw best=0.6779)  [CPU合计9.2分钟]
+
+  ── p=3 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=3 ar=0.8643  (/Σw=0.6921)  [15.5分钟]
+    [cold_start] p=3: best=0.8643  mean=0.8643±0.0000  (/Σw best=0.6921)  [CPU合计15.5分钟]
+
+  ── p=3 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=3 ar=0.8699  (/Σw=0.6965)  [16.9分钟]
+    [tqa_init] p=3: best=0.8699  mean=0.8699±0.0000  (/Σw best=0.6965)  [CPU合计16.9分钟]
+
+  ── p=3 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=3 ar=0.8567  (/Σw=0.6860)  [17.3分钟]
+    [gnn_warmstart] p=3: best=0.8567  mean=0.8567±0.0000  (/Σw best=0.6860)  [CPU合计17.3分钟]
+
+  ── p=4 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=4 ar=0.8892  (/Σw=0.7120)  [25.1分钟]
+    [cold_start] p=4: best=0.8892  mean=0.8892±0.0000  (/Σw best=0.7120)  [CPU合计25.1分钟]
+
+  ── p=4 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=4 ar=0.8971  (/Σw=0.7183)  [24.1分钟]
+    [tqa_init] p=4: best=0.8971  mean=0.8971±0.0000  (/Σw best=0.7183)  [CPU合计24.1分钟]
+
+  ── p=4 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=4 ar=0.8608  (/Σw=0.6892)  [27.7分钟]
+    [gnn_warmstart] p=4: best=0.8608  mean=0.8608±0.0000  (/Σw best=0.6892)  [CPU合计27.7分钟]
+
+  ── p=5 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=5 ar=0.9025  (/Σw=0.7227)  [33.4分钟]
+    [cold_start] p=5: best=0.9025  mean=0.9025±0.0000  (/Σw best=0.7227)  [CPU合计33.4分钟]
+
+  ── p=5 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=5 ar=0.9025  (/Σw=0.7227)  [36.0分钟]
+    [tqa_init] p=5: best=0.9025  mean=0.9025±0.0000  (/Σw best=0.7227)  [CPU合计36.0分钟]
+
+  ── p=5 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=5 ar=0.8635  (/Σw=0.6914)  [40.7分钟]
+    [gnn_warmstart] p=5: best=0.8635  mean=0.8635±0.0000  (/Σw best=0.6914)  [CPU合计40.7分钟]
+
+  [实例 14 小结] p1: cold=0.8156/tqa=0.8156/gnn=0.8258  p2: cold=0.8497/tqa=0.8582/gnn=0.8467  p3: cold=0.8643/tqa=0.8699/gnn=0.8567  p4: cold=0.8892/tqa=0.8971/gnn=0.8608  p5: cold=0.9025/tqa=0.9025/gnn=0.8635  
+
+[实例 15/20] seed=36  |E|=18  C_max=10.6287  C_max/Σw=0.8764  unwanted_ratio=0.1805  权重相关系数=0.9494  GNN(/Σw)=0.8764  GNN(/C_max)=1.0000
+
+  ── p=1 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=1 ar=0.6818  (/Σw=0.5975)  [4.3分钟]
+    [cold_start] p=1: best=0.6818  mean=0.6818±0.0000  (/Σw best=0.5975)  [CPU合计4.3分钟]
+
+  ── p=1 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=1 ar=0.6818  (/Σw=0.5975)  [4.2分钟]
+    [tqa_init] p=1: best=0.6818  mean=0.6818±0.0000  (/Σw best=0.5975)  [CPU合计4.2分钟]
+
+  ── p=1 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=1 ar=0.8602  (/Σw=0.7539)  [4.4分钟]
+    [gnn_warmstart] p=1: best=0.8602  mean=0.8602±0.0000  (/Σw best=0.7539)  [CPU合计4.4分钟]
+
+  ── p=2 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=2 ar=0.7597  (/Σw=0.6658)  [9.3分钟]
+    [cold_start] p=2: best=0.7597  mean=0.7597±0.0000  (/Σw best=0.6658)  [CPU合计9.3分钟]
+
+  ── p=2 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=2 ar=0.7597  (/Σw=0.6658)  [8.5分钟]
+    [tqa_init] p=2: best=0.7597  mean=0.7597±0.0000  (/Σw best=0.6658)  [CPU合计8.5分钟]
+
+  ── p=2 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=2 ar=0.9304  (/Σw=0.8154)  [11.4分钟]
+    [gnn_warmstart] p=2: best=0.9304  mean=0.9304±0.0000  (/Σw best=0.8154)  [CPU合计11.4分钟]
+
+  ── p=3 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=3 ar=0.8005  (/Σw=0.7016)  [15.1分钟]
+    [cold_start] p=3: best=0.8005  mean=0.8005±0.0000  (/Σw best=0.7016)  [CPU合计15.1分钟]
+
+  ── p=3 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=3 ar=0.8005  (/Σw=0.7016)  [14.4分钟]
+    [tqa_init] p=3: best=0.8005  mean=0.8005±0.0000  (/Σw best=0.7016)  [CPU合计14.4分钟]
+
+  ── p=3 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=3 ar=0.9657  (/Σw=0.8464)  [17.9分钟]
+    [gnn_warmstart] p=3: best=0.9657  mean=0.9657±0.0000  (/Σw best=0.8464)  [CPU合计17.9分钟]
+
+  ── p=4 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=4 ar=0.8289  (/Σw=0.7265)  [21.1分钟]
+    [cold_start] p=4: best=0.8289  mean=0.8289±0.0000  (/Σw best=0.7265)  [CPU合计21.1分钟]
+
+  ── p=4 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=4 ar=0.8289  (/Σw=0.7265)  [23.3分钟]
+    [tqa_init] p=4: best=0.8289  mean=0.8289±0.0000  (/Σw best=0.7265)  [CPU合计23.3分钟]
+
+  ── p=4 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=4 ar=0.9684  (/Σw=0.8487)  [30.4分钟]
+    [gnn_warmstart] p=4: best=0.9684  mean=0.9684±0.0000  (/Σw best=0.8487)  [CPU合计30.4分钟]
+
+  ── p=5 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=5 ar=0.8483  (/Σw=0.7435)  [32.3分钟]
+    [cold_start] p=5: best=0.8483  mean=0.8483±0.0000  (/Σw best=0.7435)  [CPU合计32.3分钟]
+
+  ── p=5 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=5 ar=0.8483  (/Σw=0.7435)  [31.0分钟]
+    [tqa_init] p=5: best=0.8483  mean=0.8483±0.0000  (/Σw best=0.7435)  [CPU合计31.0分钟]
+
+  ── p=5 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=5 ar=0.9724  (/Σw=0.8523)  [44.4分钟]
+    [gnn_warmstart] p=5: best=0.9724  mean=0.9724±0.0000  (/Σw best=0.8523)  [CPU合计44.4分钟]
+
+  [实例 15 小结] p1: cold=0.6818/tqa=0.6818/gnn=0.8602  p2: cold=0.7597/tqa=0.7597/gnn=0.9304  p3: cold=0.8005/tqa=0.8005/gnn=0.9657  p4: cold=0.8289/tqa=0.8289/gnn=0.9684  p5: cold=0.8483/tqa=0.8483/gnn=0.9724  
+
+[实例 16/20] seed=41  |E|=18  C_max=10.1624  C_max/Σw=0.8247  unwanted_ratio=0.0844  权重相关系数=0.9910  GNN(/Σw)=0.7769  GNN(/C_max)=0.9420
+
+  ── p=1 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=1 ar=0.7612  (/Σw=0.6278)  [4.3分钟]
+    [cold_start] p=1: best=0.7612  mean=0.7612±0.0000  (/Σw best=0.6278)  [CPU合计4.3分钟]
+
+  ── p=1 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=1 ar=0.7612  (/Σw=0.6278)  [4.5分钟]
+    [tqa_init] p=1: best=0.7612  mean=0.7612±0.0000  (/Σw best=0.6278)  [CPU合计4.5分钟]
+
+  ── p=1 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=1 ar=0.8414  (/Σw=0.6939)  [4.5分钟]
+    [gnn_warmstart] p=1: best=0.8414  mean=0.8414±0.0000  (/Σw best=0.6939)  [CPU合计4.5分钟]
+
+  ── p=2 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=2 ar=0.7978  (/Σw=0.6579)  [9.5分钟]
+    [cold_start] p=2: best=0.7978  mean=0.7978±0.0000  (/Σw best=0.6579)  [CPU合计9.5分钟]
+
+  ── p=2 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=2 ar=0.8068  (/Σw=0.6654)  [9.2分钟]
+    [tqa_init] p=2: best=0.8068  mean=0.8068±0.0000  (/Σw best=0.6654)  [CPU合计9.2分钟]
+
+  ── p=2 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=2 ar=0.9084  (/Σw=0.7492)  [10.3分钟]
+    [gnn_warmstart] p=2: best=0.9084  mean=0.9084±0.0000  (/Σw best=0.7492)  [CPU合计10.3分钟]
+
+  ── p=3 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=3 ar=0.8291  (/Σw=0.6838)  [14.7分钟]
+    [cold_start] p=3: best=0.8291  mean=0.8291±0.0000  (/Σw best=0.6838)  [CPU合计14.7分钟]
+
+  ── p=3 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=3 ar=0.8291  (/Σw=0.6838)  [15.7分钟]
+    [tqa_init] p=3: best=0.8291  mean=0.8291±0.0000  (/Σw best=0.6838)  [CPU合计15.7分钟]
+
+  ── p=3 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=3 ar=0.9363  (/Σw=0.7722)  [17.4分钟]
+    [gnn_warmstart] p=3: best=0.9363  mean=0.9363±0.0000  (/Σw best=0.7722)  [CPU合计17.4分钟]
+
+  ── p=4 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=4 ar=0.8385  (/Σw=0.6916)  [22.9分钟]
+    [cold_start] p=4: best=0.8385  mean=0.8385±0.0000  (/Σw best=0.6916)  [CPU合计22.9分钟]
+
+  ── p=4 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=4 ar=0.8385  (/Σw=0.6916)  [25.3分钟]
+    [tqa_init] p=4: best=0.8385  mean=0.8385±0.0000  (/Σw best=0.6916)  [CPU合计25.3分钟]
+
+  ── p=4 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=4 ar=0.9561  (/Σw=0.7886)  [29.6分钟]
+    [gnn_warmstart] p=4: best=0.9561  mean=0.9561±0.0000  (/Σw best=0.7886)  [CPU合计29.6分钟]
+
+  ── p=5 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=5 ar=0.8488  (/Σw=0.7000)  [29.5分钟]
+    [cold_start] p=5: best=0.8488  mean=0.8488±0.0000  (/Σw best=0.7000)  [CPU合计29.5分钟]
+
+  ── p=5 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=5 ar=0.8488  (/Σw=0.7000)  [32.2分钟]
+    [tqa_init] p=5: best=0.8488  mean=0.8488±0.0000  (/Σw best=0.7000)  [CPU合计32.2分钟]
+
+  ── p=5 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=5 ar=0.9585  (/Σw=0.7905)  [41.0分钟]
+    [gnn_warmstart] p=5: best=0.9585  mean=0.9585±0.0000  (/Σw best=0.7905)  [CPU合计41.0分钟]
+
+  [实例 16 小结] p1: cold=0.7612/tqa=0.7612/gnn=0.8414  p2: cold=0.7978/tqa=0.8068/gnn=0.9084  p3: cold=0.8291/tqa=0.8291/gnn=0.9363  p4: cold=0.8385/tqa=0.8385/gnn=0.9561  p5: cold=0.8488/tqa=0.8488/gnn=0.9585  
+
+[实例 17/20] seed=43  |E|=18  C_max=10.6643  C_max/Σw=0.8543  unwanted_ratio=0.1069  权重相关系数=0.9894  GNN(/Σw)=0.7625  GNN(/C_max)=0.8926
+
+  ── p=1 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=1 ar=0.7417  (/Σw=0.6337)  [4.4分钟]
+    [cold_start] p=1: best=0.7417  mean=0.7417±0.0000  (/Σw best=0.6337)  [CPU合计4.4分钟]
+
+  ── p=1 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=1 ar=0.7417  (/Σw=0.6337)  [4.5分钟]
+    [tqa_init] p=1: best=0.7417  mean=0.7417±0.0000  (/Σw best=0.6337)  [CPU合计4.5分钟]
+
+  ── p=1 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=1 ar=0.8104  (/Σw=0.6923)  [4.6分钟]
+    [gnn_warmstart] p=1: best=0.8104  mean=0.8104±0.0000  (/Σw best=0.6923)  [CPU合计4.6分钟]
+
+  ── p=2 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=2 ar=0.7881  (/Σw=0.6733)  [8.3分钟]
+    [cold_start] p=2: best=0.7881  mean=0.7881±0.0000  (/Σw best=0.6733)  [CPU合计8.3分钟]
+
+  ── p=2 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=2 ar=0.7844  (/Σw=0.6701)  [9.1分钟]
+    [tqa_init] p=2: best=0.7844  mean=0.7844±0.0000  (/Σw best=0.6701)  [CPU合计9.1分钟]
+
+  ── p=2 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=2 ar=0.8285  (/Σw=0.7078)  [9.0分钟]
+    [gnn_warmstart] p=2: best=0.8285  mean=0.8285±0.0000  (/Σw best=0.7078)  [CPU合计9.0分钟]
+
+  ── p=3 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=3 ar=0.8027  (/Σw=0.6857)  [12.7分钟]
+    [cold_start] p=3: best=0.8027  mean=0.8027±0.0000  (/Σw best=0.6857)  [CPU合计12.7分钟]
+
+  ── p=3 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=3 ar=0.7922  (/Σw=0.6768)  [13.3分钟]
+    [tqa_init] p=3: best=0.7922  mean=0.7922±0.0000  (/Σw best=0.6768)  [CPU合计13.3分钟]
+
+  ── p=3 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=3 ar=0.8312  (/Σw=0.7101)  [19.2分钟]
+    [gnn_warmstart] p=3: best=0.8312  mean=0.8312±0.0000  (/Σw best=0.7101)  [CPU合计19.2分钟]
+
+  ── p=4 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=4 ar=0.8421  (/Σw=0.7194)  [23.5分钟]
+    [cold_start] p=4: best=0.8421  mean=0.8421±0.0000  (/Σw best=0.7194)  [CPU合计23.5分钟]
+
+  ── p=4 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=4 ar=0.8167  (/Σw=0.6977)  [21.7分钟]
+    [tqa_init] p=4: best=0.8167  mean=0.8167±0.0000  (/Σw best=0.6977)  [CPU合计21.7分钟]
+
+  ── p=4 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=4 ar=0.8334  (/Σw=0.7120)  [31.0分钟]
+    [gnn_warmstart] p=4: best=0.8334  mean=0.8334±0.0000  (/Σw best=0.7120)  [CPU合计31.0分钟]
+
+  ── p=5 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=5 ar=0.8520  (/Σw=0.7279)  [29.0分钟]
+    [cold_start] p=5: best=0.8520  mean=0.8520±0.0000  (/Σw best=0.7279)  [CPU合计29.0分钟]
+
+  ── p=5 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=5 ar=0.8502  (/Σw=0.7263)  [32.1分钟]
+    [tqa_init] p=5: best=0.8502  mean=0.8502±0.0000  (/Σw best=0.7263)  [CPU合计32.1分钟]
+
+  ── p=5 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=5 ar=0.8357  (/Σw=0.7139)  [42.0分钟]
+    [gnn_warmstart] p=5: best=0.8357  mean=0.8357±0.0000  (/Σw best=0.7139)  [CPU合计42.0分钟]
+
+  [实例 17 小结] p1: cold=0.7417/tqa=0.7417/gnn=0.8104  p2: cold=0.7881/tqa=0.7844/gnn=0.8285  p3: cold=0.8027/tqa=0.7922/gnn=0.8312  p4: cold=0.8421/tqa=0.8167/gnn=0.8334  p5: cold=0.8520/tqa=0.8502/gnn=0.8357  
+
+[实例 18/20] seed=47  |E|=18  C_max=11.7194  C_max/Σw=0.8733  unwanted_ratio=0.1108  权重相关系数=0.9914  GNN(/Σw)=0.8733  GNN(/C_max)=1.0000
+
+  ── p=1 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=1 ar=0.7044  (/Σw=0.6151)  [4.4分钟]
+    [cold_start] p=1: best=0.7044  mean=0.7044±0.0000  (/Σw best=0.6151)  [CPU合计4.4分钟]
+
+  ── p=1 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=1 ar=0.7044  (/Σw=0.6151)  [4.5分钟]
+    [tqa_init] p=1: best=0.7044  mean=0.7044±0.0000  (/Σw best=0.6151)  [CPU合计4.5分钟]
+
+  ── p=1 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=1 ar=0.8582  (/Σw=0.7494)  [4.6分钟]
+    [gnn_warmstart] p=1: best=0.8582  mean=0.8582±0.0000  (/Σw best=0.7494)  [CPU合计4.6分钟]
+
+  ── p=2 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=2 ar=0.7935  (/Σw=0.6929)  [8.7分钟]
+    [cold_start] p=2: best=0.7935  mean=0.7935±0.0000  (/Σw best=0.6929)  [CPU合计8.7分钟]
+
+  ── p=2 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=2 ar=0.7823  (/Σw=0.6832)  [9.1分钟]
+    [tqa_init] p=2: best=0.7823  mean=0.7823±0.0000  (/Σw best=0.6832)  [CPU合计9.1分钟]
+
+  ── p=2 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=2 ar=0.9001  (/Σw=0.7861)  [10.5分钟]
+    [gnn_warmstart] p=2: best=0.9001  mean=0.9001±0.0000  (/Σw best=0.7861)  [CPU合计10.5分钟]
+
+  ── p=3 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=3 ar=0.7996  (/Σw=0.6983)  [17.1分钟]
+    [cold_start] p=3: best=0.7996  mean=0.7996±0.0000  (/Σw best=0.6983)  [CPU合计17.1分钟]
+
+  ── p=3 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=3 ar=0.8157  (/Σw=0.7123)  [17.7分钟]
+    [tqa_init] p=3: best=0.8157  mean=0.8157±0.0000  (/Σw best=0.7123)  [CPU合计17.7分钟]
+
+  ── p=3 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=3 ar=0.9434  (/Σw=0.8239)  [20.4分钟]
+    [gnn_warmstart] p=3: best=0.9434  mean=0.9434±0.0000  (/Σw best=0.8239)  [CPU合计20.4分钟]
+
+  ── p=4 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=4 ar=0.8006  (/Σw=0.6992)  [26.1分钟]
+    [cold_start] p=4: best=0.8006  mean=0.8006±0.0000  (/Σw best=0.6992)  [CPU合计26.1分钟]
+
+  ── p=4 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=4 ar=0.8428  (/Σw=0.7360)  [28.1分钟]
+    [tqa_init] p=4: best=0.8428  mean=0.8428±0.0000  (/Σw best=0.7360)  [CPU合计28.1分钟]
+
+  ── p=4 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=4 ar=0.9498  (/Σw=0.8295)  [36.7分钟]
+    [gnn_warmstart] p=4: best=0.9498  mean=0.9498±0.0000  (/Σw best=0.8295)  [CPU合计36.7分钟]
+
+  ── p=5 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=5 ar=0.8012  (/Σw=0.6996)  [37.9分钟]
+    [cold_start] p=5: best=0.8012  mean=0.8012±0.0000  (/Σw best=0.6996)  [CPU合计37.9分钟]
+
+  ── p=5 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=5 ar=0.8446  (/Σw=0.7375)  [34.2分钟]
+    [tqa_init] p=5: best=0.8446  mean=0.8446±0.0000  (/Σw best=0.7375)  [CPU合计34.2分钟]
+
+  ── p=5 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=5 ar=0.9527  (/Σw=0.8320)  [34.5分钟]
+    [gnn_warmstart] p=5: best=0.9527  mean=0.9527±0.0000  (/Σw best=0.8320)  [CPU合计34.5分钟]
+
+  [实例 18 小结] p1: cold=0.7044/tqa=0.7044/gnn=0.8582  p2: cold=0.7935/tqa=0.7823/gnn=0.9001  p3: cold=0.7996/tqa=0.8157/gnn=0.9434  p4: cold=0.8006/tqa=0.8428/gnn=0.9498  p5: cold=0.8012/tqa=0.8446/gnn=0.9527  
+
+[实例 19/20] seed=48  |E|=18  C_max=9.4477  C_max/Σw=0.8309  unwanted_ratio=0.1405  权重相关系数=0.9545  GNN(/Σw)=0.7782  GNN(/C_max)=0.9366
+
+  ── p=1 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=1 ar=0.7210  (/Σw=0.5991)  [4.1分钟]
+    [cold_start] p=1: best=0.7210  mean=0.7210±0.0000  (/Σw best=0.5991)  [CPU合计4.1分钟]
+
+  ── p=1 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=1 ar=0.7210  (/Σw=0.5991)  [4.2分钟]
+    [tqa_init] p=1: best=0.7210  mean=0.7210±0.0000  (/Σw best=0.5991)  [CPU合计4.2分钟]
+
+  ── p=1 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=1 ar=0.8221  (/Σw=0.6831)  [4.0分钟]
+    [gnn_warmstart] p=1: best=0.8221  mean=0.8221±0.0000  (/Σw best=0.6831)  [CPU合计4.0分钟]
+
+  ── p=2 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=2 ar=0.7901  (/Σw=0.6565)  [8.1分钟]
+    [cold_start] p=2: best=0.7901  mean=0.7901±0.0000  (/Σw best=0.6565)  [CPU合计8.1分钟]
+
+  ── p=2 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=2 ar=0.7901  (/Σw=0.6565)  [7.5分钟]
+    [tqa_init] p=2: best=0.7901  mean=0.7901±0.0000  (/Σw best=0.6565)  [CPU合计7.5分钟]
+
+  ── p=2 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=2 ar=0.8737  (/Σw=0.7260)  [9.8分钟]
+    [gnn_warmstart] p=2: best=0.8737  mean=0.8737±0.0000  (/Σw best=0.7260)  [CPU合计9.8分钟]
+
+  ── p=3 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=3 ar=0.8279  (/Σw=0.6879)  [15.0分钟]
+    [cold_start] p=3: best=0.8279  mean=0.8279±0.0000  (/Σw best=0.6879)  [CPU合计15.0分钟]
+
+  ── p=3 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=3 ar=0.8279  (/Σw=0.6879)  [15.2分钟]
+    [tqa_init] p=3: best=0.8279  mean=0.8279±0.0000  (/Σw best=0.6879)  [CPU合计15.2分钟]
+
+  ── p=3 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=3 ar=0.8785  (/Σw=0.7299)  [17.8分钟]
+    [gnn_warmstart] p=3: best=0.8785  mean=0.8785±0.0000  (/Σw best=0.7299)  [CPU合计17.8分钟]
+
+  ── p=4 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=4 ar=0.8532  (/Σw=0.7089)  [20.6分钟]
+    [cold_start] p=4: best=0.8532  mean=0.8532±0.0000  (/Σw best=0.7089)  [CPU合计20.6分钟]
+
+  ── p=4 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=4 ar=0.8532  (/Σw=0.7089)  [21.1分钟]
+    [tqa_init] p=4: best=0.8532  mean=0.8532±0.0000  (/Σw best=0.7089)  [CPU合计21.1分钟]
+
+  ── p=4 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=4 ar=0.8980  (/Σw=0.7462)  [30.5分钟]
+    [gnn_warmstart] p=4: best=0.8980  mean=0.8980±0.0000  (/Σw best=0.7462)  [CPU合计30.5分钟]
+
+  ── p=5 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=5 ar=0.8703  (/Σw=0.7231)  [30.5分钟]
+    [cold_start] p=5: best=0.8703  mean=0.8703±0.0000  (/Σw best=0.7231)  [CPU合计30.5分钟]
+
+  ── p=5 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=5 ar=0.8703  (/Σw=0.7231)  [31.2分钟]
+    [tqa_init] p=5: best=0.8703  mean=0.8703±0.0000  (/Σw best=0.7231)  [CPU合计31.2分钟]
+
+  ── p=5 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=5 ar=0.9112  (/Σw=0.7571)  [44.8分钟]
+    [gnn_warmstart] p=5: best=0.9112  mean=0.9112±0.0000  (/Σw best=0.7571)  [CPU合计44.8分钟]
+
+  [实例 19 小结] p1: cold=0.7210/tqa=0.7210/gnn=0.8221  p2: cold=0.7901/tqa=0.7901/gnn=0.8737  p3: cold=0.8279/tqa=0.8279/gnn=0.8785  p4: cold=0.8532/tqa=0.8532/gnn=0.8980  p5: cold=0.8703/tqa=0.8703/gnn=0.9112  
+
+[实例 20/20] seed=51  |E|=18  C_max=10.2842  C_max/Σw=0.8621  unwanted_ratio=0.1767  权重相关系数=0.9586  GNN(/Σw)=0.8621  GNN(/C_max)=1.0000
+
+  ── p=1 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=1 ar=0.6910  (/Σw=0.5957)  [4.0分钟]
+    [cold_start] p=1: best=0.6910  mean=0.6910±0.0000  (/Σw best=0.5957)  [CPU合计4.0分钟]
+
+  ── p=1 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=1 ar=0.6910  (/Σw=0.5957)  [3.7分钟]
+    [tqa_init] p=1: best=0.6910  mean=0.6910±0.0000  (/Σw best=0.5957)  [CPU合计3.7分钟]
+
+  ── p=1 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=1 ar=0.8310  (/Σw=0.7164)  [3.6分钟]
+    [gnn_warmstart] p=1: best=0.8310  mean=0.8310±0.0000  (/Σw best=0.7164)  [CPU合计3.6分钟]
+
+  ── p=2 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=2 ar=0.7661  (/Σw=0.6605)  [7.8分钟]
+    [cold_start] p=2: best=0.7661  mean=0.7661±0.0000  (/Σw best=0.6605)  [CPU合计7.8分钟]
+
+  ── p=2 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=2 ar=0.7661  (/Σw=0.6605)  [8.0分钟]
+    [tqa_init] p=2: best=0.7661  mean=0.7661±0.0000  (/Σw best=0.6605)  [CPU合计8.0分钟]
+
+  ── p=2 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=2 ar=0.9123  (/Σw=0.7865)  [9.9分钟]
+    [gnn_warmstart] p=2: best=0.9123  mean=0.9123±0.0000  (/Σw best=0.7865)  [CPU合计9.9分钟]
+
+  ── p=3 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=3 ar=0.8161  (/Σw=0.7036)  [14.3分钟]
+    [cold_start] p=3: best=0.8161  mean=0.8161±0.0000  (/Σw best=0.7036)  [CPU合计14.3分钟]
+
+  ── p=3 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=3 ar=0.8161  (/Σw=0.7036)  [14.0分钟]
+    [tqa_init] p=3: best=0.8161  mean=0.8161±0.0000  (/Σw best=0.7036)  [CPU合计14.0分钟]
+
+  ── p=3 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=3 ar=0.9526  (/Σw=0.8212)  [18.3分钟]
+    [gnn_warmstart] p=3: best=0.9526  mean=0.9526±0.0000  (/Σw best=0.8212)  [CPU合计18.3分钟]
+
+  ── p=4 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=4 ar=0.8515  (/Σw=0.7341)  [22.6分钟]
+    [cold_start] p=4: best=0.8515  mean=0.8515±0.0000  (/Σw best=0.7341)  [CPU合计22.6分钟]
+
+  ── p=4 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=4 ar=0.8515  (/Σw=0.7341)  [23.6分钟]
+    [tqa_init] p=4: best=0.8515  mean=0.8515±0.0000  (/Σw best=0.7341)  [CPU合计23.6分钟]
+
+  ── p=4 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=4 ar=0.9654  (/Σw=0.8323)  [26.5分钟]
+    [gnn_warmstart] p=4: best=0.9654  mean=0.9654±0.0000  (/Σw best=0.8323)  [CPU合计26.5分钟]
+
+  ── p=5 cold_start (共 1 个BO种子) ──
+    task=1 [cold_start] p=5 ar=0.8751  (/Σw=0.7544)  [29.2分钟]
+    [cold_start] p=5: best=0.8751  mean=0.8751±0.0000  (/Σw best=0.7544)  [CPU合计29.2分钟]
+
+  ── p=5 tqa_init (共 1 个BO种子) ──
+    task=1 [tqa_init] p=5 ar=0.8751  (/Σw=0.7544)  [30.9分钟]
+    [tqa_init] p=5: best=0.8751  mean=0.8751±0.0000  (/Σw best=0.7544)  [CPU合计30.9分钟]
+
+  ── p=5 gnn_warmstart (共 1 个BO种子) ──
+    task=1 [gnn_warmstart] p=5 ar=0.9664  (/Σw=0.8331)  [38.8分钟]
+    [gnn_warmstart] p=5: best=0.9664  mean=0.9664±0.0000  (/Σw best=0.8331)  [CPU合计38.8分钟]
+
+  [实例 20 小结] p1: cold=0.6910/tqa=0.6910/gnn=0.8310  p2: cold=0.7661/tqa=0.7661/gnn=0.9123  p3: cold=0.8161/tqa=0.8161/gnn=0.9526  p4: cold=0.8515/tqa=0.8515/gnn=0.9654  p5: cold=0.8751/tqa=0.8751/gnn=0.9664  
+
+
+==============================================================================
+【表1】实例属性 (论文里描述测试集用)
+==============================================================================
+ 实例 seed |E| |  C_max   Σw    C_max/Σw | unwanted 权重相关 权重范围      | GNN/C_max
+------------------------------------------------------------------------------
+   1    7  18 | 10.0938 11.6216 0.8685 | 0.2291  0.8657  [0.405,0.897] | 1.0000
+   2   11  18 | 11.1735 12.9963 0.8597 | 0.0718  0.9887  [0.483,0.922] | 1.0000
+   3   13  18 | 10.4185 12.2250 0.8522 | 0.0872  0.9918  [0.459,0.935] | 0.8133
+   4   15  18 | 11.0181 12.7112 0.8668 | 0.0837  0.9898  [0.489,0.898] | 1.0000
+   5   16  18 |  9.7603 11.4892 0.8495 | 0.0870  0.9862  [0.480,0.829] | 0.9205
+   6   17  18 |  9.8564 10.7536 0.9166 | 0.2758  0.7634  [0.360,0.965] | 0.9626
+   7   18  18 | 10.3721 12.4594 0.8325 | 0.0853  0.9923  [0.460,0.968] | 0.9401
+   8   19  18 | 10.6054 12.8592 0.8247 | 0.0564  0.9854  [0.518,1.012] | 1.0000
+   9   20  18 |  9.9656 11.3172 0.8806 | 0.2237  0.7953  [0.448,0.828] | 1.0000
+  10   22  18 | 10.2810 12.8021 0.8031 | 0.1120  0.9890  [0.490,0.941] | 0.8768
+  11   26  18 | 11.2503 12.2544 0.9181 | 0.1939  0.9270  [0.406,0.976] | 1.0000
+  12   31  18 | 10.3946 12.2608 0.8478 | 0.2225  0.8220  [0.337,1.005] | 0.9039
+  13   32  18 | 10.6544 12.6317 0.8435 | 0.0925  0.9801  [0.522,0.904] | 1.0000
+  14   34  18 | 11.1145 13.8811 0.8007 | 0.0712  0.9838  [0.470,0.920] | 0.9197
+  15   36  18 | 10.6287 12.1270 0.8764 | 0.1805  0.9494  [0.308,0.952] | 1.0000
+  16   41  18 | 10.1624 12.3222 0.8247 | 0.0844  0.9910  [0.511,0.938] | 0.9420
+  17   43  18 | 10.6643 12.4831 0.8543 | 0.1069  0.9894  [0.472,0.936] | 0.8926
+  18   47  18 | 11.7194 13.4199 0.8733 | 0.1108  0.9914  [0.491,0.917] | 1.0000
+  19   48  18 |  9.4477 11.3703 0.8309 | 0.1405  0.9545  [0.439,0.924] | 0.9366
+  20   51  18 | 10.2842 11.9294 0.8621 | 0.1767  0.9586  [0.283,0.976] | 1.0000
+------------------------------------------------------------------------------
+ 均值±标准差: C_max/Σw=0.8543±0.0311  unwanted=0.1346±0.0656  权重相关=0.9447±0.0725
+ 纯经典 LGNN (/C_max): 0.9554±0.0544   (=1.0 表示该实例上找到了精确最优)
+ 其中 10/20 个实例 LGNN 直接找到了精确最优解
+
+==============================================================================
+【表2】主结果: 近似比 R_a = <C>/C_max  (Graham et al. arXiv:2112.14589 定义)
+每格 = 跨 20 个实例的 mean ± std (每实例内部已对 1 个BO种子取best)
+==============================================================================
+  p │  cold_start     │   tqa_init      │  gnn_warmstart  │ 配对优势(gnn-max(cold,tqa))
+------------------------------------------------------------------------------
+  1 │ 0.7212 ± 0.0447 │ 0.7212 ± 0.0447 │ 0.8327 ± 0.0212 │ +0.1115 ± 0.0534  (20/20 赢)
+  2 │ 0.7785 ± 0.0382 │ 0.7769 ± 0.0383 │ 0.8968 ± 0.0355 │ +0.1168 ± 0.0648  (19/20 赢)
+  3 │ 0.8062 ± 0.0356 │ 0.8061 ± 0.0347 │ 0.9265 ± 0.0429 │ +0.1183 ± 0.0670  (19/20 赢)
+  4 │ 0.8253 ± 0.0387 │ 0.8262 ± 0.0375 │ 0.9355 ± 0.0422 │ +0.1057 ± 0.0690  (18/20 赢)
+  5 │ 0.8371 ± 0.0381 │ 0.8401 ± 0.0340 │ 0.9398 ± 0.0411 │ +0.0973 ± 0.0640  (18/20 赢)
+
+【表2b】累积最优 max over p'<=p of R_a(p')
+上表是 BO 在该 p 实际搜到的原始值; 这张表是"截至 p 层的最好成绩"。
+物理上 R_a(p) 必然 >= R_a(p-1) —— p 层电路把第 p 层角度置零就精确
+退化成 p-1 层, 所以 p-1 的最优解是 p 层搜索空间里的合法点。两表之差
+就是经典优化器在该 p 上失效的幅度。论文里两个数字都应该报, 后者不能
+替代前者(替代会掩盖"高p优化变难"这个真实且值得报告的信息)。
+------------------------------------------------------------------------------
+  p │  cold_start     │   tqa_init      │  gnn_warmstart  │ gnn失效量(累积-原始)
+------------------------------------------------------------------------------
+  1 │ 0.7212 ± 0.0447 │ 0.7212 ± 0.0447 │ 0.8327 ± 0.0212 │ +0.0000  (0/20 实例该层没超过更低层)
+  2 │ 0.7785 ± 0.0382 │ 0.7769 ± 0.0383 │ 0.8968 ± 0.0355 │ +0.0000  (0/20 实例该层没超过更低层)
+  3 │ 0.8062 ± 0.0356 │ 0.8061 ± 0.0347 │ 0.9265 ± 0.0429 │ +0.0000  (0/20 实例该层没超过更低层)
+  4 │ 0.8253 ± 0.0387 │ 0.8262 ± 0.0375 │ 0.9355 ± 0.0422 │ +0.0000  (0/20 实例该层没超过更低层)
+  5 │ 0.8371 ± 0.0381 │ 0.8401 ± 0.0340 │ 0.9398 ± 0.0411 │ +0.0000  (0/20 实例该层没超过更低层)
+
+【表2c】最优角度贴在参数盒**上界**的实例数 (每层盒 = [0,9.425]×[0,0.4], 容差 1e-3)
+  时长下界 0 是物理边界, 不计; 贴上界说明更大的盒子可能更好(可用 QAOA_BOX_SCALE=2 检验)
+  p=1: cold_start=0/20   tqa_init=0/20   gnn_warmstart=0/20
+  p=2: cold_start=0/20   tqa_init=0/20   gnn_warmstart=0/20
+  p=3: cold_start=0/20   tqa_init=0/20   gnn_warmstart=0/20
+  p=4: cold_start=0/20   tqa_init=0/20   gnn_warmstart=0/20
+  p=5: cold_start=1/20   tqa_init=0/20   gnn_warmstart=0/20
+
+==============================================================================
+【表3】逐实例明细 (论文附录 / 画箱线图用)
+==============================================================================
+ p=1:
+   实例 | cold_start  tqa_init  gnn_warmstart | 优势
+     7  |  0.6852     0.6852     0.8568      | +0.1716
+    11  |  0.7090     0.7090     0.8372      | +0.1282
+    13  |  0.7242     0.7242     0.7886      | +0.0645
+    15  |  0.7384     0.7384     0.8439      | +0.1056
+    16  |  0.7616     0.7616     0.8111      | +0.0494
+    17  |  0.6443     0.6443     0.8296      | +0.1853
+    18  |  0.7384     0.7384     0.8180      | +0.0797
+    19  |  0.7684     0.7684     0.8604      | +0.0920
+    20  |  0.6865     0.6865     0.8581      | +0.1716
+    22  |  0.7660     0.7660     0.8192      | +0.0533
+    26  |  0.6341     0.6341     0.8426      | +0.2085
+    31  |  0.6979     0.6979     0.7970      | +0.0992
+    32  |  0.7539     0.7539     0.8428      | +0.0889
+    34  |  0.8156     0.8156     0.8258      | +0.0102
+    36  |  0.6818     0.6818     0.8602      | +0.1785
+    41  |  0.7612     0.7612     0.8414      | +0.0802
+    43  |  0.7417     0.7417     0.8104      | +0.0687
+    47  |  0.7044     0.7044     0.8582      | +0.1538
+    48  |  0.7210     0.7210     0.8221      | +0.1011
+    51  |  0.6910     0.6910     0.8310      | +0.1400
+ p=2:
+   实例 | cold_start  tqa_init  gnn_warmstart | 优势
+     7  |  0.7600     0.7600     0.9211      | +0.1610
+    11  |  0.7305     0.7389     0.9317      | +0.1928
+    13  |  0.7917     0.7917     0.8569      | +0.0652
+    15  |  0.7861     0.7904     0.9398      | +0.1494
+    16  |  0.8128     0.8078     0.8801      | +0.0673
+    17  |  0.7189     0.7189     0.9112      | +0.1923
+    18  |  0.8136     0.8136     0.8802      | +0.0666
+    19  |  0.7949     0.7949     0.9334      | +0.1385
+    20  |  0.7074     0.7074     0.9305      | +0.2231
+    22  |  0.8244     0.8244     0.8673      | +0.0429
+    26  |  0.7119     0.7119     0.9303      | +0.2184
+    31  |  0.7703     0.7703     0.8349      | +0.0646
+    32  |  0.8025     0.7606     0.9188      | +0.1163
+    34  |  0.8497     0.8582     0.8467      | -0.0115
+    36  |  0.7597     0.7597     0.9304      | +0.1707
+    41  |  0.7978     0.8068     0.9084      | +0.1017
+    43  |  0.7881     0.7844     0.8285      | +0.0404
+    47  |  0.7935     0.7823     0.9001      | +0.1067
+    48  |  0.7901     0.7901     0.8737      | +0.0836
+    51  |  0.7661     0.7661     0.9123      | +0.1461
+ p=3:
+   实例 | cold_start  tqa_init  gnn_warmstart | 优势
+     7  |  0.7995     0.7995     0.9514      | +0.1518
+    11  |  0.7500     0.7645     0.9661      | +0.2016
+    13  |  0.8147     0.8198     0.8852      | +0.0654
+    15  |  0.8117     0.8117     0.9723      | +0.1606
+    16  |  0.8398     0.8398     0.9168      | +0.0771
+    17  |  0.7572     0.7572     0.9431      | +0.1859
+    18  |  0.8341     0.8260     0.9192      | +0.0851
+    19  |  0.8115     0.8115     0.9737      | +0.1622
+    20  |  0.7110     0.7110     0.9657      | +0.2547
+    22  |  0.8445     0.8445     0.8896      | +0.0452
+    26  |  0.7749     0.7749     0.9530      | +0.1781
+    31  |  0.8080     0.8080     0.8723      | +0.0643
+    32  |  0.8260     0.8019     0.9573      | +0.1313
+    34  |  0.8643     0.8699     0.8567      | -0.0132
+    36  |  0.8005     0.8005     0.9657      | +0.1653
+    41  |  0.8291     0.8291     0.9363      | +0.1072
+    43  |  0.8027     0.7922     0.8312      | +0.0286
+    47  |  0.7996     0.8157     0.9434      | +0.1277
+    48  |  0.8279     0.8279     0.8785      | +0.0505
+    51  |  0.8161     0.8161     0.9526      | +0.1365
+ p=4:
+   实例 | cold_start  tqa_init  gnn_warmstart | 优势
+     7  |  0.8227     0.8227     0.9669      | +0.1442
+    11  |  0.7552     0.7705     0.9724      | +0.2019
+    13  |  0.8293     0.8409     0.9022      | +0.0613
+    15  |  0.8117     0.8250     0.9791      | +0.1541
+    16  |  0.8607     0.8607     0.9332      | +0.0725
+    17  |  0.7842     0.7842     0.9483      | +0.1641
+    18  |  0.8495     0.8335     0.9255      | +0.0761
+    19  |  0.8252     0.8252     0.9763      | +0.1511
+    20  |  0.7163     0.7163     0.9693      | +0.2530
+    22  |  0.8566     0.8566     0.9133      | +0.0567
+    26  |  0.8196     0.8196     0.9547      | +0.1352
+    31  |  0.8336     0.8336     0.8738      | +0.0402
+    32  |  0.8372     0.8061     0.9632      | +0.1260
+    34  |  0.8892     0.8971     0.8608      | -0.0364
+    36  |  0.8289     0.8289     0.9684      | +0.1394
+    41  |  0.8385     0.8385     0.9561      | +0.1176
+    43  |  0.8421     0.8167     0.8334      | -0.0086
+    47  |  0.8006     0.8428     0.9498      | +0.1070
+    48  |  0.8532     0.8532     0.8980      | +0.0448
+    51  |  0.8515     0.8515     0.9654      | +0.1139
+ p=5:
+   实例 | cold_start  tqa_init  gnn_warmstart | 优势
+     7  |  0.8409     0.8409     0.9685      | +0.1276
+    11  |  0.7570     0.7752     0.9742      | +0.1990
+    13  |  0.8372     0.8464     0.9196      | +0.0732
+    15  |  0.8117     0.8304     0.9802      | +0.1498
+    16  |  0.8626     0.8626     0.9346      | +0.0720
+    17  |  0.8118     0.8118     0.9502      | +0.1384
+    18  |  0.8514     0.8398     0.9387      | +0.0873
+    19  |  0.8265     0.8364     0.9777      | +0.1413
+    20  |  0.7405     0.7486     0.9713      | +0.2227
+    22  |  0.8591     0.8591     0.9203      | +0.0611
+    26  |  0.8514     0.8514     0.9583      | +0.1069
+    31  |  0.8507     0.8507     0.8748      | +0.0241
+    32  |  0.8437     0.8085     0.9673      | +0.1236
+    34  |  0.9025     0.9025     0.8635      | -0.0390
+    36  |  0.8483     0.8483     0.9724      | +0.1241
+    41  |  0.8488     0.8488     0.9585      | +0.1097
+    43  |  0.8520     0.8502     0.8357      | -0.0163
+    47  |  0.8012     0.8446     0.9527      | +0.1081
+    48  |  0.8703     0.8703     0.9112      | +0.0409
+    51  |  0.8751     0.8751     0.9664      | +0.0913
+
+==============================================================================
+【表4】关键论点的数据支撑
+==============================================================================
+ (A) 电路深度节省: warmstart 的低 p 能不能顶 cold_start 的高 p
+     cold_start 在测试的 p=1..5 中最好的是 p=5, R_a=0.8371
+       warmstart p=1 (0.8327) 还没超过 cold_start 最好成绩
+     → warmstart p=2 (0.8968) 已经超过 cold_start 的最好成绩 (+0.0597)
+     → warmstart p=3 (0.9265) 已经超过 cold_start 的最好成绩 (+0.0894)
+     → warmstart p=4 (0.9355) 已经超过 cold_start 的最好成绩 (+0.0984)
+     → warmstart p=5 (0.9398) 已经超过 cold_start 的最好成绩 (+0.1027)
+       [逐实例配对] warmstart p=1 打败该图上 cold_start 全部 p 的最好值: 8/20
+       [逐实例配对] warmstart p=2 打败该图上 cold_start 全部 p 的最好值: 17/20
+       [逐实例配对] warmstart p=3 打败该图上 cold_start 全部 p 的最好值: 18/20
+       [逐实例配对] warmstart p=4 打败该图上 cold_start 全部 p 的最好值: 18/20
+       [逐实例配对] warmstart p=5 打败该图上 cold_start 全部 p 的最好值: 18/20
+ (B) TQA 初始化相对 cold_start 的增益(用来反衬 warmstart 的增益不是'随便换个初始化都行'):
+     p=1: -0.000000 ± 0.000000  (更好 0 / 持平 20 / 更差 0, 共 20 个实例)
+     p=2: -0.001578 ± 0.010536  (更好 4 / 持平 12 / 更差 4, 共 20 个实例)
+     p=3: -0.000070 ± 0.008201  (更好 4 / 持平 13 / 更差 3, 共 20 个实例)
+     p=4: +0.000890 ± 0.014933  (更好 5 / 持平 12 / 更差 3, 共 20 个实例)
+     p=5: +0.002947 ± 0.014544  (更好 6 / 持平 11 / 更差 3, 共 20 个实例)
+ (C) 每增加一层带来的增益:
+     p=1→2: cold_start +0.0573, gnn_warmstart +0.0641
+     p=2→3: cold_start +0.0277, gnn_warmstart +0.0297
+     p=3→4: cold_start +0.0191, gnn_warmstart +0.0090
+     p=4→5: cold_start +0.0118, gnn_warmstart +0.0043
+==============================================================================
+✓ 最优角度CSV          → best_angles_n12_inst20_hybrid300_om15.7_wsE_ws0.2_p5_I16efd892.csv
+
+✓ 汇总CSV(每实例best)  → paper_results_n12_inst20_hybrid300_om15.7_wsE_ws0.2_p5_I16efd892.csv
+✓ 原始CSV(每BO种子)    → paper_raw_n12_inst20_hybrid300_om15.7_wsE_ws0.2_p5_I16efd892.csv
+✓ 完整数据(jls)        → batch_qaoa_n12_inst20_zygote_hybrid300_om15.7_wsE_ws0.2_p5_I16efd892.jls
+  Activating project at `~/Downloads/julia/ChenQAOA`
+日志: 共 75 行写入文件, 其中 75 行同时显示在控制台
+完整细节(含BO每步)在: /Users/zhoushenheng/Downloads/julia/hybrid_om15_egger.log
+墙钟 608.9 分钟, CPU 合计 5993.7 分钟 (并行加速 9.8x, worker=12)

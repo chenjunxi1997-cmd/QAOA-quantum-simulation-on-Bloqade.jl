@@ -1,0 +1,385 @@
+      · inst1/p=1 cold_start     ar=0.6852 (/Σw=0.5951)  [hybrid+nm, 1条前缀]  [3455次演化]  [3.6分钟]
+      · inst1/p=1 tqa_init       ar=0.6852 (/Σw=0.5951)  [hybrid+nm, 1条前缀]  [3186次演化]  [3.4分钟]
+      · inst1/p=1 gnn_warmstart  ar=0.8714 (/Σw=0.7568)  [hybrid+nm, 1条前缀]  [2141次演化]  [3.3分钟]
+      · inst1/p=2 cold_start     ar=0.7600 (/Σw=0.6601)  [hybrid+nm, 1条前缀]  [5018次演化]  [7.6分钟]
+      · inst1/p=2 tqa_init       ar=0.7600 (/Σw=0.6601)  [hybrid+nm, 1条前缀]  [5317次演化]  [7.9分钟]
+      · inst1/p=2 gnn_warmstart  ar=0.8854 (/Σw=0.7690)  [hybrid+nm, 1条前缀]  [4695次演化]  [12.5分钟]
+      · inst1/p=3 cold_start     ar=0.7995 (/Σw=0.6944)  [hybrid+nm, 1条前缀]  [7696次演化]  [15.9分钟]
+      · inst1/p=3 tqa_init       ar=0.7995 (/Σw=0.6944)  [hybrid+nm, 1条前缀]  [7217次演化]  [15.2分钟]
+      · inst1/p=3 gnn_warmstart  ar=0.8929 (/Σw=0.7755)  [hybrid+nm, 1条前缀]  [6216次演化]  [24.2分钟]
+      · inst1/p=4 cold_start     ar=0.8227 (/Σw=0.7145)  [hybrid+nm, 1条前缀]  [9331次演化]  [25.5分钟]
+      · inst1/p=4 tqa_init       ar=0.8227 (/Σw=0.7145)  [hybrid+nm, 1条前缀]  [9446次演化]  [27.2分钟]
+      · inst1/p=4 gnn_warmstart  ar=0.8957 (/Σw=0.7780)  [hybrid+nm, 1条前缀]  [8707次演化]  [52.4分钟]
+      · inst1/p=5 cold_start     ar=0.8409 (/Σw=0.7304)  [hybrid+nm, 1条前缀]  [11859次演化]  [42.9分钟]
+      · inst1/p=5 tqa_init       ar=0.8409 (/Σw=0.7304)  [hybrid+nm, 1条前缀]  [11577次演化]  [42.8分钟]
+      · inst1/p=5 gnn_warmstart  ar=0.8978 (/Σw=0.7798)  [hybrid+nm, 1条前缀]  [10074次演化]  [69.8分钟]
+      · inst2/p=1 cold_start     ar=0.7090 (/Σw=0.6095)  [hybrid+nm, 1条前缀]  [3060次演化]  [3.4分钟]
+      · inst2/p=1 tqa_init       ar=0.7090 (/Σw=0.6095)  [hybrid+nm, 1条前缀]  [3176次演化]  [3.6分钟]
+      · inst2/p=1 gnn_warmstart  ar=0.8689 (/Σw=0.7470)  [hybrid+nm, 1条前缀]  [2237次演化]  [3.5分钟]
+      · inst2/p=2 cold_start     ar=0.7305 (/Σw=0.6281)  [hybrid+nm, 1条前缀]  [4848次演化]  [7.3分钟]
+      · inst2/p=2 tqa_init       ar=0.7389 (/Σw=0.6352)  [hybrid+nm, 1条前缀]  [5172次演化]  [9.7分钟]
+      · inst2/p=2 gnn_warmstart  ar=0.8923 (/Σw=0.7672)  [hybrid+nm, 1条前缀]  [4689次演化]  [11.5分钟]
+      · inst2/p=3 cold_start     ar=0.7500 (/Σw=0.6448)  [hybrid+nm, 1条前缀]  [7911次演化]  [16.8分钟]
+      · inst2/p=3 tqa_init       ar=0.7645 (/Σw=0.6573)  [hybrid+nm, 1条前缀]  [8333次演化]  [18.4分钟]
+      · inst2/p=3 gnn_warmstart  ar=0.9057 (/Σw=0.7787)  [hybrid+nm, 1条前缀]  [6348次演化]  [20.4分钟]
+      · inst2/p=4 cold_start     ar=0.7552 (/Σw=0.6493)  [hybrid+nm, 1条前缀]  [9575次演化]  [29.7分钟]
+      · inst2/p=4 tqa_init       ar=0.7705 (/Σw=0.6624)  [hybrid+nm, 1条前缀]  [9792次演化]  [31.4分钟]
+      · inst2/p=4 gnn_warmstart  ar=0.9100 (/Σw=0.7824)  [hybrid+nm, 1条前缀]  [8181次演化]  [35.6分钟]
+      · inst2/p=5 cold_start     ar=0.7570 (/Σw=0.6508)  [hybrid+nm, 1条前缀]  [11198次演化]  [49.2分钟]
+      · inst2/p=5 tqa_init       ar=0.7752 (/Σw=0.6665)  [hybrid+nm, 1条前缀]  [12036次演化]  [53.2分钟]
+      · inst2/p=5 gnn_warmstart  ar=0.9109 (/Σw=0.7831)  [hybrid+nm, 1条前缀]  [9707次演化]  [52.4分钟]
+      · inst3/p=1 cold_start     ar=0.7242 (/Σw=0.6172)  [hybrid+nm, 1条前缀]  [3297次演化]  [3.6分钟]
+      · inst3/p=1 tqa_init       ar=0.7242 (/Σw=0.6172)  [hybrid+nm, 1条前缀]  [2961次演化]  [3.3分钟]
+      · inst3/p=1 gnn_warmstart  ar=0.8172 (/Σw=0.6964)  [hybrid+nm, 1条前缀]  [2154次演化]  [3.5分钟]
+      · inst3/p=2 cold_start     ar=0.7917 (/Σw=0.6747)  [hybrid+nm, 1条前缀]  [5106次演化]  [8.7分钟]
+      · inst3/p=2 tqa_init       ar=0.7917 (/Σw=0.6747)  [hybrid+nm, 1条前缀]  [5258次演化]  [9.2分钟]
+      · inst3/p=2 gnn_warmstart  ar=0.8328 (/Σw=0.7098)  [hybrid+nm, 1条前缀]  [4333次演化]  [11.6分钟]
+      · inst3/p=3 cold_start     ar=0.8147 (/Σw=0.6943)  [hybrid+nm, 1条前缀]  [7066次演化]  [17.3分钟]
+      · inst3/p=3 tqa_init       ar=0.8198 (/Σw=0.6986)  [hybrid+nm, 1条前缀]  [7149次演化]  [17.6分钟]
+      · inst3/p=3 gnn_warmstart  ar=0.8489 (/Σw=0.7235)  [hybrid+nm, 1条前缀]  [6003次演化]  [28.9分钟]
+      · inst3/p=4 cold_start     ar=0.8293 (/Σw=0.7068)  [hybrid+nm, 1条前缀]  [9390次演化]  [28.4分钟]
+      · inst3/p=4 tqa_init       ar=0.8409 (/Σw=0.7166)  [hybrid+nm, 1条前缀]  [9766次演化]  [30.3分钟]
+      · inst3/p=4 gnn_warmstart  ar=0.8585 (/Σw=0.7316)  [hybrid+nm, 1条前缀]  [8934次演化]  [61.1分钟]
+      · inst3/p=5 cold_start     ar=0.8372 (/Σw=0.7135)  [hybrid+nm, 1条前缀]  [11055次演化]  [41.6分钟]
+      · inst3/p=5 tqa_init       ar=0.8464 (/Σw=0.7213)  [hybrid+nm, 1条前缀]  [11182次演化]  [49.7分钟]
+      · inst3/p=5 gnn_warmstart  ar=0.8616 (/Σw=0.7343)  [hybrid+nm, 1条前缀]  [9740次演化]  [77.3分钟]
+      · inst4/p=1 cold_start     ar=0.7384 (/Σw=0.6400)  [hybrid+nm, 1条前缀]  [3072次演化]  [3.5分钟]
+      · inst4/p=1 tqa_init       ar=0.7384 (/Σw=0.6400)  [hybrid+nm, 1条前缀]  [3108次演化]  [3.4分钟]
+      · inst4/p=1 gnn_warmstart  ar=0.8903 (/Σw=0.7717)  [hybrid+nm, 1条前缀]  [2363次演化]  [3.6分钟]
+      · inst4/p=2 cold_start     ar=0.7861 (/Σw=0.6814)  [hybrid+nm, 1条前缀]  [4784次演化]  [7.1分钟]
+      · inst4/p=2 tqa_init       ar=0.7904 (/Σw=0.6851)  [hybrid+nm, 1条前缀]  [5154次演化]  [8.8分钟]
+      · inst4/p=2 gnn_warmstart  ar=0.9018 (/Σw=0.7817)  [hybrid+nm, 1条前缀]  [4249次演化]  [12.6分钟]
+      · inst4/p=3 cold_start     ar=0.8117 (/Σw=0.7036)  [hybrid+nm, 1条前缀]  [7411次演化]  [16.8分钟]
+      · inst4/p=3 tqa_init       ar=0.8117 (/Σw=0.7036)  [hybrid+nm, 1条前缀]  [7431次演化]  [18.4分钟]
+      · inst4/p=3 gnn_warmstart  ar=0.9058 (/Σw=0.7851)  [hybrid+nm, 1条前缀]  [7357次演化]  [36.3分钟]
+      · inst4/p=4 cold_start     ar=0.8117 (/Σw=0.7036)  [hybrid+nm, 1条前缀]  [11744次演化]  [47.1分钟]
+      · inst4/p=4 tqa_init       ar=0.8250 (/Σw=0.7151)  [hybrid+nm, 1条前缀]  [9881次演化]  [30.7分钟]
+      · inst4/p=4 gnn_warmstart  ar=0.9102 (/Σw=0.7889)  [hybrid+nm, 1条前缀]  [9216次演化]  [65.0分钟]
+      · inst4/p=5 cold_start     ar=0.8117 (/Σw=0.7036)  [hybrid+nm, 1条前缀]  [14391次演化]  [66.1分钟]
+      · inst4/p=5 tqa_init       ar=0.8304 (/Σw=0.7198)  [hybrid+nm, 1条前缀]  [11167次演化]  [45.3分钟]
+      · inst4/p=5 gnn_warmstart  ar=0.9122 (/Σw=0.7907)  [hybrid+nm, 1条前缀]  [10722次演化]  [64.7分钟]
+      · inst5/p=1 cold_start     ar=0.7616 (/Σw=0.6470)  [hybrid+nm, 1条前缀]  [3165次演化]  [3.4分钟]
+      · inst5/p=1 tqa_init       ar=0.7616 (/Σw=0.6470)  [hybrid+nm, 1条前缀]  [3051次演化]  [3.3分钟]
+      · inst5/p=1 gnn_warmstart  ar=0.8420 (/Σw=0.7153)  [hybrid+nm, 1条前缀]  [2380次演化]  [3.8分钟]
+      · inst5/p=2 cold_start     ar=0.8128 (/Σw=0.6905)  [hybrid+nm, 1条前缀]  [5319次演化]  [9.0分钟]
+      · inst5/p=2 tqa_init       ar=0.8078 (/Σw=0.6863)  [hybrid+nm, 1条前缀]  [4767次演化]  [8.3分钟]
+      · inst5/p=2 gnn_warmstart  ar=0.8948 (/Σw=0.7602)  [hybrid+nm, 1条前缀]  [4104次演化]  [8.9分钟]
+      · inst5/p=3 cold_start     ar=0.8398 (/Σw=0.7134)  [hybrid+nm, 1条前缀]  [7141次演化]  [17.6分钟]
+      · inst5/p=3 tqa_init       ar=0.8398 (/Σw=0.7134)  [hybrid+nm, 1条前缀]  [7242次演化]  [17.9分钟]
+      · inst5/p=3 gnn_warmstart  ar=0.9047 (/Σw=0.7686)  [hybrid+nm, 1条前缀]  [6466次演化]  [20.2分钟]
+      · inst5/p=4 cold_start     ar=0.8607 (/Σw=0.7312)  [hybrid+nm, 1条前缀]  [9492次演化]  [28.4分钟]
+      · inst5/p=4 tqa_init       ar=0.8607 (/Σw=0.7312)  [hybrid+nm, 1条前缀]  [9988次演化]  [31.1分钟]
+      · inst5/p=4 gnn_warmstart  ar=0.9130 (/Σw=0.7756)  [hybrid+nm, 1条前缀]  [11089次演化]  [55.3分钟]
+      · inst5/p=5 cold_start     ar=0.8626 (/Σw=0.7328)  [hybrid+nm, 1条前缀]  [9741次演化]  [39.2分钟]
+      · inst5/p=5 tqa_init       ar=0.8626 (/Σw=0.7328)  [hybrid+nm, 1条前缀]  [10396次演化]  [42.2分钟]
+      · inst5/p=5 gnn_warmstart  ar=0.9199 (/Σw=0.7815)  [hybrid+nm, 1条前缀]  [11957次演化]  [75.4分钟]
+      · inst6/p=1 cold_start     ar=0.6443 (/Σw=0.5906)  [hybrid+nm, 1条前缀]  [3262次演化]  [3.4分钟]
+      · inst6/p=1 tqa_init       ar=0.6443 (/Σw=0.5906)  [hybrid+nm, 1条前缀]  [3047次演化]  [3.3分钟]
+      · inst6/p=1 gnn_warmstart  ar=0.8652 (/Σw=0.7930)  [hybrid+nm, 1条前缀]  [2222次演化]  [3.9分钟]
+      · inst6/p=2 cold_start     ar=0.7189 (/Σw=0.6589)  [hybrid+nm, 1条前缀]  [4823次演化]  [7.3分钟]
+      · inst6/p=2 tqa_init       ar=0.7189 (/Σw=0.6589)  [hybrid+nm, 1条前缀]  [5235次演化]  [7.9分钟]
+      · inst6/p=2 gnn_warmstart  ar=0.8775 (/Σw=0.8042)  [hybrid+nm, 1条前缀]  [4218次演化]  [11.1分钟]
+      · inst6/p=3 cold_start     ar=0.7572 (/Σw=0.6940)  [hybrid+nm, 1条前缀]  [8258次演化]  [17.1分钟]
+      · inst6/p=3 tqa_init       ar=0.7572 (/Σw=0.6940)  [hybrid+nm, 1条前缀]  [7902次演化]  [16.8分钟]
+      · inst6/p=3 gnn_warmstart  ar=0.8813 (/Σw=0.8078)  [hybrid+nm, 1条前缀]  [5784次演化]  [24.6分钟]
+      · inst6/p=4 cold_start     ar=0.7842 (/Σw=0.7188)  [hybrid+nm, 1条前缀]  [8616次演化]  [23.7分钟]
+      · inst6/p=4 tqa_init       ar=0.7842 (/Σw=0.7188)  [hybrid+nm, 1条前缀]  [9425次演化]  [27.3分钟]
+      · inst6/p=4 gnn_warmstart  ar=0.8832 (/Σw=0.8095)  [hybrid+nm, 1条前缀]  [8602次演化]  [56.7分钟]
+      · inst6/p=5 cold_start     ar=0.8118 (/Σw=0.7440)  [hybrid+nm, 1条前缀]  [10757次演化]  [38.8分钟]
+      · inst6/p=5 tqa_init       ar=0.8118 (/Σw=0.7440)  [hybrid+nm, 1条前缀]  [11419次演化]  [41.9分钟]
+      · inst6/p=5 gnn_warmstart  ar=0.8848 (/Σw=0.8109)  [hybrid+nm, 1条前缀]  [9573次演化]  [72.4分钟]
+      · inst7/p=1 cold_start     ar=0.7384 (/Σw=0.6147)  [hybrid+nm, 1条前缀]  [3089次演化]  [3.5分钟]
+      · inst7/p=1 tqa_init       ar=0.7384 (/Σw=0.6147)  [hybrid+nm, 1条前缀]  [3233次演化]  [3.5分钟]
+      · inst7/p=1 gnn_warmstart  ar=0.8421 (/Σw=0.7010)  [hybrid+nm, 1条前缀]  [2526次演化]  [4.3分钟]
+      · inst7/p=2 cold_start     ar=0.8136 (/Σw=0.6773)  [hybrid+nm, 1条前缀]  [5077次演化]  [9.2分钟]
+      · inst7/p=2 tqa_init       ar=0.8136 (/Σw=0.6773)  [hybrid+nm, 1条前缀]  [5460次演化]  [9.9分钟]
+      · inst7/p=2 gnn_warmstart  ar=0.8866 (/Σw=0.7381)  [hybrid+nm, 1条前缀]  [4491次演化]  [10.8分钟]
+      · inst7/p=3 cold_start     ar=0.8341 (/Σw=0.6943)  [hybrid+nm, 1条前缀]  [7023次演化]  [17.7分钟]
+      · inst7/p=3 tqa_init       ar=0.8260 (/Σw=0.6876)  [hybrid+nm, 1条前缀]  [7420次演化]  [18.8分钟]
+      · inst7/p=3 gnn_warmstart  ar=0.8890 (/Σw=0.7401)  [hybrid+nm, 1条前缀]  [6368次演化]  [21.7分钟]
+      · inst7/p=4 cold_start     ar=0.8495 (/Σw=0.7071)  [hybrid+nm, 1条前缀]  [9602次演化]  [30.0分钟]
+      · inst7/p=4 tqa_init       ar=0.8335 (/Σw=0.6939)  [hybrid+nm, 1条前缀]  [9494次演化]  [30.7分钟]
+      · inst7/p=4 gnn_warmstart  ar=0.8941 (/Σw=0.7443)  [hybrid+nm, 1条前缀]  [8363次演化]  [39.2分钟]
+      · inst7/p=5 cold_start     ar=0.8514 (/Σw=0.7088)  [hybrid+nm, 1条前缀]  [10961次演化]  [45.9分钟]
+      · inst7/p=5 tqa_init       ar=0.8398 (/Σw=0.6991)  [hybrid+nm, 1条前缀]  [11384次演化]  [46.5分钟]
+      · inst7/p=5 gnn_warmstart  ar=0.8977 (/Σw=0.7473)  [hybrid+nm, 1条前缀]  [10271次演化]  [60.7分钟]
+      · inst8/p=1 cold_start     ar=0.7684 (/Σw=0.6337)  [hybrid+nm, 1条前缀]  [3260次演化]  [3.6分钟]
+      · inst8/p=1 tqa_init       ar=0.7684 (/Σw=0.6337)  [hybrid+nm, 1条前缀]  [3058次演化]  [3.3分钟]
+      · inst8/p=1 gnn_warmstart  ar=0.8922 (/Σw=0.7358)  [hybrid+nm, 1条前缀]  [2160次演化]  [4.0分钟]
+      · inst8/p=2 cold_start     ar=0.7949 (/Σw=0.6556)  [hybrid+nm, 1条前缀]  [5081次演化]  [7.5分钟]
+      · inst8/p=2 tqa_init       ar=0.7949 (/Σw=0.6556)  [hybrid+nm, 1条前缀]  [5453次演化]  [8.1分钟]
+      · inst8/p=2 gnn_warmstart  ar=0.9009 (/Σw=0.7430)  [hybrid+nm, 1条前缀]  [4287次演化]  [13.0分钟]
+      · inst8/p=3 cold_start     ar=0.8115 (/Σw=0.6693)  [hybrid+nm, 1条前缀]  [7879次演化]  [17.0分钟]
+      · inst8/p=3 tqa_init       ar=0.8115 (/Σw=0.6693)  [hybrid+nm, 1条前缀]  [8021次演化]  [17.7分钟]
+      · inst8/p=3 gnn_warmstart  ar=0.9168 (/Σw=0.7561)  [hybrid+nm, 1条前缀]  [6637次演化]  [26.3分钟]
+      · inst8/p=4 cold_start     ar=0.8252 (/Σw=0.6806)  [hybrid+nm, 1条前缀]  [8548次演化]  [22.6分钟]
+      · inst8/p=4 tqa_init       ar=0.8252 (/Σw=0.6806)  [hybrid+nm, 1条前缀]  [9653次演化]  [27.0分钟]
+      · inst8/p=4 gnn_warmstart  ar=0.9260 (/Σw=0.7637)  [hybrid+nm, 1条前缀]  [8610次演化]  [51.4分钟]
+      · inst8/p=5 cold_start     ar=0.8265 (/Σw=0.6817)  [hybrid+nm, 1条前缀]  [10728次演化]  [42.3分钟]
+      · inst8/p=5 tqa_init       ar=0.8364 (/Σw=0.6898)  [hybrid+nm, 1条前缀]  [11294次演化]  [40.4分钟]
+      · inst8/p=5 gnn_warmstart  ar=0.9327 (/Σw=0.7692)  [hybrid+nm, 1条前缀]  [9344次演化]  [62.1分钟]
+      · inst9/p=1 cold_start     ar=0.6865 (/Σw=0.6045)  [hybrid+nm, 1条前缀]  [3116次演化]  [3.7分钟]
+      · inst9/p=1 tqa_init       ar=0.6865 (/Σw=0.6045)  [hybrid+nm, 1条前缀]  [2646次演化]  [3.0分钟]
+      · inst9/p=1 gnn_warmstart  ar=0.8827 (/Σw=0.7773)  [hybrid+nm, 1条前缀]  [2234次演化]  [3.5分钟]
+      · inst9/p=2 cold_start     ar=0.7074 (/Σw=0.6229)  [hybrid+nm, 1条前缀]  [4944次演化]  [9.1分钟]
+      · inst9/p=2 tqa_init       ar=0.7074 (/Σw=0.6229)  [hybrid+nm, 1条前缀]  [5344次演化]  [9.6分钟]
+      · inst9/p=2 gnn_warmstart  ar=0.8907 (/Σw=0.7843)  [hybrid+nm, 1条前缀]  [5009次演化]  [13.5分钟]
+      · inst9/p=3 cold_start     ar=0.7110 (/Σw=0.6261)  [hybrid+nm, 1条前缀]  [7286次演化]  [19.8分钟]
+      · inst9/p=3 tqa_init       ar=0.7110 (/Σw=0.6261)  [hybrid+nm, 1条前缀]  [7528次演化]  [20.2分钟]
+      · inst9/p=3 gnn_warmstart  ar=0.8962 (/Σw=0.7892)  [hybrid+nm, 1条前缀]  [7113次演化]  [29.1分钟]
+      · inst9/p=4 cold_start     ar=0.7163 (/Σw=0.6307)  [hybrid+nm, 1条前缀]  [9056次演化]  [29.8分钟]
+      · inst9/p=4 tqa_init       ar=0.7163 (/Σw=0.6307)  [hybrid+nm, 1条前缀]  [9243次演化]  [30.1分钟]
+      · inst9/p=4 gnn_warmstart  ar=0.9019 (/Σw=0.7942)  [hybrid+nm, 1条前缀]  [9393次演化]  [58.7分钟]
+      · inst9/p=5 cold_start     ar=0.7405 (/Σw=0.6520)  [hybrid+nm, 1条前缀]  [10226次演化]  [44.1分钟]
+      · inst9/p=5 tqa_init       ar=0.7486 (/Σw=0.6592)  [hybrid+nm, 1条前缀]  [11098次演化]  [48.2分钟]
+      · inst9/p=5 gnn_warmstart  ar=0.9051 (/Σw=0.7970)  [hybrid+nm, 1条前缀]  [10253次演化]  [65.9分钟]
+      · inst10/p=1 cold_start     ar=0.7660 (/Σw=0.6151)  [hybrid+nm, 1条前缀]  [2994次演化]  [3.4分钟]
+      · inst10/p=1 tqa_init       ar=0.7660 (/Σw=0.6151)  [hybrid+nm, 1条前缀]  [3024次演化]  [3.3分钟]
+      · inst10/p=1 gnn_warmstart  ar=0.8469 (/Σw=0.6801)  [hybrid+nm, 1条前缀]  [2500次演化]  [3.9分钟]
+      · inst10/p=2 cold_start     ar=0.8244 (/Σw=0.6621)  [hybrid+nm, 1条前缀]  [4674次演化]  [8.2分钟]
+      · inst10/p=2 tqa_init       ar=0.8244 (/Σw=0.6621)  [hybrid+nm, 1条前缀]  [4908次演化]  [8.6分钟]
+      · inst10/p=2 gnn_warmstart  ar=0.8758 (/Σw=0.7033)  [hybrid+nm, 1条前缀]  [4314次演化]  [11.6分钟]
+      · inst10/p=3 cold_start     ar=0.8445 (/Σw=0.6782)  [hybrid+nm, 1条前缀]  [7305次演化]  [18.4分钟]
+      · inst10/p=3 tqa_init       ar=0.8445 (/Σw=0.6782)  [hybrid+nm, 1条前缀]  [7263次演化]  [18.3分钟]
+      · inst10/p=3 gnn_warmstart  ar=0.8811 (/Σw=0.7076)  [hybrid+nm, 1条前缀]  [7599次演化]  [28.0分钟]
+      · inst10/p=4 cold_start     ar=0.8566 (/Σw=0.6879)  [hybrid+nm, 1条前缀]  [9496次演化]  [29.0分钟]
+      · inst10/p=4 tqa_init       ar=0.8566 (/Σw=0.6879)  [hybrid+nm, 1条前缀]  [9945次演化]  [31.2分钟]
+      · inst10/p=4 gnn_warmstart  ar=0.8826 (/Σw=0.7088)  [hybrid+nm, 1条前缀]  [9248次演化]  [55.7分钟]
+      · inst10/p=5 cold_start     ar=0.8591 (/Σw=0.6899)  [hybrid+nm, 1条前缀]  [10849次演化]  [42.3分钟]
+      · inst10/p=5 tqa_init       ar=0.8591 (/Σw=0.6899)  [hybrid+nm, 1条前缀]  [11044次演化]  [43.6分钟]
+      · inst10/p=5 gnn_warmstart  ar=0.8833 (/Σw=0.7093)  [hybrid+nm, 1条前缀]  [10452次演化]  [80.3分钟]
+      · inst11/p=1 cold_start     ar=0.6341 (/Σw=0.5822)  [hybrid+nm, 1条前缀]  [3295次演化]  [3.3分钟]
+      · inst11/p=1 tqa_init       ar=0.6341 (/Σw=0.5822)  [hybrid+nm, 1条前缀]  [3009次演化]  [3.3分钟]
+      · inst11/p=1 gnn_warmstart  ar=0.8740 (/Σw=0.8023)  [hybrid+nm, 1条前缀]  [2357次演化]  [3.7分钟]
+      · inst11/p=2 cold_start     ar=0.7119 (/Σw=0.6536)  [hybrid+nm, 1条前缀]  [5282次演化]  [7.8分钟]
+      · inst11/p=2 tqa_init       ar=0.7119 (/Σw=0.6536)  [hybrid+nm, 1条前缀]  [5750次演化]  [8.4分钟]
+      · inst11/p=2 gnn_warmstart  ar=0.8889 (/Σw=0.8161)  [hybrid+nm, 1条前缀]  [4409次演化]  [11.9分钟]
+      · inst11/p=3 cold_start     ar=0.7749 (/Σw=0.7114)  [hybrid+nm, 1条前缀]  [7704次演化]  [16.1分钟]
+      · inst11/p=3 tqa_init       ar=0.7749 (/Σw=0.7114)  [hybrid+nm, 1条前缀]  [7661次演化]  [16.2分钟]
+      · inst11/p=3 gnn_warmstart  ar=0.8903 (/Σw=0.8173)  [hybrid+nm, 1条前缀]  [6229次演化]  [26.5分钟]
+      · inst11/p=4 cold_start     ar=0.8196 (/Σw=0.7524)  [hybrid+nm, 1条前缀]  [9643次演化]  [26.5分钟]
+      · inst11/p=4 tqa_init       ar=0.8196 (/Σw=0.7524)  [hybrid+nm, 1条前缀]  [9844次演化]  [28.5分钟]
+      · inst11/p=4 gnn_warmstart  ar=0.8923 (/Σw=0.8192)  [hybrid+nm, 1条前缀]  [8914次演化]  [55.9分钟]
+      · inst11/p=5 cold_start     ar=0.8514 (/Σw=0.7817)  [hybrid+nm, 1条前缀]  [10966次演化]  [39.7分钟]
+      · inst11/p=5 tqa_init       ar=0.8514 (/Σw=0.7817)  [hybrid+nm, 1条前缀]  [12362次演化]  [45.5分钟]
+      · inst11/p=5 gnn_warmstart  ar=0.8934 (/Σw=0.8202)  [hybrid+nm, 1条前缀]  [9772次演化]  [76.4分钟]
+      · inst12/p=1 cold_start     ar=0.6979 (/Σw=0.5916)  [hybrid+nm, 1条前缀]  [3302次演化]  [3.3分钟]
+      · inst12/p=1 tqa_init       ar=0.6979 (/Σw=0.5916)  [hybrid+nm, 1条前缀]  [3152次演化]  [3.4分钟]
+      · inst12/p=1 gnn_warmstart  ar=0.8003 (/Σw=0.6785)  [hybrid+nm, 1条前缀]  [2472次演化]  [4.3分钟]
+      · inst12/p=2 cold_start     ar=0.7703 (/Σw=0.6530)  [hybrid+nm, 1条前缀]  [5190次演化]  [7.5分钟]
+      · inst12/p=2 tqa_init       ar=0.7703 (/Σw=0.6530)  [hybrid+nm, 1条前缀]  [5135次演化]  [7.4分钟]
+      · inst12/p=2 gnn_warmstart  ar=0.8042 (/Σw=0.6818)  [hybrid+nm, 1条前缀]  [4159次演化]  [11.1分钟]
+      · inst12/p=3 cold_start     ar=0.8080 (/Σw=0.6850)  [hybrid+nm, 1条前缀]  [7836次演化]  [16.5分钟]
+      · inst12/p=3 tqa_init       ar=0.8080 (/Σw=0.6850)  [hybrid+nm, 1条前缀]  [7586次演化]  [16.3分钟]
+      · inst12/p=3 gnn_warmstart  ar=0.8069 (/Σw=0.6841)  [hybrid+nm, 1条前缀]  [5936次演化]  [20.0分钟]
+      · inst12/p=4 cold_start     ar=0.8336 (/Σw=0.7067)  [hybrid+nm, 1条前缀]  [9076次演化]  [24.9分钟]
+      · inst12/p=4 tqa_init       ar=0.8336 (/Σw=0.7067)  [hybrid+nm, 1条前缀]  [9802次演化]  [28.4分钟]
+      · inst12/p=4 gnn_warmstart  ar=0.8082 (/Σw=0.6852)  [hybrid+nm, 1条前缀]  [7825次演化]  [43.4分钟]
+      · inst12/p=5 cold_start     ar=0.8507 (/Σw=0.7212)  [hybrid+nm, 1条前缀]  [11176次演化]  [40.4分钟]
+      · inst12/p=5 tqa_init       ar=0.8507 (/Σw=0.7212)  [hybrid+nm, 1条前缀]  [11492次演化]  [42.3分钟]
+      · inst12/p=5 gnn_warmstart  ar=0.8098 (/Σw=0.6865)  [hybrid+nm, 1条前缀]  [8848次演化]  [54.9分钟]
+      · inst13/p=1 cold_start     ar=0.7539 (/Σw=0.6359)  [hybrid+nm, 1条前缀]  [3119次演化]  [3.7分钟]
+      · inst13/p=1 tqa_init       ar=0.7539 (/Σw=0.6359)  [hybrid+nm, 1条前缀]  [3055次演化]  [3.5分钟]
+      · inst13/p=1 gnn_warmstart  ar=0.8776 (/Σw=0.7402)  [hybrid+nm, 1条前缀]  [2220次演化]  [3.5分钟]
+      · inst13/p=2 cold_start     ar=0.8025 (/Σw=0.6769)  [hybrid+nm, 1条前缀]  [4878次演化]  [8.8分钟]
+      · inst13/p=2 tqa_init       ar=0.7606 (/Σw=0.6416)  [hybrid+nm, 1条前缀]  [5569次演化]  [11.2分钟]
+      · inst13/p=2 gnn_warmstart  ar=0.8907 (/Σw=0.7513)  [hybrid+nm, 1条前缀]  [4293次演化]  [11.2分钟]
+      · inst13/p=3 cold_start     ar=0.8260 (/Σw=0.6967)  [hybrid+nm, 1条前缀]  [7481次演化]  [18.3分钟]
+      · inst13/p=3 tqa_init       ar=0.8019 (/Σw=0.6764)  [hybrid+nm, 1条前缀]  [7901次演化]  [20.6分钟]
+      · inst13/p=3 gnn_warmstart  ar=0.9008 (/Σw=0.7598)  [hybrid+nm, 1条前缀]  [6711次演化]  [25.3分钟]
+      · inst13/p=4 cold_start     ar=0.8372 (/Σw=0.7061)  [hybrid+nm, 1条前缀]  [9345次演化]  [28.5分钟]
+      · inst13/p=4 tqa_init       ar=0.8061 (/Σw=0.6799)  [hybrid+nm, 1条前缀]  [9744次演化]  [31.7分钟]
+      · inst13/p=4 gnn_warmstart  ar=0.9051 (/Σw=0.7635)  [hybrid+nm, 1条前缀]  [9467次演化]  [51.7分钟]
+      · inst13/p=5 cold_start     ar=0.8437 (/Σw=0.7117)  [hybrid+nm, 1条前缀]  [10481次演化]  [41.2分钟]
+      · inst13/p=5 tqa_init       ar=0.8085 (/Σw=0.6820)  [hybrid+nm, 1条前缀]  [11465次演化]  [48.1分钟]
+      · inst13/p=5 gnn_warmstart  ar=0.9119 (/Σw=0.7692)  [hybrid+nm, 1条前缀]  [10321次演化]  [73.4分钟]
+      · inst14/p=1 cold_start     ar=0.8156 (/Σw=0.6530)  [hybrid+nm, 1条前缀]  [3271次演化]  [3.7分钟]
+      · inst14/p=1 tqa_init       ar=0.8156 (/Σw=0.6530)  [hybrid+nm, 1条前缀]  [3149次演化]  [3.5分钟]
+      · inst14/p=1 gnn_warmstart  ar=0.8717 (/Σw=0.6979)  [hybrid+nm, 1条前缀]  [2451次演化]  [4.1分钟]
+      · inst14/p=2 cold_start     ar=0.8497 (/Σw=0.6803)  [hybrid+nm, 1条前缀]  [5144次演化]  [7.7分钟]
+      · inst14/p=2 tqa_init       ar=0.8582 (/Σw=0.6871)  [hybrid+nm, 1条前缀]  [5013次演化]  [8.6分钟]
+      · inst14/p=2 gnn_warmstart  ar=0.8969 (/Σw=0.7181)  [hybrid+nm, 1条前缀]  [4180次演化]  [9.8分钟]
+      · inst14/p=3 cold_start     ar=0.8643 (/Σw=0.6921)  [hybrid+nm, 1条前缀]  [6738次演化]  [17.2分钟]
+      · inst14/p=3 tqa_init       ar=0.8699 (/Σw=0.6965)  [hybrid+nm, 1条前缀]  [7767次演化]  [19.7分钟]
+      · inst14/p=3 gnn_warmstart  ar=0.9141 (/Σw=0.7319)  [hybrid+nm, 1条前缀]  [6030次演化]  [19.2分钟]
+      · inst14/p=4 cold_start     ar=0.8892 (/Σw=0.7120)  [hybrid+nm, 1条前缀]  [9355次演化]  [30.7分钟]
+      · inst14/p=4 tqa_init       ar=0.8971 (/Σw=0.7183)  [hybrid+nm, 1条前缀]  [9500次演化]  [30.5分钟]
+      · inst14/p=4 gnn_warmstart  ar=0.9170 (/Σw=0.7342)  [hybrid+nm, 1条前缀]  [8504次演化]  [42.0分钟]
+      · inst14/p=5 cold_start     ar=0.9025 (/Σw=0.7227)  [hybrid+nm, 1条前缀]  [11153次演化]  [45.0分钟]
+      · inst14/p=5 tqa_init       ar=0.9025 (/Σw=0.7227)  [hybrid+nm, 1条前缀]  [11992次演化]  [49.0分钟]
+      · inst14/p=5 gnn_warmstart  ar=0.9179 (/Σw=0.7350)  [hybrid+nm, 1条前缀]  [10475次演化]  [70.8分钟]
+      · inst15/p=1 cold_start     ar=0.6818 (/Σw=0.5975)  [hybrid+nm, 1条前缀]  [3376次演化]  [4.6分钟]
+      · inst15/p=1 tqa_init       ar=0.6818 (/Σw=0.5975)  [hybrid+nm, 1条前缀]  [3102次演化]  [4.6分钟]
+      · inst15/p=1 gnn_warmstart  ar=0.8818 (/Σw=0.7729)  [hybrid+nm, 1条前缀]  [2181次演化]  [4.7分钟]
+      · inst15/p=2 cold_start     ar=0.7597 (/Σw=0.6658)  [hybrid+nm, 1条前缀]  [5009次演化]  [10.1分钟]
+      · inst15/p=2 tqa_init       ar=0.7597 (/Σw=0.6658)  [hybrid+nm, 1条前缀]  [5213次演化]  [10.2分钟]
+      · inst15/p=2 gnn_warmstart  ar=0.8943 (/Σw=0.7838)  [hybrid+nm, 1条前缀]  [4125次演化]  [13.0分钟]
+      · inst15/p=3 cold_start     ar=0.8005 (/Σw=0.7016)  [hybrid+nm, 1条前缀]  [7940次演化]  [17.3分钟]
+      · inst15/p=3 tqa_init       ar=0.8005 (/Σw=0.7016)  [hybrid+nm, 1条前缀]  [7805次演化]  [14.4分钟]
+      · inst15/p=3 gnn_warmstart  ar=0.8984 (/Σw=0.7874)  [hybrid+nm, 1条前缀]  [6693次演化]  [19.9分钟]
+      · inst15/p=4 cold_start     ar=0.8289 (/Σw=0.7265)  [hybrid+nm, 1条前缀]  [9255次演化]  [20.2分钟]
+      · inst15/p=4 tqa_init       ar=0.8289 (/Σw=0.7265)  [hybrid+nm, 1条前缀]  [10115次演化]  [22.0分钟]
+      · inst15/p=4 gnn_warmstart  ar=0.9012 (/Σw=0.7899)  [hybrid+nm, 1条前缀]  [8894次演化]  [32.4分钟]
+      · inst15/p=5 cold_start     ar=0.8483 (/Σw=0.7435)  [hybrid+nm, 1条前缀]  [12153次演化]  [30.4分钟]
+      · inst15/p=5 tqa_init       ar=0.8483 (/Σw=0.7435)  [hybrid+nm, 1条前缀]  [11551次演化]  [29.2分钟]
+      · inst15/p=5 gnn_warmstart  ar=0.9051 (/Σw=0.7933)  [hybrid+nm, 1条前缀]  [10714次演化]  [47.5分钟]
+      · inst16/p=1 cold_start     ar=0.7612 (/Σw=0.6278)  [hybrid+nm, 1条前缀]  [3158次演化]  [4.7分钟]
+      · inst16/p=1 tqa_init       ar=0.7612 (/Σw=0.6278)  [hybrid+nm, 1条前缀]  [3252次演化]  [4.8分钟]
+      · inst16/p=1 gnn_warmstart  ar=0.8384 (/Σw=0.6915)  [hybrid+nm, 1条前缀]  [2234次演化]  [5.0分钟]
+      · inst16/p=2 cold_start     ar=0.7978 (/Σw=0.6579)  [hybrid+nm, 1条前缀]  [5234次演化]  [9.9分钟]
+      · inst16/p=2 tqa_init       ar=0.8068 (/Σw=0.6654)  [hybrid+nm, 1条前缀]  [5011次演化]  [10.0分钟]
+      · inst16/p=2 gnn_warmstart  ar=0.8713 (/Σw=0.7186)  [hybrid+nm, 1条前缀]  [4880次演化]  [13.3分钟]
+      · inst16/p=3 cold_start     ar=0.8291 (/Σw=0.6838)  [hybrid+nm, 1条前缀]  [7166次演化]  [14.3分钟]
+      · inst16/p=3 tqa_init       ar=0.8291 (/Σw=0.6838)  [hybrid+nm, 1条前缀]  [7331次演化]  [15.5分钟]
+      · inst16/p=3 gnn_warmstart  ar=0.8900 (/Σw=0.7340)  [hybrid+nm, 1条前缀]  [6779次演化]  [20.6分钟]
+      · inst16/p=4 cold_start     ar=0.8385 (/Σw=0.6916)  [hybrid+nm, 1条前缀]  [9320次演化]  [21.7分钟]
+      · inst16/p=4 tqa_init       ar=0.8385 (/Σw=0.6916)  [hybrid+nm, 1条前缀]  [10238次演化]  [24.0分钟]
+      · inst16/p=4 gnn_warmstart  ar=0.8950 (/Σw=0.7381)  [hybrid+nm, 1条前缀]  [8367次演化]  [29.5分钟]
+      · inst16/p=5 cold_start     ar=0.8488 (/Σw=0.7000)  [hybrid+nm, 1条前缀]  [10299次演化]  [27.9分钟]
+      · inst16/p=5 tqa_init       ar=0.8488 (/Σw=0.7000)  [hybrid+nm, 1条前缀]  [11070次演化]  [30.3分钟]
+      · inst16/p=5 gnn_warmstart  ar=0.9073 (/Σw=0.7483)  [hybrid+nm, 1条前缀]  [9796次演化]  [41.5分钟]
+      · inst17/p=1 cold_start     ar=0.7417 (/Σw=0.6337)  [hybrid+nm, 1条前缀]  [3198次演化]  [4.7分钟]
+      · inst17/p=1 tqa_init       ar=0.7417 (/Σw=0.6337)  [hybrid+nm, 1条前缀]  [3210次演化]  [4.9分钟]
+      · inst17/p=1 gnn_warmstart  ar=0.8484 (/Σw=0.7248)  [hybrid+nm, 1条前缀]  [2578次演化]  [5.9分钟]
+      · inst17/p=2 cold_start     ar=0.7881 (/Σw=0.6733)  [hybrid+nm, 1条前缀]  [4942次演化]  [9.2分钟]
+      · inst17/p=2 tqa_init       ar=0.7844 (/Σw=0.6701)  [hybrid+nm, 1条前缀]  [5251次演化]  [10.0分钟]
+      · inst17/p=2 gnn_warmstart  ar=0.8757 (/Σw=0.7481)  [hybrid+nm, 1条前缀]  [4373次演化]  [10.8分钟]
+      · inst17/p=3 cold_start     ar=0.8027 (/Σw=0.6857)  [hybrid+nm, 1条前缀]  [6961次演化]  [12.5分钟]
+      · inst17/p=3 tqa_init       ar=0.7922 (/Σw=0.6768)  [hybrid+nm, 1条前缀]  [7023次演化]  [13.1分钟]
+      · inst17/p=3 gnn_warmstart  ar=0.8794 (/Σw=0.7512)  [hybrid+nm, 1条前缀]  [6798次演化]  [20.4分钟]
+      · inst17/p=4 cold_start     ar=0.8421 (/Σw=0.7194)  [hybrid+nm, 1条前缀]  [9649次演化]  [22.1分钟]
+      · inst17/p=4 tqa_init       ar=0.8167 (/Σw=0.6977)  [hybrid+nm, 1条前缀]  [8912次演化]  [20.4分钟]
+      · inst17/p=4 gnn_warmstart  ar=0.8818 (/Σw=0.7533)  [hybrid+nm, 1条前缀]  [8260次演化]  [31.6分钟]
+      · inst17/p=5 cold_start     ar=0.8520 (/Σw=0.7279)  [hybrid+nm, 1条前缀]  [9747次演化]  [27.1分钟]
+      · inst17/p=5 tqa_init       ar=0.8502 (/Σw=0.7263)  [hybrid+nm, 1条前缀]  [11610次演化]  [30.0分钟]
+      · inst17/p=5 gnn_warmstart  ar=0.8836 (/Σw=0.7548)  [hybrid+nm, 1条前缀]  [10283次演化]  [49.2分钟]
+      · inst18/p=1 cold_start     ar=0.7044 (/Σw=0.6151)  [hybrid+nm, 1条前缀]  [3222次演化]  [4.8分钟]
+      · inst18/p=1 tqa_init       ar=0.7044 (/Σw=0.6151)  [hybrid+nm, 1条前缀]  [3132次演化]  [4.8分钟]
+      · inst18/p=1 gnn_warmstart  ar=0.8833 (/Σw=0.7714)  [hybrid+nm, 1条前缀]  [2660次演化]  [5.6分钟]
+      · inst18/p=2 cold_start     ar=0.7935 (/Σw=0.6929)  [hybrid+nm, 1条前缀]  [4855次演化]  [9.5分钟]
+      · inst18/p=2 tqa_init       ar=0.7823 (/Σw=0.6832)  [hybrid+nm, 1条前缀]  [4963次演化]  [9.8分钟]
+      · inst18/p=2 gnn_warmstart  ar=0.8898 (/Σw=0.7770)  [hybrid+nm, 1条前缀]  [4891次演化]  [14.8分钟]
+      · inst18/p=3 cold_start     ar=0.7996 (/Σw=0.6983)  [hybrid+nm, 1条前缀]  [7272次演化]  [16.8分钟]
+      · inst18/p=3 tqa_init       ar=0.8157 (/Σw=0.7123)  [hybrid+nm, 1条前缀]  [7845次演化]  [17.1分钟]
+      · inst18/p=3 gnn_warmstart  ar=0.8965 (/Σw=0.7829)  [hybrid+nm, 1条前缀]  [6968次演化]  [25.3分钟]
+      · inst18/p=4 cold_start     ar=0.8006 (/Σw=0.6992)  [hybrid+nm, 1条前缀]  [8650次演化]  [24.5分钟]
+      · inst18/p=4 tqa_init       ar=0.8428 (/Σw=0.7360)  [hybrid+nm, 1条前缀]  [10478次演化]  [26.3分钟]
+      · inst18/p=4 gnn_warmstart  ar=0.9005 (/Σw=0.7864)  [hybrid+nm, 1条前缀]  [8423次演化]  [39.0分钟]
+      · inst18/p=5 cold_start     ar=0.8012 (/Σw=0.6996)  [hybrid+nm, 1条前缀]  [9930次演化]  [35.6分钟]
+      · inst18/p=5 tqa_init       ar=0.8446 (/Σw=0.7375)  [hybrid+nm, 1条前缀]  [10695次演化]  [30.9分钟]
+      · inst18/p=5 gnn_warmstart  ar=0.9031 (/Σw=0.7887)  [hybrid+nm, 1条前缀]  [10672次演化]  [45.0分钟]
+      · inst19/p=1 cold_start     ar=0.7210 (/Σw=0.5991)  [hybrid+nm, 1条前缀]  [3340次演化]  [4.4分钟]
+      · inst19/p=1 tqa_init       ar=0.7210 (/Σw=0.5991)  [hybrid+nm, 1条前缀]  [3161次演化]  [4.6分钟]
+      · inst19/p=1 gnn_warmstart  ar=0.8338 (/Σw=0.6928)  [hybrid+nm, 1条前缀]  [2626次演化]  [5.4分钟]
+      · inst19/p=2 cold_start     ar=0.7901 (/Σw=0.6565)  [hybrid+nm, 1条前缀]  [5302次演化]  [9.0分钟]
+      · inst19/p=2 tqa_init       ar=0.7901 (/Σw=0.6565)  [hybrid+nm, 1条前缀]  [4928次演化]  [8.1分钟]
+      · inst19/p=2 gnn_warmstart  ar=0.8617 (/Σw=0.7160)  [hybrid+nm, 1条前缀]  [4481次演化]  [10.9分钟]
+      · inst19/p=3 cold_start     ar=0.8279 (/Σw=0.6879)  [hybrid+nm, 1条前缀]  [8252次演化]  [14.8分钟]
+      · inst19/p=3 tqa_init       ar=0.8279 (/Σw=0.6879)  [hybrid+nm, 1条前缀]  [8233次演化]  [15.1分钟]
+      · inst19/p=3 gnn_warmstart  ar=0.8632 (/Σw=0.7172)  [hybrid+nm, 1条前缀]  [6862次演化]  [22.7分钟]
+      · inst19/p=4 cold_start     ar=0.8532 (/Σw=0.7089)  [hybrid+nm, 1条前缀]  [9084次演化]  [19.7分钟]
+      · inst19/p=4 tqa_init       ar=0.8532 (/Σw=0.7089)  [hybrid+nm, 1条前缀]  [9302次演化]  [20.1分钟]
+      · inst19/p=4 gnn_warmstart  ar=0.8646 (/Σw=0.7184)  [hybrid+nm, 1条前缀]  [8093次演化]  [34.3分钟]
+      · inst19/p=5 cold_start     ar=0.8703 (/Σw=0.7231)  [hybrid+nm, 1条前缀]  [11411次演化]  [29.0分钟]
+      · inst19/p=5 tqa_init       ar=0.8703 (/Σw=0.7231)  [hybrid+nm, 1条前缀]  [11608次演化]  [29.6分钟]
+      · inst19/p=5 gnn_warmstart  ar=0.8661 (/Σw=0.7196)  [hybrid+nm, 1条前缀]  [9754次演化]  [41.9分钟]
+      · inst20/p=1 cold_start     ar=0.6910 (/Σw=0.5957)  [hybrid+nm, 1条前缀]  [3261次演化]  [4.3分钟]
+      · inst20/p=1 tqa_init       ar=0.6910 (/Σw=0.5957)  [hybrid+nm, 1条前缀]  [3154次演化]  [4.2分钟]
+      · inst20/p=1 gnn_warmstart  ar=0.8537 (/Σw=0.7360)  [hybrid+nm, 1条前缀]  [2535次演化]  [5.0分钟]
+      · inst20/p=2 cold_start     ar=0.7661 (/Σw=0.6605)  [hybrid+nm, 1条前缀]  [5069次演化]  [8.7分钟]
+      · inst20/p=2 tqa_init       ar=0.7661 (/Σw=0.6605)  [hybrid+nm, 1条前缀]  [5277次演化]  [8.5分钟]
+      · inst20/p=2 gnn_warmstart  ar=0.8724 (/Σw=0.7521)  [hybrid+nm, 1条前缀]  [4274次演化]  [9.9分钟]
+      · inst20/p=3 cold_start     ar=0.8161 (/Σw=0.7036)  [hybrid+nm, 1条前缀]  [7799次演化]  [14.1分钟]
+      · inst20/p=3 tqa_init       ar=0.8161 (/Σw=0.7036)  [hybrid+nm, 1条前缀]  [7580次演化]  [13.8分钟]
+      · inst20/p=3 gnn_warmstart  ar=0.8795 (/Σw=0.7582)  [hybrid+nm, 1条前缀]  [6454次演化]  [19.2分钟]
+      · inst20/p=4 cold_start     ar=0.8515 (/Σw=0.7341)  [hybrid+nm, 1条前缀]  [9938次演化]  [21.4分钟]
+      · inst20/p=4 tqa_init       ar=0.8515 (/Σw=0.7341)  [hybrid+nm, 1条前缀]  [10372次演化]  [22.3分钟]
+      · inst20/p=4 gnn_warmstart  ar=0.8816 (/Σw=0.7601)  [hybrid+nm, 1条前缀]  [8963次演化]  [38.2分钟]
+      · inst20/p=5 cold_start     ar=0.8751 (/Σw=0.7544)  [hybrid+nm, 1条前缀]  [10993次演化]  [27.5分钟]
+      · inst20/p=5 tqa_init       ar=0.8751 (/Σw=0.7544)  [hybrid+nm, 1条前缀]  [11489次演化]  [29.1分钟]
+      · inst20/p=5 gnn_warmstart  ar=0.8879 (/Σw=0.7655)  [hybrid+nm, 1条前缀]  [9998次演化]  [46.6分钟]
+
+
+==============================================================================
+【详细日志】逐实例 / 逐p / 逐condition / 逐BO种子
+==============================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+==============================================================================
+【表1】实例属性 (论文里描述测试集用)
+==============================================================================
+ 实例 seed |E| |  C_max   Σw    C_max/Σw | unwanted 权重相关 权重范围      | GNN/C_max
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+
+==============================================================================
+【表2】主结果: 近似比 R_a = <C>/C_max  (Graham et al. arXiv:2112.14589 定义)
+每格 = 跨 20 个实例的 mean ± std (每实例内部已对 1 个BO种子取best)
+==============================================================================
+  p │  cold_start     │   tqa_init      │  gnn_warmstart  │ 配对优势(gnn-max(cold,tqa))
+------------------------------------------------------------------------------
+
+【表2b】累积最优 max over p'<=p of R_a(p')
+上表是 BO 在该 p 实际搜到的原始值; 这张表是"截至 p 层的最好成绩"。
+物理上 R_a(p) 必然 >= R_a(p-1) —— p 层电路把第 p 层角度置零就精确
+退化成 p-1 层, 所以 p-1 的最优解是 p 层搜索空间里的合法点。两表之差
+就是经典优化器在该 p 上失效的幅度。论文里两个数字都应该报, 后者不能
+替代前者(替代会掩盖"高p优化变难"这个真实且值得报告的信息)。
+------------------------------------------------------------------------------
+  p │  cold_start     │   tqa_init      │  gnn_warmstart  │ gnn失效量(累积-原始)
+------------------------------------------------------------------------------
+
+【表2c】最优角度贴在参数盒**上界**的实例数 (每层盒 = [0,9.425]×[0,0.4], 容差 1e-3)
+  时长下界 0 是物理边界, 不计; 贴上界说明更大的盒子可能更好(可用 QAOA_BOX_SCALE=2 检验)
+  p=1: cold_start=0/20   tqa_init=0/20   gnn_warmstart=0/20
+  p=2: cold_start=0/20   tqa_init=0/20   gnn_warmstart=1/20
+  p=3: cold_start=0/20   tqa_init=0/20   gnn_warmstart=1/20
+  p=4: cold_start=0/20   tqa_init=0/20   gnn_warmstart=2/20
+  p=5: cold_start=1/20   tqa_init=0/20   gnn_warmstart=2/20
+
+==============================================================================
+【表3】逐实例明细 (论文附录 / 画箱线图用)
+==============================================================================
+ p=1:
+   实例 | cold_start  tqa_init  gnn_warmstart | 优势
+ p=2:
+   实例 | cold_start  tqa_init  gnn_warmstart | 优势
+ p=3:
+   实例 | cold_start  tqa_init  gnn_warmstart | 优势
+ p=4:
+   实例 | cold_start  tqa_init  gnn_warmstart | 优势
+ p=5:
+   实例 | cold_start  tqa_init  gnn_warmstart | 优势
+
+==============================================================================
+【表4】关键论点的数据支撑
+==============================================================================
+ (A) 电路深度节省: warmstart 的低 p 能不能顶 cold_start 的高 p
+ (B) TQA 初始化相对 cold_start 的增益(用来反衬 warmstart 的增益不是'随便换个初始化都行'):
+ (C) 每增加一层带来的增益:
+==============================================================================
+✓ 最优角度CSV          → best_angles_n12_inst20_hybrid300_om15.7_p5_I16efd892.csv
+
+✓ 汇总CSV(每实例best)  → paper_results_n12_inst20_hybrid300_om15.7_p5_I16efd892.csv
+✓ 原始CSV(每BO种子)    → paper_raw_n12_inst20_hybrid300_om15.7_p5_I16efd892.csv
+✓ 完整数据(jls)        → batch_qaoa_n12_inst20_zygote_hybrid300_om15.7_p5_I16efd892.jls

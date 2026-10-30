@@ -1,0 +1,24 @@
+  Activating project at `~/Downloads/julia/ChenQAOA`
+ERROR: LoadError: ArgumentError: cannot parse "eps" as Float64
+Stacktrace:
+ [1] _parse_failure(T::Type, s::String, startpos::Int64, endpos::Int64)
+   @ Base ./parse.jl:387
+ [2] #tryparse_internal#530
+   @ ./parse.jl:383 [inlined]
+ [3] tryparse_internal
+   @ ./parse.jl:380 [inlined]
+ [4] parse(::Type{Float64}, s::String)
+   @ Base ./parse.jl:393
+ [5] top-level scope
+   @ ~/Downloads/julia/r3g_sge_integrated.jl:348
+in expression starting at /Users/zhoushenheng/Downloads/julia/r3g_sge_integrated.jl:348
+======================================================================
+核数检测: MANUAL
+  依据: JULIA_NWORKERS 手动指定
+  调度器/系统给的核数: 13 (主进程占 1, 最多可开 12 个 worker)
+  最终 worker 数: 12
+  (想改: 设环境变量 JULIA_NWORKERS=N 可强制指定 worker 数)
+======================================================================
+主进程环境: /Users/zhoushenheng/Downloads/julia/ChenQAOA/Project.toml
+Workers ready: 12  IDs: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+======================================================================

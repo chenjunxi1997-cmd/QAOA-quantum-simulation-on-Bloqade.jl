@@ -1,0 +1,54 @@
+  Activating project at `C:\Users\87570\julia\ChenQAOA`
+ERROR: LoadError: InitError: CondaPkg is using the Null backend but Python is not installed
+Stacktrace:
+  [1] error(s::String)
+    @ Base .\error.jl:35
+  [2] init_context()
+    @ PythonCall.C C:\Users\87570\.julia\packages\PythonCall\83z4q\src\C\context.jl:130
+  [3] __init__()
+    @ PythonCall.C C:\Users\87570\.julia\packages\PythonCall\83z4q\src\C\C.jl:26
+  [4] run_module_init(mod::Module, i::Int64)
+    @ Base .\loading.jl:1134
+  [5] register_restored_modules(sv::Core.SimpleVector, pkg::Base.PkgId, path::String)
+    @ Base .\loading.jl:1122
+  [6] _include_from_serialized(pkg::Base.PkgId, path::String, ocachepath::String, depmods::Vector{Any})
+    @ Base .\loading.jl:1067
+  [7] _tryrequire_from_serialized(modkey::Base.PkgId, path::String, ocachepath::String, sourcepath::String, depmods::Vector{Any})
+    @ Base .\loading.jl:1481
+  [8] _require_search_from_serialized(pkg::Base.PkgId, sourcepath::String, build_id::UInt128)
+    @ Base .\loading.jl:1574
+  [9] _require(pkg::Base.PkgId, env::String)
+    @ Base .\loading.jl:1938
+ [10] __require_prelocked(uuidkey::Base.PkgId, env::String)
+    @ Base .\loading.jl:1812
+ [11] #invoke_in_world#3
+    @ .\essentials.jl:926 [inlined]
+ [12] invoke_in_world
+    @ .\essentials.jl:923 [inlined]
+ [13] _require_prelocked(uuidkey::Base.PkgId, env::String)
+    @ Base .\loading.jl:1803
+ [14] macro expansion
+    @ .\loading.jl:1790 [inlined]
+ [15] macro expansion
+    @ .\lock.jl:267 [inlined]
+ [16] __require(into::Module, mod::Symbol)
+    @ Base .\loading.jl:1753
+ [17] #invoke_in_world#3
+    @ .\essentials.jl:926 [inlined]
+ [18] invoke_in_world
+    @ .\essentials.jl:923 [inlined]
+ [19] require(into::Module, mod::Symbol)
+    @ Base .\loading.jl:1746
+ [20] top-level scope
+    @ C:\Users\87570\.julia\juliaup\julia-1.10.4+0.x64.w64.mingw32\share\julia\stdlib\v1.10\Distributed\src\macros.jl:200
+during initialization of module C
+in expression starting at C:\Users\87570\julia\r3g_sge_integrated.jl:237
+======================================================================
+核数检测: MANUAL
+  依据: JULIA_NWORKERS 手动指定
+  调度器/系统给的核数: 3 (主进程占 1, 最多可开 2 个 worker)
+  最终 worker 数: 2
+  (想改: 设环境变量 JULIA_NWORKERS=N 可强制指定 worker 数)
+======================================================================
+Workers ready: 2  IDs: [2, 3]
+======================================================================
